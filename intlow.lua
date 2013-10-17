@@ -213,6 +213,11 @@ if code == 200 then
 	}
 	resxml = table.concat(output)
 	-- resxml = zlib.decompress(resxml)
+
+	resxml = string.gsub(resxml, "&lt;", "<")
+	resxml = string.gsub(resxml, "&gt;", ">")
+	-- print(resxml)
+	-- local tbody = resxml;
 	--[[
 	-- ctrip result xml logged.
 	local wname = "/data/logs/rholog.txt"
@@ -225,12 +230,8 @@ if code == 200 then
 	print("--------------")
 	print(status)
 	print(body)
+	print("--------------")
 	--]]
-	resxml = string.gsub(resxml, "&lt;", "<")
-	resxml = string.gsub(resxml, "&gt;", ">")
-	-- print(resxml)
-	-- local tbody = resxml;
-	
 	local pr_xml = xml.eval(resxml);
 	local xscene = pr_xml:find("IntlFlightSearchResponse");
 	local bigtab = {};
@@ -265,7 +266,7 @@ if code == 200 then
 									local tmpbunk = {};
 									for k, v in pairs(v[i]) do
 										if k > 0 then
-											if type(v) == "table" then
+											if type(v) == "table" and v[0] ~= "IntlFlightStop" then
 												-- ngx.say(v[0], v[1])
 												tmpbunk[v[0]] = v[1]
 											end
