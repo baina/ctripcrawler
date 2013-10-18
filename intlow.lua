@@ -266,7 +266,7 @@ if code == 200 then
 									local tmpbunk = {};
 									for k, v in pairs(v[i]) do
 										if k > 0 then
-											if type(v) == "table" and v[0] ~= "IntlFlightStop" then
+											if type(v) == "table" then
 												-- ngx.say(v[0], v[1])
 												tmpbunk[v[0]] = v[1]
 											end
@@ -302,7 +302,25 @@ if code == 200 then
 				for k, v in pairs(xscene[2][r][1][i][3][j]) do
 					if k > 0 then
 						if type(v) == "table" then
-							tmpseg[v[0]] = v[1];
+							if v[0] ~= "Stops" then
+								tmpseg[v[0]] = v[1];
+							end
+							if v[0] == "Stops" and v[1] ~= nil then
+								-- print(type(v[1]))
+								-- print(table.getn(v[1]))
+								-- print("--------------")
+								-- print(table.getn(v))
+								local tmpstops = {};
+								for i = 1, table.getn(v) do
+									local tmp = {};
+									for j = 1, table.getn(v[i]) do
+										tmp[v[i][j][0]] = v[i][j][1]
+										print(v[i][j][0], v[i][j][1])
+									end
+									table.insert(tmpstops, tmp)
+								end
+								tmpseg[v[0]] = tmpstops;
+							end
 							if v[0] == "DPort" then
 								fltkey[1] = v[1];
 							end
