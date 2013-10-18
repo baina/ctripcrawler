@@ -286,7 +286,8 @@ if code == 200 then
 			tmppritab["ctrip"] = priceinfo;
 			table.insert(pritab, tmppritab)
 			table.insert(bunktb, tbunks)
-			polidx = polidx + 1;
+			break;
+			-- polidx = polidx + 1;
 			-- ngx.say(JSON.encode(idxtab))
 			-- ngx.say(JSON.encode(tmppri))
 		end
