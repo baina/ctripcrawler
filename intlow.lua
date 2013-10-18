@@ -360,7 +360,7 @@ if code == 200 then
 		-- ctrip["limit"] = limtab;
 		ctrip["prices_data"] = pritab;
 		ctrip["flightline_id"] = FlightLineID;
-		ctrip["checksum_seg"] = seginf;
+		-- ctrip["checksum_seg"] = seginf;
 		-- begin to store into redis
 		--[[
 		local fltid = "";
