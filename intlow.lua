@@ -20,6 +20,9 @@ client:select(0) -- for testing purposes
 -- commands defined in the redis.commands table are available at module
 -- level and are used to populate each new client instance.
 redis.commands.hset = redis.command('hset')
+redis.commands.hset = redis.command('hget')
+redis.commands.incr = redis.command('incr')
+redis.commands.setnx = redis.command('setnx')
 redis.commands.sadd = redis.command('sadd')
 redis.commands.zadd = redis.command('zadd')
 redis.commands.smembers = redis.command('smembers')
@@ -234,6 +237,7 @@ if code == 200 then
 	--]]
 	local pr_xml = xml.eval(resxml);
 	local xscene = pr_xml:find("IntlFlightSearchResponse");
+	local rfid = {};
 	local bigtab = {};
 	for r = 1, xscene[1][1] do
 		-- local xscene = pr_xml:find("ShoppingResultInfo");
@@ -248,7 +252,7 @@ if code == 200 then
 			for k, v in pairs(xscene[2][r][2][polidx]) do
 				if k > 0 then
 					if type(v) == "table" then
-						if v[0] ~= "FlightBaseInfos" and v[0] ~= "PriceInfos" then
+						if v[0] ~= "FlightBaseInfos" and v[0] ~= "PriceInfos" and v[0] ~= "NoSalesStr" then
 							idxtab[v[0]] = v[1];
 						else
 							if v[0] == "PriceInfos" then
@@ -282,6 +286,7 @@ if code == 200 then
 			local priceinfo = {};
 			local tmppritab = {};
 			priceinfo["priceinfo"] = tmppri;
+			-- NoSalesStr
 			priceinfo["salelimit"] = idxtab;
 			tmppritab["ctrip"] = priceinfo;
 			table.insert(pritab, tmppritab)
@@ -316,7 +321,7 @@ if code == 200 then
 									local tmp = {};
 									for j = 1, table.getn(v[i]) do
 										tmp[v[i][j][0]] = v[i][j][1]
-										print(v[i][j][0], v[i][j][1])
+										-- print(v[i][j][0], v[i][j][1])
 									end
 									table.insert(tmpstops, tmp)
 								end
@@ -355,6 +360,9 @@ if code == 200 then
 		-- Caculate FlightLineID
 		-- ngx.say(fid)
 		local FlightLineID = md5.sumhexa(fid)
+		if rfid[FlightLineID] ~= 0 then
+			rfid[FlightLineID] = 0
+		end
 		local ctrip = {};
 		ctrip["bunks_idx"] = bunktb;
 		-- ctrip["limit"] = limtab;
@@ -362,26 +370,28 @@ if code == 200 then
 		ctrip["flightline_id"] = FlightLineID;
 		-- ctrip["checksum_seg"] = seginf;
 		-- begin to store into redis
-		--[[
 		local fltid = "";
-		local getfidres, getfiderr = red:get("flt:" .. FlightLineID .. ":id")
+		local getfidres, getfiderr = client:get("flt:" .. FlightLineID .. ":id")
+		-- local res, err = client:hget('dom:itour:' .. tkey, org .. dst)
+		--[[
 		if not getfidres then
 			print(error003("failed to get the flt:" .. FlightLineID .. ":id: ", getfiderr))
 			return
 		end
+		--]]
 		-- ngx.print(getfidres);
 		-- ngx.print("\r\n---------------------\r\n");
 		if tonumber(getfidres) == nil then
 			-- fare:id INCR
 			-- local farecounter, cerror = red:incr("next.fare.id")
-			local farecounter, cerror = red:incr("flt:id")
+			local farecounter, cerror = client:incr("flt:id")
 			if not farecounter then
 				print(error003("failed to INCR flt Line: ", cerror));
 				return
 			else
-				local resultsetnx, fiderror = red:setnx("flt:" .. FlightLineID .. ":id", farecounter)
+				local resultsetnx, fiderror = client:setnx("flt:" .. FlightLineID .. ":id", farecounter)
 				if not resultsetnx then
-					ngx.print(error003("failed to SETNX FlightLineID: " .. FlightLineID, fiderror));
+					print(error003("failed to SETNX FlightLineID: " .. FlightLineID, fiderror));
 					return
 				end
 				-- ngx.print("INCR fare result: ", farecounter);
@@ -392,45 +402,51 @@ if code == 200 then
 				if resultsetnx == 1 then
 					fltid = farecounter;
 				else
-					fltid = red:get("flt:" .. FlightLineID .. ":id");
+					fltid = client:get("flt:" .. FlightLineID .. ":id");
 				end
 				-- start to store the fltinfo.
-				local res, err = red:zadd("ow:" .. string.upper(ngx.var.org) .. ":" .. string.upper(ngx.var.dst), fltscore, fltid)
+				local res, err = client:zadd("ow:" .. string.upper(org) .. ":" .. string.upper(dst), fltscore, fltid)
 				if not res then
-					ngx.print(error003("failed to add FlightLine into " .. string.upper(ngx.var.org) .. "/" .. string.upper(ngx.var.dst) .. ":" .. fltid, err));
+					print(error003("failed to add FlightLine into " .. string.upper(org) .. "/" .. string.upper(dst) .. ":" .. fltid, err));
 					return
 				end
 				-- checksum_seg
 				-- ngx.say(JSON.encode(seginf))
 				local segstr = JSON.encode(seginf);
-				local res, err = red:hset("seg:" .. fltid, ngx.md5(segstr), segstr)
+				local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
 				if not res then
-					ngx.print(error003("failed to HSET checksum_seg info: " .. fltid, err));
+					print(error003("failed to HSET checksum_seg info: " .. fltid, err));
 					return
 				end
-				local res, err = red:hset("pri:ow:" .. fltid, ngx.var.gdate, JSON.encode(ctrip))
+				-- table.insert(bigtab, ctrip)
+				--[[
+				local res, err = client:hset("pri:ow:" .. fltid, date, JSON.encode(ctrip))
 				if not res then
-					ngx.print(error003("failed to HSET prices_data info: " .. fltid, err));
+					print(error003("failed to HSET prices_data info: " .. fltid, err));
 					return
 				else
 					-- ngx.print(JSON.encode(ctrip))
 					table.insert(bigtab, ctrip)
 				end
+				--]]
 			end
 		else
 			-- ngx.say(JSON.encode(seginf))
 			-- ngx.say(JSON.encode(pritab))
 			-- ngx.say(JSON.encode(bunktb))
+			-- table.insert(bigtab, ctrip)
 			fltid = tonumber(getfidres);
+			--[[
 			-- local res, err = red:set("pri:ow:" .. fltid, JSON.encode(ctrip))
-			local res, err = red:hset("pri:ow:" .. fltid, ngx.var.gdate, JSON.encode(ctrip))
+			local res, err = client:hset("pri:ow:" .. fltid, date, JSON.encode(ctrip))
 			if not res then
-				ngx.print(error003("failed to HSET prices_data info: " .. fltid, err));
+				print(error003("failed to HSET prices_data info: " .. fltid, err));
 				return
 			else
 				-- ngx.print(JSON.encode(ctrip))
 				table.insert(bigtab, ctrip)
 			end
+			--]]
 		end
 		-- ngx.say(JSON.encode(seginf))
 		-- ngx.say(fid)
@@ -441,7 +457,13 @@ if code == 200 then
 	end
 	if table.getn(bigtab) > 0 then
 		print(JSON.encode(bigtab));
+	else
+		print(code)
+		print(status)
+		print(body)
 	end
+	print("--------------")
+	print(table.getn(rfid))
 else
 	print(code)
 	print("--------------")
