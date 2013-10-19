@@ -360,15 +360,26 @@ if code == 200 then
 		-- Caculate FlightLineID
 		-- ngx.say(fid)
 		local FlightLineID = md5.sumhexa(fid)
-		if rfid[FlightLineID] ~= 0 then
-			rfid[FlightLineID] = 0
-		end
 		local ctrip = {};
 		ctrip["bunks_idx"] = bunktb;
 		-- ctrip["limit"] = limtab;
 		ctrip["prices_data"] = pritab;
 		ctrip["flightline_id"] = FlightLineID;
-		-- ctrip["checksum_seg"] = seginf;
+		ctrip["checksum_seg"] = seginf;
+		-- begin to check ctrip ifl data
+		local pfid = {};
+		-- print(rfid[FlightLineID]) -- init is nil
+		if rfid[FlightLineID] == nil then
+			table.insert(pfid, ctrip)
+			rfid[FlightLineID] = pfid
+			-- table.insert(rfid, pfid)
+			-- rfid["ifl:" .. FlightLineID] = true
+		else
+			pfid = rfid[FlightLineID]
+			table.insert(pfid, ctrip)
+			rfid[FlightLineID] = pfid
+		end
+		-- ifl data check ended
 		-- begin to store into redis
 		local fltid = "";
 		local getfidres, getfiderr = client:get("flt:" .. FlightLineID .. ":id")
@@ -464,6 +475,8 @@ if code == 200 then
 	end
 	print("--------------")
 	print(table.getn(rfid))
+	print("--------------")
+	print(JSON.encode(rfid))
 else
 	print(code)
 	print("--------------")
