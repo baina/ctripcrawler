@@ -237,9 +237,13 @@ if code == 200 then
 	--]]
 	local pr_xml = xml.eval(resxml);
 	local xscene = pr_xml:find("IntlFlightSearchResponse");
+	-- xscene maybe nil
 	local rfid = {};
 	local imax = {};
 	local bigtab = {};
+	local union = {};
+	print(xscene[1][1])
+	print("--------------")
 	for r = 1, xscene[1][1] do
 		-- local xscene = pr_xml:find("ShoppingResultInfo");
 		local pritab = {};
@@ -375,23 +379,52 @@ if code == 200 then
 		-- print(rfid[FlightLineID]) -- init is nil
 		if rfid[FlightLineID] == nil then
 			table.insert(pfid, ctrip)
-			jmax = ctrip;
 			rfid[FlightLineID] = pfid
+			jmax = ctrip;
 			imax[FlightLineID] = jmax
 			-- table.insert(rfid, pfid)
 			-- rfid["ifl:" .. FlightLineID] = true
 		else
+			ctrip["flightline_id"] = "*" .. FlightLineID;
+			print("--------------")
+			print(ctrip["flightline_id"])
+			print("--------------")
 			pfid = rfid[FlightLineID]
 			jmax = imax[FlightLineID]
+			print(jmax["flightline_id"])
+			print("--------------")
+			jmax["flightline_id"] = "*" .. FlightLineID
+			print(jmax["flightline_id"])
 			-- make imax's price is lower
 			if tonumber(jmax.prices_data[1].ctrip.priceinfo.SalesPrice) > tonumber(pritab[1].ctrip.priceinfo.SalesPrice) then
 				-- jmax = {};
 				-- table.insert(jmax, ctrip)
 				imax[FlightLineID] = ctrip
+				-- table.insert(pfid, jmax)
+			else
+				imax[FlightLineID] = jmax
+				local tmp = {};
+				for k, v in pairs(pfid) do
+					if v ~= jmax then
+						table.insert(tmp, v)
+					end
+				end
+				-- table.remove(pfid, jmax)
+				table.insert(tmp, ctrip)
+				rfid[FlightLineID] = tmp
 			end
-			
-			table.insert(pfid, ctrip)
-			rfid[FlightLineID] = pfid
+			-- IsShared
+			local check = true;
+			for k, v in pairs(union) do
+				if v == FlightLineID then
+					check = false;
+				end
+			end
+			if check ~= false then
+				table.insert(union, FlightLineID)
+			end
+			-- print(JSON.encode(seginf))
+			-- table.insert(pfid, ctrip)
 		end
 		-- ifl data check ended
 		-- begin to store into redis
@@ -437,14 +470,15 @@ if code == 200 then
 				end
 				-- checksum_seg
 				-- ngx.say(JSON.encode(seginf))
+				--[[
 				local segstr = JSON.encode(seginf);
 				local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
+				-- local res, err = client:hset("seg:" .. fltid, r, segstr)
 				if not res then
 					print(error003("failed to HSET checksum_seg info: " .. fltid, err));
 					return
 				end
 				-- table.insert(bigtab, ctrip)
-				--[[
 				local res, err = client:hset("pri:ow:" .. fltid, date, JSON.encode(ctrip))
 				if not res then
 					print(error003("failed to HSET prices_data info: " .. fltid, err));
@@ -462,6 +496,18 @@ if code == 200 then
 			-- table.insert(bigtab, ctrip)
 			fltid = tonumber(getfidres);
 			--[[
+			-- checksum_seg
+			local segstr = JSON.encode(seginf);
+			-- local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
+			local data, error = client:hget("seg:" .. fltid, md5.sumhexa(segstr))
+			if data == nil then
+				-- local res, err = client:hset("seg:" .. fltid, r, segstr)
+				local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
+				if not res then
+					print(error003("failed to HSET checksum_seg info: " .. fltid, err));
+					return
+				end
+			end
 			-- local res, err = red:set("pri:ow:" .. fltid, JSON.encode(ctrip))
 			local res, err = client:hset("pri:ow:" .. fltid, date, JSON.encode(ctrip))
 			if not res then
@@ -483,6 +529,23 @@ if code == 200 then
 		-- print ctrip ifl data number
 		print(JSON.encode(bigtab));
 		print("--------------")
+		local unilen = table.getn(union)
+		if unilen > 0 then
+			print(unilen);
+			print("--------------")
+			for k, v in pairs(union) do
+				local fltkey, err = client:get("flt:" .. v .. ":id")
+				if tonumber(fltkey) ~= nil then
+					client:hdel("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey);
+					local res, err = client:hset("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey, JSON.encode(rfid[v]))
+					-- local res, err = client:hset("seg:" .. fltid, r, segstr)
+					if not res then
+						print(error003("failed to HSET union info: " .. v, err));
+						return
+					end
+				end
+			end
+		end
 		-- print imax with the lowest price
 		-- print(JSON.encode(imax))
 		bigtab = {};
@@ -598,9 +661,9 @@ if code == 200 then
 	else
 		print(error002);
 	end
-	print("--------------")
+	-- print("--------------")
 	-- print check data of ifl
-	print(JSON.encode(rfid))
+	-- print(JSON.encode(rfid))
 else
 	print(code)
 	print("--------------")
