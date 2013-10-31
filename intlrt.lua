@@ -226,7 +226,7 @@ local request = ([=[<?xml version='1.0' encoding='UTF-8'?>
 </xsd:Request>
 </soapenv:Body>
 </soapenv:Envelope>]=]):format(intlxml)
-
+--[[
 -- soap for back
 request = ([=[<?xml version='1.0' encoding='UTF-8'?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
@@ -236,7 +236,7 @@ request = ([=[<?xml version='1.0' encoding='UTF-8'?>
 </xsd:Request>
 </soapenv:Body>
 </soapenv:Envelope>]=]):format(bintlxml)
-
+--]]
 -- print(request)
 -- print("-----------------")
 -- init response table

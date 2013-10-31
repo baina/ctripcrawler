@@ -23,6 +23,7 @@ redis.commands.hset = redis.command('hset')
 redis.commands.hset = redis.command('hget')
 redis.commands.incr = redis.command('incr')
 redis.commands.setnx = redis.command('setnx')
+redis.commands.hset = redis.command('hsetnx')
 redis.commands.sadd = redis.command('sadd')
 redis.commands.zadd = redis.command('zadd')
 redis.commands.smembers = redis.command('smembers')
@@ -429,11 +430,20 @@ if code == 200 then
 		-- ifl data check ended
 		-- begin to store into redis
 		local fltid = "";
-		local getfidres, getfiderr = client:get("flt:" .. FlightLineID .. ":id")
+		local farehkey = string.lower(string.sub(base64.encode(FlightLineID), 1, 2));
+		local getfidres, getfiderr = client:hget("flt:" .. farehkey, FlightLineID)
+		-- local getfidres, getfiderr = client:get("flt:" .. FlightLineID .. ":id")
 		-- local res, err = client:hget('dom:itour:' .. tkey, org .. dst)
 		--[[
 		if not getfidres then
 			print(error003("failed to get the flt:" .. FlightLineID .. ":id: ", getfiderr))
+			return
+		end
+		-- split the FlightLineID
+		local farehkey = string.sub(string.format("%011d", value1), 1, 8);
+		local res, err = red:hmset("PERIODS:fid:" .. farehkey, value1, fid)
+		if not res then
+			ngx.say("failed to hmset the hashes data : [PERIODS:fid:" .. farehkey .. "]", err);
 			return
 		end
 		--]]
@@ -447,9 +457,10 @@ if code == 200 then
 				print(error003("failed to INCR flt Line: ", cerror));
 				return
 			else
-				local resultsetnx, fiderror = client:setnx("flt:" .. FlightLineID .. ":id", farecounter)
+				-- local resultsetnx, fiderror = client:setnx("flt:" .. FlightLineID .. ":id", farecounter)
+				local resultsetnx, fiderror = client:hsetnx("flt:" .. farehkey, FlightLineID, farecounter)
 				if not resultsetnx then
-					print(error003("failed to SETNX FlightLineID: " .. FlightLineID, fiderror));
+					print(error003("failed to HSETNX FlightLineID: " .. FlightLineID, fiderror));
 					return
 				end
 				-- ngx.print("INCR fare result: ", farecounter);
@@ -460,16 +471,21 @@ if code == 200 then
 				if resultsetnx == 1 then
 					fltid = farecounter;
 				else
-					fltid = client:get("flt:" .. FlightLineID .. ":id");
+					-- fltid = client:get("flt:" .. FlightLineID .. ":id");
+					fltid = client:hget("flt:" .. farehkey, FlightLineID);
 				end
-				-- start to store the fltinfo.
-				local res, err = client:zadd("ow:" .. string.upper(org) .. ":" .. string.upper(dst), fltscore, fltid)
-				if not res then
-					print(error003("failed to add FlightLine into " .. string.upper(org) .. "/" .. string.upper(dst) .. ":" .. fltid, err));
-					return
+				if fltid ~= "" and fltid ~= nil and fltid ~= JSON.null then
+					farehkey = string.lower(string.sub(base64.encode(fltid), 1, 2));
+					client:hset("flt:" .. farehkey, fltid, FlightLineID)
+					-- start to store the fltinfo.
+					local res, err = client:zadd("ow:" .. string.upper(org) .. ":" .. string.upper(dst), fltscore, fltid)
+					if not res then
+						print(error003("failed to add FlightLine into " .. string.upper(org) .. "/" .. string.upper(dst) .. ":" .. fltid, err));
+						return
+					end
+					-- checksum_seg
+					-- ngx.say(JSON.encode(seginf))
 				end
-				-- checksum_seg
-				-- ngx.say(JSON.encode(seginf))
 				--[[
 				local segstr = JSON.encode(seginf);
 				local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
@@ -534,10 +550,14 @@ if code == 200 then
 			print(unilen);
 			print("--------------")
 			for k, v in pairs(union) do
-				local fltkey, err = client:get("flt:" .. v .. ":id")
+				local farehkey = string.lower(string.sub(base64.encode(v), 1, 2));
+				-- local fltkey, err = client:get("flt:" .. v .. ":id")
+				local fltkey, err = client:hget("flt:" .. farehkey, v)
 				if tonumber(fltkey) ~= nil then
-					client:hdel("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey);
-					local res, err = client:hset("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey, JSON.encode(rfid[v]))
+					-- client:hdel("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey);
+					-- local res, err = client:hset("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey, JSON.encode(rfid[v]))
+					client:hdel("uni:" .. string.upper(org) .. ":" .. string.upper(dst) .. ":" .. fltkey, tkey);
+					local res, err = client:hset("uni:" .. string.upper(org) .. ":" .. string.upper(dst) .. ":" .. fltkey, tkey, JSON.encode(rfid[v]))
 					-- local res, err = client:hset("seg:" .. fltid, r, segstr)
 					if not res then
 						print(error003("failed to HSET union info: " .. v, err));
