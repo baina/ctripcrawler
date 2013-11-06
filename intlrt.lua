@@ -79,6 +79,8 @@ local sk = "8047E3D8b60e2887d1d866b4b12028c6"
 local org = string.sub(arg[1], 1, 3);
 local dst = string.sub(arg[1], 5, 7);
 local tkey = string.sub(arg[1], 9, -11); -- can/bjs/20131030/20131130/
+local rtkey = string.sub(arg[1], 9, -2);
+rtkey = string.gsub(rtkey, "/", ".");
 local expiret = os.time({year=string.sub(tkey, 1, 4), month=tonumber(string.sub(tkey, 5, 6)), day=tonumber(string.sub(tkey, 7, 8)), hour="00"})
 local gdate = string.sub(arg[1], 9, 12) .. "-" .. string.sub(arg[1], 13, 14) .. "-" .. string.sub(arg[1], 15, 16);
 local bdate = string.sub(arg[1], 18, 21) .. "-" .. string.sub(arg[1], 22, 23) .. "-" .. string.sub(arg[1], 24, 25);
@@ -97,7 +99,7 @@ local sign = string.upper(md5.sumhexa(ts .. unicode .. string.upper(md5.sumhexa(
 -- print(ts)
 -- print(sign)
 print(string.upper(org), string.upper(dst), gdate, bdate, today)
-print("-----------------")
+print("--------------------------------------------------------------------")
 -- domxml = string.gsub(domxml, ">", "&gt;")
 -- domxml = string.gsub(domxml, "\n", "")
 local intlxml = ([=[
@@ -332,10 +334,14 @@ if code == 200 then
 	-- xscene maybe nil
 	if xscene ~= nil then
 		print(xscene[1][1])
-		print("--------------")
+		-- ow data of the rt response
+		print("--------------------------------------------------------------------")
+		-- init the whole table
+		local wholepri = {};
 		for r = 1, xscene[1][1] do
 			-- subrequest rt base xscene[1][1]
 			-- local xscene = pr_xml:find("ShoppingResultInfo");
+			print("-- begin to do the {" .. r .. "} line data...")
 			local shopping = "";
 			local bunktb = {};
 			local polnum = table.getn(xscene[2][r][2]);
@@ -439,6 +445,8 @@ if code == 200 then
 			-- print(groute)
 			-- print("--------------")
 			-- print(JSON.encode(bunktb))
+			-- do the rt request for rt+ow data
+			print("---- begin to rt request of {" .. r .. "} line...")
 			local codenum, status, xmldata = dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, groute)
 			-- if xmldata ~= JSON.null then
 			if codenum == 200 then
@@ -447,6 +455,7 @@ if code == 200 then
 				local pr_xml = xml.eval(xmldata);
 				local xscene = pr_xml:find("IntlFlightSearchResponse");
 				if xscene ~= nil then
+					print("---- sucess to Get the rt response of {" .. r .. "}")
 					local bigtab = {};
 					for r = 1, xscene[1][1] do
 						-- local xscene = pr_xml:find("ShoppingResultInfo");
@@ -461,7 +470,7 @@ if code == 200 then
 							for k, v in pairs(xscene[2][r][2][polidx]) do
 								if k > 0 then
 									if type(v) == "table" then
-										if v[0] ~= "FlightBaseInfos" and v[0] ~= "PriceInfos" then
+										if v[0] ~= "FlightBaseInfos" and v[0] ~= "PriceInfos" and v[0] ~= "NoSalesStr" then
 											idxtab[v[0]] = v[1];
 										else
 											if v[0] == "PriceInfos" then
@@ -499,7 +508,9 @@ if code == 200 then
 							tmppritab["ctrip"] = priceinfo;
 							table.insert(pritab, tmppritab)
 							table.insert(bunktb, tbunks)
-							polidx = polidx + 1;
+							break;
+							-- polidx = polidx + 1;
+							-- only get the [1]lowest price
 							-- ngx.say(JSON.encode(idxtab))
 							-- ngx.say(JSON.encode(tmppri))
 						end
@@ -518,7 +529,25 @@ if code == 200 then
 								for k, v in pairs(xscene[2][r][1][i][3][j]) do
 									if k > 0 then
 										if type(v) == "table" then
-											tmpseg[v[0]] = v[1];
+											if v[0] ~= "Stops" then
+												tmpseg[v[0]] = v[1];
+											end
+											if v[0] == "Stops" and v[1] ~= nil then
+												-- print(type(v[1]))
+												-- print(table.getn(v[1]))
+												-- print("--------------")
+												-- print(table.getn(v))
+												local tmpstops = {};
+												for i = 1, table.getn(v) do
+													local tmp = {};
+													for j = 1, table.getn(v[i]) do
+														tmp[v[i][j][0]] = v[i][j][1]
+														-- print(v[i][j][0], v[i][j][1])
+													end
+													table.insert(tmpstops, tmp)
+												end
+												tmpseg[v[0]] = tmpstops;
+											end
 											if v[0] == "DPort" then
 												fltkey[1] = v[1];
 											end
@@ -562,14 +591,27 @@ if code == 200 then
 						-- ctrip["limit"] = limtab;
 						ctrip["prices_data"] = pritab;
 						ctrip["flightline_id"] = FlightLineID;
+						local wholeseg = {}
+						table.insert(wholeseg, gseginf)
+						table.insert(wholeseg, bseginf)
+						ctrip["checksum_seg"] = wholeseg;
+						--[[
+						print(JSON.encode(gseginf))
+						print("--------------")
+						print(JSON.encode(bseginf))
+						print("--------------")
+						--]]
 						table.insert(bigtab, ctrip)
+						table.insert(wholepri, ctrip)
 					end
-					if table.getn(bigtab) > 0 then
-						print(JSON.encode(bigtab));
+					print("+++++++++++++++++++++++++++++++++++++++++++++++")
+					local lbts = table.getn(bigtab)
+					if lbts > 0 then
+						print("the line {" .. r .. "}'s flightline_id number is:", r);
 					else
 						print(error002);
 					end
-					print("--------------")
+					print("+++++++++++++++++++++++++++++++++++++++++++++++")
 				else
 					print(code)
 					print("--------------")
@@ -581,7 +623,115 @@ if code == 200 then
 				print("--------------")
 				print(status)
 			end
-			sleep(3)
+			sleep(0.3)
+		end
+		if table.getn(wholepri) > 0 then
+			-- print(JSON.encode(wholepri));
+			-- store into baidu
+			tkey = rtkey;
+			local data = zlib.compress(JSON.encode(wholepri));
+			local filet = os.time();
+			local cl = string.len(data)
+			-- api post file.
+			local respup = {};
+			local timestamp = os.date("%a, %d %b %Y %X GMT", os.time())
+			local requri = "/besftly/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. filet .. ".json";
+			local obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. filet .. ".json";
+			-- local obj = "/" .. filet .. ".json";
+			local Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=bestfly" .. "\n" .. "Object=" .. obj .. "\n"
+			local Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
+			local sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("b6x7p6b6x7p6"));
+			-- local hc = http:new()
+			print(sign)
+			print(cl)
+			print(md5.sumhexa("b6x7p6b6x7p6"))
+			print(requri)
+			print(urlencode(requri))
+			print(timestamp)
+			print("--------------")
+			-- PUT JSON file into duapp.
+			local body, code, headers, status = http.request {
+			-- local ok, code, headers, status, body = http.request {
+				-- url = "http://v0.api.upyun.com" .. requri,
+				url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+				--- proxy = "http://127.0.0.1:8888",
+				timeout = 10000,
+				method = "PUT", -- POST or GET
+				-- add post content-type and cookie
+				-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+				-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
+				-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
+				headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+				-- body = formdata,
+				-- source = ltn12.source.string(form_data);
+				source = ltn12.source.string(data),
+				sink = ltn12.sink.table(respup)
+			}
+			if code == 200 then
+				local upyun = "";
+				local len = table.getn(respup)
+				for i = 1, len do
+					upyun = upyun .. respup[i]
+				end
+				print(upyun)
+				-- local djson = zlib.compress(JSON.encode(bigtab))
+				-- print(type(zlib.compress(JSON.encode(bigtab))))
+				-- local djson = JSON.encode(bigtab)
+				local res, err = client:hget('intl:ctrip:' .. tkey, org .. dst)
+				if res ~= nil and res ~= JSON.null and res ~= "" then
+					-- local tobj = tostring(res)
+					local tobj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. tostring(res) .. ".json"
+					local Content= "MBO" .. "\n" .. "Method=DELETE" .. "\n" .. "Bucket=bestfly" .. "\n" .. "Object=" .. tobj .. "\n"
+					local Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
+					local respup = {};
+					local body, code, headers, status = http.request {
+					-- local ok, code, headers, status, body = http.request {
+						-- url = "http://v0.api.upyun.com" .. requri,
+						url = "http://bcs.duapp.com/bestfly" .. tobj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+						--- proxy = "http://127.0.0.1:8888",
+						timeout = 10000,
+						method = "DELETE", -- POST or GET
+						-- add post content-type and cookie
+						-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+						-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
+						-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
+						-- headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+						-- body = formdata,
+						-- source = ltn12.source.string(form_data);
+						-- source = ltn12.source.string(data),
+						sink = ltn12.sink.table(respup)
+					}
+					if code == 200 then
+						client:hdel('intl:ctrip:' .. tkey, org .. dst);
+						local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, filet)
+						if not res then
+							print("-------Failed to hset " .. arg[1] .. "--------")
+						else
+							client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
+							print("-------well done " .. arg[1] .. "--------")
+						end
+					else
+						print(code)
+						print("-------Failed to DELETE " .. tobj .. "--------")
+						print(status)
+						print(body)
+					end
+				else
+					local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, filet)
+					if not res then
+						print("-------Failed to hset " .. arg[1] .. "--------")
+					else
+						client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
+						print("-------well done " .. arg[1] .. "--------")
+					end
+				end
+			else
+				print(code)
+				print(status)
+				print(body)
+			end
+		else
+			print(error002);
 		end
 	else
 		print(code)
