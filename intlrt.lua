@@ -11,12 +11,10 @@ local xml = require 'LuaXml'
 local redis = require 'redis'
 local params = {
     host = 'rhosouth001',
-    port = 6388,
+    port = 6379,
 }
-
 local client = redis.connect(params)
 client:select(0) -- for testing purposes
-
 -- commands defined in the redis.commands table are available at module
 -- level and are used to populate each new client instance.
 redis.commands.hset = redis.command('hset')
@@ -37,7 +35,7 @@ local deflate = require 'compress.deflatelua'
 -- print("+++++++++++++++++")
 -- originality
 local error001 = JSON.encode({ ["resultCode"] = 1, ["description"] = "No response because you has inputted airports"});
-local error002 = JSON.encode({ ["resultCode"] = 2, ["description"] = "Get Prices from extension is no response"});
+local error002 = JSON.encode({ ["resultCode"] = 2, ["description"] = "Caculate Prices from extension is failure"});
 function error003 (mes)
 	local res = JSON.encode({ ["resultCode"] = 3, ["description"] = mes});
 	return res
@@ -456,7 +454,11 @@ if code == 200 then
 				local xscene = pr_xml:find("IntlFlightSearchResponse");
 				if xscene ~= nil then
 					print("---- sucess to Get the rt response of {" .. r .. "}")
+					-- do every line data begin
+					local rfid = {};
+					local imax = {};
 					local bigtab = {};
+					local union = {};
 					for r = 1, xscene[1][1] do
 						-- local xscene = pr_xml:find("ShoppingResultInfo");
 						local pritab = {};
@@ -601,13 +603,215 @@ if code == 200 then
 						print(JSON.encode(bseginf))
 						print("--------------")
 						--]]
-						table.insert(bigtab, ctrip)
-						table.insert(wholepri, ctrip)
+						table.insert(bigtab, r)
+						-- table.insert(wholepri, ctrip)
+						-- begin to check ctrip ifl data
+						local pfid = {};
+						local jmax = {};
+						-- print(rfid[FlightLineID]) -- init is nil
+						if rfid[FlightLineID] == nil then
+							table.insert(pfid, ctrip)
+							rfid[FlightLineID] = pfid
+							jmax = ctrip;
+							imax[FlightLineID] = jmax
+							-- table.insert(rfid, pfid)
+							-- rfid["ifl:" .. FlightLineID] = true
+						else
+							ctrip["flightline_id"] = "*" .. FlightLineID;
+							print("--------------")
+							print(ctrip["flightline_id"])
+							print("--------------")
+							pfid = rfid[FlightLineID]
+							jmax = imax[FlightLineID]
+							print(jmax["flightline_id"])
+							print("--------------")
+							jmax["flightline_id"] = "*" .. FlightLineID
+							print(jmax["flightline_id"])
+							-- make imax's price is lower
+							if tonumber(jmax.prices_data[1].ctrip.priceinfo.SalesPrice) > tonumber(pritab[1].ctrip.priceinfo.SalesPrice) then
+								-- jmax = {};
+								-- table.insert(jmax, ctrip)
+								imax[FlightLineID] = ctrip
+								-- table.insert(pfid, jmax)
+							else
+								imax[FlightLineID] = jmax
+								local tmp = {};
+								for k, v in pairs(pfid) do
+									if v ~= jmax then
+										table.insert(tmp, v)
+									end
+								end
+								-- table.remove(pfid, jmax)
+								table.insert(tmp, ctrip)
+								rfid[FlightLineID] = tmp
+							end
+							-- IsShared
+							local check = true;
+							for k, v in pairs(union) do
+								if v == FlightLineID then
+									check = false;
+								end
+							end
+							if check ~= false then
+								table.insert(union, FlightLineID)
+							end
+							-- print(JSON.encode(seginf))
+							-- table.insert(pfid, ctrip)
+						end
+						-- ifl data check ended
+						-- begin to store into redis
+						local fltid = "";
+						local farehkey = string.lower(string.sub(base64.encode(FlightLineID), 1, 2));
+						local getfidres, getfiderr = client:hget("flt:" .. farehkey, FlightLineID)
+						-- local getfidres, getfiderr = client:get("flt:" .. FlightLineID .. ":id")
+						-- local res, err = client:hget('dom:itour:' .. tkey, org .. dst)
+						--[[
+						if not getfidres then
+							print(error003("failed to get the flt:" .. FlightLineID .. ":id: ", getfiderr))
+							return
+						end
+						-- split the FlightLineID
+						local farehkey = string.sub(string.format("%011d", value1), 1, 8);
+						local res, err = red:hmset("PERIODS:fid:" .. farehkey, value1, fid)
+						if not res then
+							ngx.say("failed to hmset the hashes data : [PERIODS:fid:" .. farehkey .. "]", err);
+							return
+						end
+						--]]
+						-- ngx.print(getfidres);
+						-- ngx.print("\r\n---------------------\r\n");
+						if tonumber(getfidres) == nil then
+							-- fare:id INCR
+							-- local farecounter, cerror = red:incr("next.fare.id")
+							local farecounter, cerror = client:incr("flt:id")
+							if not farecounter then
+								print(error003("failed to INCR flt Line: ", cerror));
+								return
+							else
+								-- local resultsetnx, fiderror = client:setnx("flt:" .. FlightLineID .. ":id", farecounter)
+								local resultsetnx, fiderror = client:hsetnx("flt:" .. farehkey, FlightLineID, farecounter)
+								if not resultsetnx then
+									print(error003("failed to HSETNX FlightLineID: " .. FlightLineID, fiderror));
+									return
+								end
+								-- ngx.print("INCR fare result: ", farecounter);
+								-- ngx.print("\r\n---------------------\r\n");
+								-- ngx.print("SETNX fid result: ", resultsetnx);
+								-- ngx.print("\r\n---------------------\r\n");
+								-- if resultsetnx ~= 1 that is SETNX is NOT sucess.
+								if resultsetnx == 1 then
+									fltid = farecounter;
+								else
+									-- fltid = client:get("flt:" .. FlightLineID .. ":id");
+									fltid = client:hget("flt:" .. farehkey, FlightLineID);
+								end
+								if fltid ~= "" and fltid ~= nil and fltid ~= JSON.null then
+									farehkey = string.lower(string.sub(base64.encode(fltid), 1, 2));
+									client:hset("flt:" .. farehkey, fltid, FlightLineID)
+									-- start to store the fltinfo.
+									local res, err = client:zadd("rt:" .. string.upper(org) .. ":" .. string.upper(dst), fltscore, fltid)
+									if not res then
+										print(error003("failed to add FlightLine into " .. string.upper(org) .. "/" .. string.upper(dst) .. ":" .. fltid, err));
+										return
+									end
+									-- checksum_seg
+									-- ngx.say(JSON.encode(seginf))
+								end
+								--[[
+								local segstr = JSON.encode(seginf);
+								local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
+								-- local res, err = client:hset("seg:" .. fltid, r, segstr)
+								if not res then
+									print(error003("failed to HSET checksum_seg info: " .. fltid, err));
+									return
+								end
+								-- table.insert(bigtab, ctrip)
+								local res, err = client:hset("pri:ow:" .. fltid, date, JSON.encode(ctrip))
+								if not res then
+									print(error003("failed to HSET prices_data info: " .. fltid, err));
+									return
+								else
+									-- ngx.print(JSON.encode(ctrip))
+									table.insert(bigtab, ctrip)
+								end
+								--]]
+							end
+						else
+							-- ngx.say(JSON.encode(seginf))
+							-- ngx.say(JSON.encode(pritab))
+							-- ngx.say(JSON.encode(bunktb))
+							-- table.insert(bigtab, ctrip)
+							fltid = tonumber(getfidres);
+							--[[
+							-- checksum_seg
+							local segstr = JSON.encode(seginf);
+							-- local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
+							local data, error = client:hget("seg:" .. fltid, md5.sumhexa(segstr))
+							if data == nil then
+								-- local res, err = client:hset("seg:" .. fltid, r, segstr)
+								local res, err = client:hset("seg:" .. fltid, md5.sumhexa(segstr), segstr)
+								if not res then
+									print(error003("failed to HSET checksum_seg info: " .. fltid, err));
+									return
+								end
+							end
+							-- local res, err = red:set("pri:ow:" .. fltid, JSON.encode(ctrip))
+							local res, err = client:hset("pri:ow:" .. fltid, date, JSON.encode(ctrip))
+							if not res then
+								print(error003("failed to HSET prices_data info: " .. fltid, err));
+								return
+							else
+								-- ngx.print(JSON.encode(ctrip))
+								table.insert(bigtab, ctrip)
+							end
+							--]]
+						end
+						-- ngx.say(JSON.encode(seginf))
+						-- ngx.say(fid)
+						-- ngx.say(FlightLineID)
+						-- ngx.say(fltid)
+						--]]
 					end
+					-- do every line data end
 					print("+++++++++++++++++++++++++++++++++++++++++++++++")
-					local lbts = table.getn(bigtab)
-					if lbts > 0 then
-						print("the line {" .. r .. "}'s flightline_id number is:", r);
+					if table.getn(bigtab) > 0 then
+						-- print ctrip ifl data number
+						local biglens = table.getn(bigtab)
+						print(JSON.encode(bigtab));
+						print("--------------")
+						local unilen = table.getn(union)
+						if unilen > 0 then
+							print(unilen);
+							print("--------------")
+							for k, v in pairs(union) do
+								local farehkey = string.lower(string.sub(base64.encode(v), 1, 2));
+								-- local fltkey, err = client:get("flt:" .. v .. ":id")
+								local fltkey, err = client:hget("flt:" .. farehkey, v)
+								if tonumber(fltkey) ~= nil then
+									print(rtkey, fltkey);
+									-- client:hdel("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey);
+									-- local res, err = client:hset("uni:" .. string.upper(org) .. ":" .. string.upper(dst), fltkey, JSON.encode(rfid[v]))
+									client:hdel("uni:" .. string.upper(org) .. ":" .. string.upper(dst) .. ":" .. fltkey, rtkey);
+									local res, err = client:hset("uni:" .. string.upper(org) .. ":" .. string.upper(dst) .. ":" .. fltkey, rtkey, JSON.encode(rfid[v]))
+									-- local res, err = client:hset("seg:" .. fltid, r, segstr)
+									if not res then
+										print(error003("failed to HSET union info: " .. v, err));
+										return
+									end
+								end
+							end
+						else
+							print("---- uni data is null of {" .. JSON.encode(bigtab) .. "}")
+						end
+						-- print imax with the lowest price
+						-- print(JSON.encode(imax))
+						bigtab = {};
+						for k, v in pairs(imax) do
+							table.insert(bigtab, v)
+							table.insert(wholepri, v)
+						end
+						local lbts = table.getn(bigtab)
+						print("the line {" .. r .. "} has flightline_id nums:", lbts .. "/" .. biglens);
 					else
 						print(error002);
 					end
@@ -616,7 +820,8 @@ if code == 200 then
 					print(code)
 					print("--------------")
 					print(status)
-					print(body)
+					print(shopping)
+					print(groute)
 				end
 			else
 				print(codenum)
@@ -628,7 +833,7 @@ if code == 200 then
 		if table.getn(wholepri) > 0 then
 			-- print(JSON.encode(wholepri));
 			-- store into baidu
-			tkey = rtkey;
+			tkey = rtkey; -- gdate + bdate
 			local data = zlib.compress(JSON.encode(wholepri));
 			local filet = os.time();
 			local cl = string.len(data)
