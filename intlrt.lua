@@ -278,7 +278,7 @@ request = ([=[<?xml version='1.0' encoding='UTF-8'?>
 --]]
 -- print(request)
 -- print("-----------------")
--- init response table
+-- init response table and begin to do the gorequest of rt
 local respbody = {};
 -- local hc = http:new()
 local body, code, headers, status = http.request {
@@ -315,6 +315,9 @@ if code == 200 then
 		-- print(respbody[i])
 		resxml = resxml .. respbody[i]
 	end
+	local md5res = md5.sumhexa(resxml);
+	local filet = os.time();
+	print(md5res, filet);
 	-- resxml = deflate.gunzip(resxml)
 	-- change to use compress.deflatelua
 	local output = {}
@@ -788,24 +791,23 @@ if code == 200 then
 								print(JSON.encode(bigtab));
 								print("--------------")
 								local unilen = table.getn(union)
-								local filet = os.time();
 								if unilen > 0 then
 									print(unilen);
 									print("--------------")
 									tkey = rtkey; -- gdate + bdate
 									local timestamp = os.date("%a, %d %b %Y %X GMT", os.time())
 									for k, v in pairs(union) do
-										-- upload every union data into cloud first and cover old union data[yougola bunket]
+										-- upload every union data into cloud first and cover old union data[pfiles bunket]
 										local everyunion = JSON.encode(rfid[v]);
-										print("---- begin to set union data into yougola in baidu");
+										print("---- begin to set union data into pfiles in baidu");
 										local obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. v .. ".json";
 										local cl = string.len(everyunion);
 										-- api post file.
 										local respup = {};
-										local requri = "/yougola" .. obj;
-										local Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=yougola" .. "\n" .. "Object=" .. obj .. "\n"
+										local requri = "/pfiles" .. obj;
+										local Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=pfiles" .. "\n" .. "Object=" .. obj .. "\n"
 										local Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
-										-- sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("b6x7p6b6x7p6"));
+										-- sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("pfilesb6x7p6b6x7p6"));
 										-- local hc = http:new()
 										-- print(sign)
 										print(cl)
@@ -818,7 +820,7 @@ if code == 200 then
 										local body, code, headers, status = http.request {
 										-- local ok, code, headers, status, body = http.request {
 											-- url = "http://v0.api.upyun.com" .. requri,
-											url = "http://bcs.duapp.com/yougola" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+											url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 											--- proxy = "http://127.0.0.1:8888",
 											timeout = 10000,
 											method = "PUT", -- POST or GET
@@ -955,9 +957,8 @@ if code == 200 then
 				-- print(JSON.encode(wholepri));
 				-- store into baidu
 				tkey = rtkey; -- gdate + bdate
-				local yougola = JSON.encode(wholepri);
-				local data = zlib.compress(yougola);
-				local filet = os.time();
+				local pfiles = JSON.encode(wholepri);
+				local data = zlib.compress(pfiles);
 				local cl = string.len(data)
 				-- api post file.
 				local respup = {};
@@ -1053,18 +1054,18 @@ if code == 200 then
 						end
 					end
 					--]]
-					print("---- begin to set newest data into yougola in baidu");
+					print("---- begin to set newest data into pfiles in baidu");
 					sleep(0.2)
 					obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
-					-- cl = string.len(yougola);
+					-- cl = string.len(pfiles);
 					-- compressed data instead of uncompressed data
 					cl = string.len(data);
 					-- api post file.
 					respup = {};
 					-- local timestamp = os.date("%a, %d %b %Y %X GMT", os.time())
-					requri = "/yougola/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
+					requri = "/pfiles/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
 					-- local obj = "/" .. filet .. ".json";
-					Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=yougola" .. "\n" .. "Object=" .. obj .. "\n"
+					Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=pfiles" .. "\n" .. "Object=" .. obj .. "\n"
 					Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
 					sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("b6x7p6b6x7p6"));
 					-- local hc = http:new()
@@ -1079,7 +1080,7 @@ if code == 200 then
 					local body, code, headers, status = http.request {
 					-- local ok, code, headers, status, body = http.request {
 						-- url = "http://v0.api.upyun.com" .. requri,
-						url = "http://bcs.duapp.com/yougola" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+						url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 						--- proxy = "http://127.0.0.1:8888",
 						timeout = 10000,
 						method = "PUT", -- POST or GET
@@ -1091,7 +1092,7 @@ if code == 200 then
 						-- body = formdata,
 						-- source = ltn12.source.string(form_data);
 						source = ltn12.source.string(data),
-						-- source = ltn12.source.string(yougola),
+						-- source = ltn12.source.string(pfiles),
 						sink = ltn12.sink.table(respup)
 					}
 					if code == 200 then
