@@ -8,11 +8,10 @@ local crypto = require 'crypto'
 local client = require 'soap.client'
 package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local xml = require 'LuaXml'
---[[
 local redis = require 'redis'
 local params = {
-    host = 'rhosouth003',
-    port = 6388,
+    host = 'sin.bestfly.cn',
+    port = 61088,
 }
 local client = redis.connect(params)
 client:select(0) -- for testing purposes
@@ -27,7 +26,6 @@ redis.commands.zadd = redis.command('zadd')
 redis.commands.smembers = redis.command('smembers')
 redis.commands.keys = redis.command('keys')
 redis.commands.sdiff = redis.command('sdiff')
---]]
 local deflate = require 'compress.deflatelua'
 -- local baselua = require 'base64'
 -- local t = {}
