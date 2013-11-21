@@ -209,7 +209,7 @@ function dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, gr
 	-- local ok, code, headers, status, body = http.request {
 		-- url = "http://cloudavh.com/data-gw/index.php",
 		url = baseurl .. intluri .. "?WSDL",
-		proxy = "http://10.123.74.137:808",
+		-- proxy = "http://172.16.30.179:8088",
 		-- proxy = "http://" .. tostring(arg[2]),
 		timeout = 30000,
 		method = "POST", -- POST or GET
@@ -284,7 +284,7 @@ local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	url = baseurl .. intluri .. "?WSDL",
-	proxy = "http://10.123.74.137:808",
+	-- proxy = "http://172.16.30.179:8088",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 30000,
 	method = "POST", -- POST or GET
@@ -358,6 +358,7 @@ if code == 200 then
 				print("--------------------------------------------------------------------")
 				-- init the whole table
 				local wholepri = {};
+				local RecordsCount = 0;
 				for r = 1, records do
 					-- from the lowest price data
 					-- subrequest rt base xscene[1][1]
@@ -485,10 +486,11 @@ if code == 200 then
 						if xscene ~= nil then
 							local rtcords = tonumber(xscene[1][1]);
 							if rtcords > 0 then
+								RecordsCount = RecordsCount + rtcords
 								print("---- sucess to Get the rt response of {" .. r .. "}")
-								--for rr = 1, rtcords do
-								table.insert(wholepri, xscene[2])
-								--end
+								for rr = 1, rtcords do
+									table.insert(wholepri, xscene[2][rr])
+								end
 							else
 								print(codenum, status)
 								print("--------------")
@@ -507,10 +509,11 @@ if code == 200 then
 						print("++++RT api return status {" .. r .. "} is NOT 200++++")
 						print(xmldata);
 					end
-					sleep(0.1)
+					sleep(1)
 				end
 				if table.getn(wholepri) > 0 then
 					-- print(xml.str(wholepri));
+					print(RecordsCount, table.getn(wholepri));
 					-- ctrip result xml logged.
 					local wname = "/data/logs/rholog.txt"
 					local wfile = io.open(wname, "w+");
