@@ -85,9 +85,9 @@ local today = os.date("%Y-%m-%d", os.time());
 local baseurl = "http://openapi.ctrip.com"
 -- local domuri = "/Flight/DomesticFlight/OTA_FlightSearch.asmx"
 local intluri = "/Flight/IntlFlight/OTA_IntlFlightSearch.asmx"
-local apikey = "15AAF13C-2CDB-4078-AADE-FC5D6307394C"
-local siteid = "328547"
-local unicode = "9134"
+local apikey = "C7EE9407-A619-4474-B519-95B0196B5CD2"
+local siteid = "287634"
+local unicode = "11108"
 -- Signature=Md5(TimeStamp+AllianceID+MD5(密钥).ToUpper()+SID+RequestType).ToUpper()
 local ts = os.time()
 -- local ts = "1380250839"
@@ -209,7 +209,7 @@ function dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, gr
 	-- local ok, code, headers, status, body = http.request {
 		-- url = "http://cloudavh.com/data-gw/index.php",
 		url = baseurl .. intluri .. "?WSDL",
-		--- proxy = "http://127.0.0.1:8888",
+		proxy = "http://10.123.74.137:808",
 		-- proxy = "http://" .. tostring(arg[2]),
 		timeout = 30000,
 		method = "POST", -- POST or GET
@@ -252,7 +252,7 @@ function dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, gr
 		resxml = string.gsub(resxml, "&gt;", ">")
 		return 200, status, resxml
 	else
-		return code, status, JSON.null
+		return code, status, body
 	end
 end
 -- soap
@@ -353,7 +353,7 @@ if code == 200 then
 		if proceed == true then
 			local records = tonumber(xscene[1][1]);
 			if records > 0 then
-				print("-------待请求的往返总量: " .. records .. " Lines-------");
+				print("+++ { " .. records .. " } Lines 往返总量+++");
 				-- ow data of the rt response
 				print("--------------------------------------------------------------------")
 				-- init the whole table
@@ -483,11 +483,16 @@ if code == 200 then
 						local pr_xml = xml.eval(xmldata);
 						local xscene = pr_xml:find("IntlFlightSearchResponse");
 						if xscene ~= nil then
-							records = tonumber(xscene[1][1]);
-							if records > 0 then
+							local rtcords = tonumber(xscene[1][1]);
+							if rtcords > 0 then
 								print("---- sucess to Get the rt response of {" .. r .. "}")
-								table.insert(wholepri, xscene)
+								--for rr = 1, rtcords do
+								table.insert(wholepri, xscene[2])
+								--end
 							else
+								print(codenum, status)
+								print("--------------")
+								print(xmldata)
 								print("++++RT api result intldata {" .. r .. "} is NULL++++")
 							end
 						else
@@ -498,21 +503,31 @@ if code == 200 then
 							print(groute)
 						end
 					else
-						print(codenum)
+						print(codenum, status)
 						print("++++RT api return status {" .. r .. "} is NOT 200++++")
-						print(status)
+						print(xmldata);
 					end
-					sleep(0.3)
+					sleep(0.1)
 				end
 				if table.getn(wholepri) > 0 then
-					print(xml.str(wholepri));
+					-- print(xml.str(wholepri));
+					-- ctrip result xml logged.
+					local wname = "/data/logs/rholog.txt"
+					local wfile = io.open(wname, "w+");
+					wfile:write("\r\n---------------------\r\n");
+					wfile:write(xml.str(wholepri));
+					wfile:write("\r\n---------------------\r\n");
+					io.close(wfile);
 				else
-					print(code)
-					print("-----caculate result is NULL-------")
-					print(status)
+					print(code, status)
+					print("--------------")
 					print(body)
+					print("-----caculate result is NULL-------")
 				end
 			else
+				print(code, status)
+				print("--------------")
+				print(resxml)
 				print("----ctrip api result intldata is NULL-----")
 			end
 		else
