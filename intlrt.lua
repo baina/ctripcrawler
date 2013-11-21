@@ -10,8 +10,9 @@ package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local xml = require 'LuaXml'
 local redis = require 'redis'
 local params = {
-    host = 'sin.bestfly.cn',
-    port = 61088,
+    --- host = 'sin.bestfly.cn',
+	host = '127.0.0.1',
+    port = 6389,
 }
 local client = redis.connect(params)
 client:select(0) -- for testing purposes
@@ -283,7 +284,7 @@ local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	url = baseurl .. intluri .. "?WSDL",
-	--- proxy = "http://127.0.0.1:8888",
+	proxy = "http://10.123.74.137:808",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 30000,
 	method = "POST", -- POST or GET

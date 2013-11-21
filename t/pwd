@@ -1,7 +1,21 @@
+# rhomobi.com
 local apikey = "15AAF13C-2CDB-4078-AADE-FC5D6307394C"
 local siteid = "328547"
 local unicode = "9134"
 
+# sin.bestfly.cn
 local apikey = "D5E7C897-E37C-416A-9556-E30D9E81BB91"
 local siteid = "224260"
 local unicode = "9899"
+
+# ore.bestfly.cn
+local apikey = "78246CFB-E3D3-4579-8401-DF4D0D9AA930"
+local siteid = "223419"
+local unicode = "9883"
+
+# jijilu.com
+local apikey = "19958883-A3B8-4B67-93F3-F73F47B20340"
+local siteid = "226998"
+local unicode = "9953"
+
+# 

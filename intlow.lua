@@ -10,8 +10,9 @@ package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local xml = require 'LuaXml'
 local redis = require 'redis'
 local params = {
-    host = 'sin.bestfly.cn',
-    port = 61088,
+    --- host = 'sin.bestfly.cn',
+	host = '127.0.0.1',
+    port = 6389,
 }
 local client = redis.connect(params)
 client:select(0) -- for testing purposes
@@ -174,7 +175,7 @@ local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	url = baseurl .. intluri .. "?WSDL",
-	--- proxy = "http://127.0.0.1:8888",
+	proxy = "http://10.123.74.137:808",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 30000,
 	method = "POST", -- POST or GET
@@ -232,13 +233,12 @@ if code == 200 then
 		--]]
 		-- caculate md5 of IntlFlightSearchResponse
 		local md5res = md5.sumhexa(orixml);
-		local filet = os.time();
+		local filet = os.time() + 3600;
+		-- Redis
 		local proceed = false;
 		local res, err = client:hget('intl:ctrip:' .. tkey, org .. dst)
 		if res ~= nil and res ~= JSON.null and res ~= "" then
-			if string.sub(res, 1, 32) == md5res then
-				proceed = false;
-			else
+			if string.sub(res, 1, 32) ~= md5res then
 				proceed = true;-- del old hash value
 				-- client:hdel('intl:ctrip:' .. tkey, org .. dst);
 				print(string.sub(res, 1, 32))
@@ -246,8 +246,64 @@ if code == 200 then
 			end
 		else
 			proceed = true;-- nil did not need to del
+			print("-------自动过期REDIS空值-------")
 		end
-		if proceed == true then
+		-- RVDB
+		local sinaapp = false;
+		local sinaurl = "http://yougola.sinaapp.com/";
+		local md5uri = "checker/?intl/ctrip/" .. tkey .. "/" .. org .. dst;
+		local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
+		print("--------------")
+		print(sinaurl .. md5uri);
+		print("--------------")
+		-- init response table
+		local respsina = {};
+		-- local body, code, headers = http.request(baseurl .. md5uri)
+		local body, code, headers, status = http.request {
+		-- local ok, code, headers, status, body = http.request {
+			-- url = "http://cloudavh.com/data-gw/index.php",
+			url = sinaurl .. md5uri,
+			proxy = "http://10.123.74.137:808",
+			-- proxy = "http://" .. tostring(arg[2]),
+			timeout = 10000,
+			method = "GET", -- POST or GET
+			-- add post content-type and cookie
+			headers = {
+				["Host"] = "yougola.sinaapp.com",
+				-- ["SOAPAction"] = "http://ctrip.com/Request",
+				["Cache-Control"] = "no-cache",
+				["Auth-Timestamp"] = filet,
+				["Auth-Signature"] = md5.sumhexa(sinakey .. filet),
+				-- ["Accept-Encoding"] = "gzip",
+				-- ["Accept"] = "*/*",
+				["Connection"] = "keep-alive",
+				-- ["Content-Type"] = "text/xml; charset=utf-8",
+				-- ["Content-Length"] = string.len(request)
+			},
+			-- body = formdata,
+			-- source = ltn12.source.string(form_data);
+			-- source = ltn12.source.string(request),
+			sink = ltn12.sink.table(respsina)
+		}
+		if code == 200 then
+			local resjson = "";
+			local reslen = table.getn(respsina)
+			for i = 1, reslen do
+				-- print(respbody[i])
+				resjson = resjson .. respsina[i]
+			end
+			-- print(resjson)
+			if string.sub(resjson, 1, 32) ~= md5res then
+				sinaapp = true;
+				print(string.sub(resjson, 1, 32))
+				print(md5res)
+			end
+		else
+			sinaapp = true;
+			print(code, status);
+			print("-------注意认证SINA失败-------")
+		end
+		if proceed == true and sinaapp == true then
 			local rfid = {};
 			local imax = {};
 			local bigtab = {};
@@ -589,14 +645,14 @@ if code == 200 then
 							-- local ok, code, headers, status, body = http.request {
 								-- url = "http://v0.api.upyun.com" .. requri,
 								url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
-								--- proxy = "http://127.0.0.1:8888",
+								proxy = "http://10.123.74.137:808",
 								timeout = 10000,
 								method = "PUT", -- POST or GET
 								-- add post content-type and cookie
 								-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 								-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 								-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-								headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+								headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 								-- body = formdata,
 								-- source = ltn12.source.string(form_data);
 								source = ltn12.source.string(everyunion),
@@ -641,14 +697,14 @@ if code == 200 then
 							-- local ok, code, headers, status, body = http.request {
 								-- url = "http://v0.api.upyun.com" .. requri,
 								url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
-								--- proxy = "http://127.0.0.1:8888",
+								proxy = "http://10.123.74.137:808",
 								timeout = 10000,
 								method = "PUT", -- POST or GET
 								-- add post content-type and cookie
 								-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 								-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 								-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-								headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+								headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 								-- body = formdata,
 								-- source = ltn12.source.string(form_data);
 								source = ltn12.source.string(data),
@@ -739,14 +795,14 @@ if code == 200 then
 					-- local ok, code, headers, status, body = http.request {
 						-- url = "http://v0.api.upyun.com" .. requri,
 						url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
-						--- proxy = "http://127.0.0.1:8888",
+						proxy = "http://10.123.74.137:808",
 						timeout = 10000,
 						method = "PUT", -- POST or GET
 						-- add post content-type and cookie
 						-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 						-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 						-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-						headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+						headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 						-- body = formdata,
 						-- source = ltn12.source.string(form_data);
 						source = ltn12.source.string(data),
@@ -822,13 +878,66 @@ if code == 200 then
 						--]]
 						-- begin to set newest data to pfiles in baidu
 						client:hdel('intl:ctrip:' .. tkey, org .. dst);
-						local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, md5res .. filet)
+						local newdata = md5res .. filet;
+						local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, newdata)
 						if not res then
 							print("-------Failed to hset " .. arg[1] .. "--------")
 						else
 							client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
 							print("-------well done " .. arg[1] .. "--------")
 						end
+						-- init response table
+						local respbody = {};
+						print(newdata);
+						print("-------开始发送POST请求-------")
+						print(sinaurl .. md5uri);
+						print("--------------")
+						-- local body, code, headers = http.request(baseurl .. md5uri)
+						local body, code, headers, status = http.request {
+						-- local ok, code, headers, status, body = http.request {
+							-- url = "http://cloudavh.com/data-gw/index.php",
+							url = sinaurl .. md5uri,
+							proxy = "http://10.123.74.137:808",
+							-- proxy = "http://" .. tostring(arg[2]),
+							timeout = 10000,
+							method = "POST", -- POST or GET
+							-- add post content-type and cookie
+							-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+							-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
+							headers = {
+								["Host"] = "yougola.sinaapp.com",
+								-- ["SOAPAction"] = "http://ctrip.com/Request",
+								["Cache-Control"] = "no-cache",
+								["Auth-Timestamp"] = filet,
+								["Auth-Signature"] = md5.sumhexa(sinakey .. filet),
+								-- ["Accept-Encoding"] = "gzip",
+								-- ["Accept"] = "*/*",
+								["Connection"] = "keep-alive",
+								-- ["Content-Type"] = "text/xml; charset=utf-8",
+								["Content-Length"] = string.len(newdata)
+							},
+							-- body = formdata,
+							-- source = ltn12.source.string(form_data);
+							source = ltn12.source.string(newdata),
+							sink = ltn12.sink.table(respbody)
+						}
+						print(code, status, body)
+						for k, v in pairs(headers) do
+							print(k, v)
+						end
+						print("--------------")
+						print(body)
+						print("--------------")
+						print(status)
+						print("--------------")
+						local resjson = "";
+						local reslen = table.getn(respbody)
+						print(reslen)
+						for i = 1, reslen do
+							-- print(respbody[i])
+							resjson = resjson .. respbody[i]
+						end
+						print(resjson)
 						print("+++++++++++++++++++++++++++++++++++++++++++++++")
 						--[[
 						-- save price data history forever.
@@ -882,14 +991,14 @@ if code == 200 then
 						-- local ok, code, headers, status, body = http.request {
 							-- url = "http://v0.api.upyun.com" .. requri,
 							url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
-							--- proxy = "http://127.0.0.1:8888",
+							proxy = "http://10.123.74.137:808",
 							timeout = 10000,
 							method = "PUT", -- POST or GET
 							-- add post content-type and cookie
 							-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 							-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 							-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-							headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+							headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 							-- body = formdata,
 							-- source = ltn12.source.string(form_data);
 							source = ltn12.source.string(pfiles),
