@@ -340,9 +340,7 @@ if code == 200 then
 		local proceed = false;
 		local res, err = client:hget('intl:ctrip:' .. rtkey, org .. dst)
 		if res ~= nil and res ~= JSON.null and res ~= "" then
-			if string.sub(res, 1, 32) == md5res then
-				proceed = false;
-			else
+			if string.sub(res, 1, 32) ~= md5res then
 				proceed = true;-- del old hash value
 				-- client:hdel('intl:ctrip:' .. tkey, org .. dst);
 				print(string.sub(res, 1, 32))
@@ -350,6 +348,7 @@ if code == 200 then
 			end
 		else
 			proceed = true;-- nil did not need to del
+			print("-------自动过期REDIS空值-------")
 		end
 		if proceed == true then
 			local records = tonumber(xscene[1][1]);
@@ -839,14 +838,14 @@ if code == 200 then
 											-- local ok, code, headers, status, body = http.request {
 												-- url = "http://v0.api.upyun.com" .. requri,
 												url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
-												--- proxy = "http://127.0.0.1:8888",
+												proxy = "http://10.123.74.137:808",
 												timeout = 10000,
 												method = "PUT", -- POST or GET
 												-- add post content-type and cookie
 												-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 												-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 												-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-												headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+												headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 												-- body = formdata,
 												-- source = ltn12.source.string(form_data);
 												source = ltn12.source.string(everyunion),
@@ -892,13 +891,14 @@ if code == 200 then
 												-- url = "http://v0.api.upyun.com" .. requri,
 												url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 												--- proxy = "http://127.0.0.1:8888",
+												proxy = "http://10.123.74.137:808",
 												timeout = 10000,
 												method = "PUT", -- POST or GET
 												-- add post content-type and cookie
 												-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 												-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 												-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-												headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+												headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 												-- body = formdata,
 												-- source = ltn12.source.string(form_data);
 												source = ltn12.source.string(data),
@@ -1000,13 +1000,14 @@ if code == 200 then
 						-- url = "http://v0.api.upyun.com" .. requri,
 						url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 						--- proxy = "http://127.0.0.1:8888",
+						proxy = "http://10.123.74.137:808",
 						timeout = 10000,
 						method = "PUT", -- POST or GET
 						-- add post content-type and cookie
 						-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 						-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 						-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-						headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+						headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 						-- body = formdata,
 						-- source = ltn12.source.string(form_data);
 						source = ltn12.source.string(data),
@@ -1108,13 +1109,14 @@ if code == 200 then
 							-- url = "http://v0.api.upyun.com" .. requri,
 							url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 							--- proxy = "http://127.0.0.1:8888",
+							proxy = "http://10.123.74.137:808",
 							timeout = 10000,
 							method = "PUT", -- POST or GET
 							-- add post content-type and cookie
 							-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 							-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
 							-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
-							headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+							headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
 							-- body = formdata,
 							-- source = ltn12.source.string(form_data);
 							source = ltn12.source.string(data),
@@ -1154,10 +1156,10 @@ if code == 200 then
 			print("-----EOF{".. md5res .. "|" .. filet .."}-----")
 		end
 	else
-		print(code)
+		print(code, status)
+		print("--------------")
+		print(resxml)
 		print("-----ctrip api result xml is wrong-----")
-		print(status)
-		print(body)
 	end
 else
 	print(code)

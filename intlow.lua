@@ -1040,10 +1040,10 @@ if code == 200 then
 			print("-----EOF{".. md5res .. "|" .. filet .."}-----")
 		end
 	else
-		print(code)
+		print(code, status)
+		print("--------------")
+		print(resxml)
 		print("-----ctrip api result xml is wrong-----")
-		print(status)
-		print(body)
 	end
 else
 	print(code)
