@@ -513,8 +513,8 @@ if code == 200 then
 					sleep(1)
 				end
 				if table.getn(wholepri) > 0 then
-					print(RecordsCount, table.getn(wholepri));
-					print("++++++++++Union and RT data status+++++++++")
+					print(records, RecordsCount, table.getn(wholepri));
+					print("++ OW NUM + RT NUM + Get RT NUM ++")
 					--[[
 					-- print(xml.str(wholepri));
 					-- ctrip result xml logged.
@@ -999,7 +999,177 @@ if code == 200 then
 					end
 					print("+++++++++++++++++++++++++++++++++++++++++++++++")
 					if table.getn(minpri) > 0 then
-						print(JSON.encode(minpri))
+						-- print(JSON.encode(minpri))
+						-- store into baidu
+						tkey = rtkey; -- gdate + bdate
+						local pfiles = JSON.encode(minpri);
+						local data = zlib.compress(pfiles);
+						local cl = string.len(data)
+						-- api post file.
+						local respup = {};
+						local timestamp = os.date("%a, %d %b %Y %X GMT", os.time())
+						local requri = "/besftly/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. filet .. "/main.json";
+						local obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. filet .. "/main.json";
+						local Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=bestfly" .. "\n" .. "Object=" .. obj .. "\n"
+						local Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
+						local sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("b6x7p6b6x7p6"));
+						-- local hc = http:new()
+						print(sign)
+						print(cl)
+						print(md5.sumhexa("b6x7p6b6x7p6"))
+						print(requri)
+						print(urlencode(requri))
+						print(timestamp)
+						print("--------------")
+						-- PUT JSON file into duapp.
+						local body, code, headers, status = http.request {
+						-- local ok, code, headers, status, body = http.request {
+							-- url = "http://v0.api.upyun.com" .. requri,
+							url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+							--- proxy = "http://127.0.0.1:8888",
+							proxy = "http://10.123.74.137:808",
+							timeout = 10000,
+							method = "PUT", -- POST or GET
+							-- add post content-type and cookie
+							-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+							-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
+							-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
+							headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+							-- body = formdata,
+							-- source = ltn12.source.string(form_data);
+							source = ltn12.source.string(data),
+							sink = ltn12.sink.table(respup)
+						}
+						if code == 200 then
+							local upyun = "";
+							local len = table.getn(respup)
+							for i = 1, len do
+								upyun = upyun .. respup[i]
+							end
+							print(upyun)
+							-- local djson = zlib.compress(JSON.encode(bigtab))
+							-- print(type(zlib.compress(JSON.encode(bigtab))))
+							-- local djson = JSON.encode(bigtab)
+							--[[
+							local res, err = client:hget('intl:ctrip:' .. tkey, org .. dst)
+							if res ~= nil and res ~= JSON.null and res ~= "" then
+								-- local tobj = tostring(res)
+								local tobj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. tostring(res) .. ".json"
+								local Content= "MBO" .. "\n" .. "Method=DELETE" .. "\n" .. "Bucket=bestfly" .. "\n" .. "Object=" .. tobj .. "\n"
+								local Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
+								local respup = {};
+								local body, code, headers, status = http.request {
+								-- local ok, code, headers, status, body = http.request {
+									-- url = "http://v0.api.upyun.com" .. requri,
+									url = "http://bcs.duapp.com/bestfly" .. tobj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+									--- proxy = "http://127.0.0.1:8888",
+									timeout = 10000,
+									method = "DELETE", -- POST or GET
+									-- add post content-type and cookie
+									-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+									-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
+									-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
+									-- headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+									-- body = formdata,
+									-- source = ltn12.source.string(form_data);
+									-- source = ltn12.source.string(data),
+									sink = ltn12.sink.table(respup)
+								}
+								if code == 200 then
+									client:hdel('intl:ctrip:' .. tkey, org .. dst);
+									local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, filet)
+									if not res then
+										print("-------Failed to hset " .. arg[1] .. "--------")
+									else
+										client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
+										print("-------well done " .. arg[1] .. "--------")
+									end
+								else
+									print(code)
+									print("-------Failed to DELETE " .. tobj .. "--------")
+									print(status)
+									print(body)
+								end
+							else
+								local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, filet)
+								if not res then
+									print("-------Failed to hset " .. arg[1] .. "--------")
+								else
+									client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
+									print("-------well done " .. arg[1] .. "--------")
+								end
+							end
+							--]]
+							client:hdel('intl:ctrip:' .. tkey, org .. dst);
+							local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, md5res .. filet)
+							if not res then
+								print("-------Failed to hset " .. arg[1] .. "--------")
+							else
+								client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
+								print("-------well done " .. arg[1] .. "--------")
+							end
+							print("---- begin to set newest data into pfiles in baidu");
+							sleep(0.2)
+							obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
+							-- cl = string.len(pfiles);
+							-- compressed data instead of uncompressed data
+							cl = string.len(data);
+							-- api post file.
+							respup = {};
+							-- local timestamp = os.date("%a, %d %b %Y %X GMT", os.time())
+							requri = "/pfiles/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
+							-- local obj = "/" .. filet .. ".json";
+							Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=pfiles" .. "\n" .. "Object=" .. obj .. "\n"
+							Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)))
+							sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("b6x7p6b6x7p6"));
+							-- local hc = http:new()
+							print(sign)
+							print(cl)
+							-- print(md5.sumhexa("b6x7p6b6x7p6"))
+							print(requri)
+							print(urlencode(requri))
+							-- print(timestamp)
+							print("--------------")
+							-- PUT uncompressed JSON file into duapp.
+							local body, code, headers, status = http.request {
+							-- local ok, code, headers, status, body = http.request {
+								-- url = "http://v0.api.upyun.com" .. requri,
+								url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+								--- proxy = "http://127.0.0.1:8888",
+								proxy = "http://10.123.74.137:808",
+								timeout = 10000,
+								method = "PUT", -- POST or GET
+								-- add post content-type and cookie
+								-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+								-- headers = { ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Mkdir"] = "true", ["Content-Type"] = "application/json" },
+								-- headers = { ["Mkdir"] = "true", ["Date"] = timestamp, ["Authorization"] = "UpYun bestfly:" .. sign, ["Content-Length"] = cl, ["Content-Type"] = "application/json" },
+								headers = { ["Host"] = "bcs.duapp.com", ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+								-- body = formdata,
+								-- source = ltn12.source.string(form_data);
+								source = ltn12.source.string(data),
+								-- source = ltn12.source.string(pfiles),
+								sink = ltn12.sink.table(respup)
+							}
+							if code == 200 then
+								local upyun = "";
+								local len = table.getn(respup)
+								for i = 1, len do
+									upyun = upyun .. respup[i]
+								end
+								print(upyun)
+								print("---- set main pricedata ok");
+							else
+								print(code)
+								print("---- set main pricedata failure");
+								print(status)
+								print(body)
+							end
+						else
+							print(code)
+							print("-----upload to baidu failure-------")
+							print(status)
+							print(body)
+						end
 					else
 						print("-----Whole RT main caculation result is NULL-------")
 					end
