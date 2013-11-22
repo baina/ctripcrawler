@@ -513,9 +513,10 @@ if code == 200 then
 					sleep(1)
 				end
 				if table.getn(wholepri) > 0 then
+					print(RecordsCount, table.getn(wholepri));
+					print("++++++++++Union and RT data status+++++++++")
 					--[[
 					-- print(xml.str(wholepri));
-					print(RecordsCount, table.getn(wholepri));
 					-- ctrip result xml logged.
 					local wname = "/data/logs/rholog.txt"
 					local wfile = io.open(wname, "w+");
@@ -678,7 +679,7 @@ if code == 200 then
 						print(JSON.encode(bseginf))
 						print("--------------")
 						--]]
-						table.insert(bigtab, rr)
+						table.insert(bigtab, rrr)
 						-- table.insert(wholepri, ctrip)
 						-- begin to check ctrip ifl data
 						local pfid = {};
@@ -992,16 +993,21 @@ if code == 200 then
 						print("---- The line has flightline_id nums:", lbts .. "/" .. biglens);
 					else
 						print(code)
-						print("-----RT caculation is NULL-------")
+						print("-----RT Union caculation is NULL-------")
 						print(status)
 						print(body)
 					end
 					print("+++++++++++++++++++++++++++++++++++++++++++++++")
+					if table.getn(minpri) > 0 then
+						print(JSON.encode(minpri))
+					else
+						print("-----Whole RT main caculation result is NULL-------")
+					end
 				else
 					print(code, status)
 					print("--------------")
 					print(body)
-					print("-----caculate result is NULL-------")
+					print("-----Waiting for caculation's data is NULL-------")
 				end
 			else
 				print(code, status)
