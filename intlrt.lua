@@ -209,7 +209,7 @@ function dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, gr
 	-- local ok, code, headers, status, body = http.request {
 		-- url = "http://cloudavh.com/data-gw/index.php",
 		url = baseurl .. intluri .. "?WSDL",
-		proxy = "http://10.123.74.137:808",
+		-- proxy = "http://10.123.74.137:808",
 		-- proxy = "http://" .. tostring(arg[2]),
 		timeout = 30000,
 		method = "POST", -- POST or GET
@@ -284,7 +284,7 @@ local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	url = baseurl .. intluri .. "?WSDL",
-	proxy = "http://10.123.74.137:808",
+	-- proxy = "http://10.123.74.137:808",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 30000,
 	method = "POST", -- POST or GET
@@ -366,7 +366,7 @@ if code == 200 then
 		-- local ok, code, headers, status, body = http.request {
 			-- url = "http://cloudavh.com/data-gw/index.php",
 			url = sinaurl .. md5uri,
-			proxy = "http://10.123.74.137:808",
+			-- proxy = "http://10.123.74.137:808",
 			-- proxy = "http://" .. tostring(arg[2]),
 			timeout = 10000,
 			method = "GET", -- POST or GET
@@ -939,7 +939,7 @@ if code == 200 then
 								-- local ok, code, headers, status, body = http.request {
 									-- url = "http://v0.api.upyun.com" .. requri,
 									url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
-									proxy = "http://10.123.74.137:808",
+									-- proxy = "http://10.123.74.137:808",
 									timeout = 10000,
 									method = "PUT", -- POST or GET
 									-- add post content-type and cookie
@@ -992,7 +992,7 @@ if code == 200 then
 									-- url = "http://v0.api.upyun.com" .. requri,
 									url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 									--- proxy = "http://127.0.0.1:8888",
-									proxy = "http://10.123.74.137:808",
+									-- proxy = "http://10.123.74.137:808",
 									timeout = 10000,
 									method = "PUT", -- POST or GET
 									-- add post content-type and cookie
@@ -1084,7 +1084,7 @@ if code == 200 then
 							-- url = "http://v0.api.upyun.com" .. requri,
 							url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 							--- proxy = "http://127.0.0.1:8888",
-							proxy = "http://10.123.74.137:808",
+							-- proxy = "http://10.123.74.137:808",
 							timeout = 10000,
 							method = "PUT", -- POST or GET
 							-- add post content-type and cookie
@@ -1177,7 +1177,7 @@ if code == 200 then
 							-- local ok, code, headers, status, body = http.request {
 								-- url = "http://cloudavh.com/data-gw/index.php",
 								url = sinaurl .. md5uri,
-								proxy = "http://10.123.74.137:808",
+								-- proxy = "http://10.123.74.137:808",
 								-- proxy = "http://" .. tostring(arg[2]),
 								timeout = 10000,
 								method = "POST", -- POST or GET
@@ -1244,7 +1244,7 @@ if code == 200 then
 								-- url = "http://v0.api.upyun.com" .. requri,
 								url = "http://bcs.duapp.com/pfiles" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
 								--- proxy = "http://127.0.0.1:8888",
-								proxy = "http://10.123.74.137:808",
+								-- proxy = "http://10.123.74.137:808",
 								timeout = 10000,
 								method = "PUT", -- POST or GET
 								-- add post content-type and cookie
