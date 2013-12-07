@@ -12,6 +12,32 @@ local md5 = require 'md5'
 local base64 = require 'base64'
 -- local crypto = require 'crypto'
 -- local client = require 'soap.client'
+function urlencode(s) return s and (s:gsub("[^a-zA-Z0-9.~_-]", function (c) return string.format("%%%02x", c:byte()); end)); end
+function urldecode(s) return s and (s:gsub("%%(%x%x)", function (c) return char(tonumber(c,16)); end)); end
+local function _formencodepart(s)
+	return s and (s:gsub("%W", function (c)
+		if c ~= " " then
+			return format("%%%02x", c:byte());
+		else
+			return "+";
+		end
+	end));
+end
+function formencode(form)
+	local result = {};
+ 	if form[1] then -- Array of ordered { name, value }
+ 		for _, field in ipairs(form) do
+ 			-- t_insert(result, _formencodepart(field.name).."=".._formencodepart(field.value));
+			table.insert(result, field.name .. "=" .. tostring(field.value));
+ 		end
+ 	else -- Unordered map of name -> value
+ 		for name, value in pairs(form) do
+ 			-- table.insert(result, _formencodepart(name).."=".._formencodepart(value));
+			table.insert(result, name .. "=" .. tostring(value));
+ 		end
+ 	end
+ 	return table.concat(result, "&");
+end
 -- http://yougola.sinaapp.com/checker/?/intl/ctrip/20131201.20131231/shalon
 -- http://yougola.sinaapp.com/checker/?intl/ctrip/20131130.20131230/bjslon
 local sinaapp = false;
@@ -21,6 +47,7 @@ local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
 local timestamp = os.time() + 3600;
 print(timestamp);
 print(md5.sumhexa(sinakey .. timestamp))
+print(urlencode(baseurl .. md5uri));
 print("--------------")
 print(md5.sumhexa("BJS0650/DXB1150-DXB1445/LON1825,LON1335/DXB0035-DXB0335/BJS1445"))
 -- init response table
@@ -29,7 +56,8 @@ local respbody = {};
 local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
-	url = baseurl .. md5uri,
+	url = "http://yougola.sinaapp.com/tools/proxy2/?url=" .. urlencode(baseurl .. md5uri),
+	-- url = baseurl .. md5uri,
 	-- proxy = "http://172.16.30.174:8087",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 10000,
@@ -38,7 +66,7 @@ local body, code, headers, status = http.request {
 	-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 	-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
 	headers = {
-		["Host"] = "yougola.sinaapp.com",
+		-- ["Host"] = "yougola.sinaapp.com",
 		-- ["SOAPAction"] = "http://ctrip.com/Request",
 		["Cache-Control"] = "no-cache",
 		["Auth-Timestamp"] = timestamp,
@@ -92,7 +120,7 @@ local body, code, headers, status = http.request {
 	-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 	-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
 	headers = {
-		["Host"] = "yougola.sinaapp.com",
+		-- ["Host"] = "yougola.sinaapp.com",
 		-- ["SOAPAction"] = "http://ctrip.com/Request",
 		["Cache-Control"] = "no-cache",
 		["Auth-Timestamp"] = timestamp,

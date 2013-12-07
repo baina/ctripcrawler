@@ -8,6 +8,7 @@ local crypto = require 'crypto'
 local client = require 'soap.client'
 package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local xml = require 'LuaXml'
+--[[
 local redis = require 'redis'
 local params = {
     --- host = 'sin.bestfly.cn',
@@ -28,6 +29,7 @@ redis.commands.zadd = redis.command('zadd')
 redis.commands.smembers = redis.command('smembers')
 redis.commands.keys = redis.command('keys')
 redis.commands.sdiff = redis.command('sdiff')
+--]]
 local deflate = require 'compress.deflatelua'
 -- local baselua = require 'base64'
 -- local t = {}
@@ -234,6 +236,7 @@ if code == 200 then
 		-- caculate md5 of IntlFlightSearchResponse
 		local md5res = md5.sumhexa(orixml);
 		local filet = os.time() + 3600;
+		--[[
 		-- Redis
 		local proceed = false;
 		local res, err = client:hget('intl:ctrip:' .. tkey, org .. dst)
@@ -248,6 +251,7 @@ if code == 200 then
 			proceed = true;-- nil did not need to del
 			print("-------自动过期REDIS空值-------")
 		end
+		--]]
 		-- RVDB
 		local sinaapp = false;
 		local sinaurl = "http://yougola.sinaapp.com/";
@@ -303,7 +307,8 @@ if code == 200 then
 			print(code, status);
 			print("-------注意认证SINA失败-------")
 		end
-		if proceed == true and sinaapp == true then
+		if sinaapp == true then
+		-- if proceed == true and sinaapp == true then
 			local rfid = {};
 			local imax = {};
 			local bigtab = {};
@@ -877,6 +882,8 @@ if code == 200 then
 						end
 						--]]
 						-- begin to set newest data to pfiles in baidu
+						local newdata = md5res .. filet;
+						--[[
 						client:hdel('intl:ctrip:' .. tkey, org .. dst);
 						local newdata = md5res .. filet;
 						local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, newdata)
@@ -886,6 +893,7 @@ if code == 200 then
 							client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
 							print("-------well done " .. arg[1] .. "--------")
 						end
+						--]]
 						-- init response table
 						local respbody = {};
 						print(newdata);
