@@ -8,11 +8,11 @@ local crypto = require 'crypto'
 local client = require 'soap.client'
 package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local xml = require 'LuaXml'
+--[[
 local redis = require 'redis'
 local params = {
-    --- host = 'sin.bestfly.cn',
-	host = '127.0.0.1',
-    port = 6389,
+    host = 'sin.bestfly.cn',
+    port = 61088,
 }
 local client = redis.connect(params)
 client:select(0) -- for testing purposes
@@ -27,6 +27,7 @@ redis.commands.zadd = redis.command('zadd')
 redis.commands.smembers = redis.command('smembers')
 redis.commands.keys = redis.command('keys')
 redis.commands.sdiff = redis.command('sdiff')
+--]]
 local deflate = require 'compress.deflatelua'
 -- local baselua = require 'base64'
 -- local t = {}
@@ -71,6 +72,74 @@ function formencode(form)
  	end
  	return table.concat(result, "&");
 end
+
+function fatchkey (exProxy)
+	local sinaurl = "http://yougola.sinaapp.com/";
+	local md5uri = "fatchkey/";
+	-- local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
+	print("--------------")
+	print(sinaurl .. md5uri);
+	print("--------------")
+	-- init response table
+	local respsina = {};
+	-- local body, code, headers = http.request(baseurl .. md5uri)
+	local body, code, headers, status = http.request {
+	-- local ok, code, headers, status, body = http.request {
+		-- url = "http://cloudavh.com/data-gw/index.php",
+		url = sinaurl .. md5uri,
+		proxy = exProxy,
+		-- proxy = "http://10.123.74.137:808",
+		-- proxy = "http://" .. tostring(arg[2]),
+		timeout = 10000,
+		method = "GET", -- POST or GET
+		-- add post content-type and cookie
+		headers = {
+			["Host"] = "yougola.sinaapp.com",
+			-- ["SOAPAction"] = "http://ctrip.com/Request",
+			["Cache-Control"] = "no-cache",
+			-- ["Auth-Timestamp"] = filet,
+			-- ["Auth-Signature"] = md5.sumhexa(sinakey .. filet),
+			-- ["Accept-Encoding"] = "gzip",
+			-- ["Accept"] = "*/*",
+			["Connection"] = "keep-alive",
+			-- ["Content-Type"] = "text/xml; charset=utf-8",
+			-- ["Content-Length"] = string.len(request)
+		},
+		-- body = formdata,
+		-- source = ltn12.source.string(form_data);
+		-- source = ltn12.source.string(request),
+		sink = ltn12.sink.table(respsina)
+	}
+	if code == 200 then
+		local resjson = "";
+		local reslen = table.getn(respsina)
+		for i = 1, reslen do
+			-- print(respbody[i])
+			resjson = resjson .. respsina[i]
+		end
+		if JSON.decode(resjson).ret_code == 0 then
+			return 200, resjson
+		else
+			return 401, resjson
+		end
+	else
+		return code, JSON.null
+	end
+end
+local apikey = ""
+local siteid = ""
+local unicode = ""
+while true do
+	local codenum, resbody = fatchkey ()
+	if codenum == 200 then
+		resbody = JSON.decode(resbody);
+		unicode = resbody.aid
+		apikey = tostring(resbody.api_key)
+		siteid = resbody.sid
+		break;
+	end
+end
+print(apikey, siteid, unicode)
 local ak = "8fed80908d9683600e1d30f2a64006f2"
 local sk = "8047E3D8b60e2887d1d866b4b12028c6"
 local org = string.sub(arg[1], 1, 3);
@@ -85,14 +154,11 @@ local today = os.date("%Y-%m-%d", os.time());
 local baseurl = "http://openapi.ctrip.com"
 -- local domuri = "/Flight/DomesticFlight/OTA_FlightSearch.asmx"
 local intluri = "/Flight/IntlFlight/OTA_IntlFlightSearch.asmx"
-local apikey = "C7EE9407-A619-4474-B519-95B0196B5CD2"
-local siteid = "287634"
-local unicode = "11108"
 -- Signature=Md5(TimeStamp+AllianceID+MD5(密钥).ToUpper()+SID+RequestType).ToUpper()
 local ts = os.time()
 -- local ts = "1380250839"
 local sign = string.upper(md5.sumhexa(ts .. unicode .. string.upper(md5.sumhexa(apikey)) .. siteid .. "OTA_IntlFlightSearch"))
--- print("-----------------")
+print("-----------------")
 -- print(ts)
 -- print(sign)
 print(string.upper(org), string.upper(dst), gdate, bdate, today)
@@ -224,7 +290,8 @@ function dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, gr
 			["Accept"] = "*/*",
 			["Connection"] = "keep-alive",
 			["Content-Type"] = "text/xml; charset=utf-8",
-			["Content-Length"] = string.len(request)
+			["Content-Length"] = string.len(request),
+			["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36"
 		},
 		-- body = formdata,
 		-- source = ltn12.source.string(form_data);
@@ -299,7 +366,8 @@ local body, code, headers, status = http.request {
 		["Accept"] = "*/*",
 		["Connection"] = "keep-alive",
 		["Content-Type"] = "text/xml; charset=utf-8",
-		["Content-Length"] = string.len(request)
+		["Content-Length"] = string.len(request),
+		["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36"
 	},
 	-- body = formdata,
 	-- source = ltn12.source.string(form_data);
@@ -338,6 +406,7 @@ if code == 200 then
 		local md5res = md5.sumhexa(orixml);
 		-- local filet = os.time();
 		local filet = os.time() + 3600;
+		--[[
 		local proceed = false;
 		local res, err = client:hget('intl:ctrip:' .. rtkey, org .. dst)
 		if res ~= nil and res ~= JSON.null and res ~= "" then
@@ -351,6 +420,7 @@ if code == 200 then
 			proceed = true;-- nil did not need to del
 			print("-------自动过期REDIS空值-------")
 		end
+		--]]
 		-- RVDB
 		local sinaapp = false;
 		local sinaurl = "http://yougola.sinaapp.com/";
@@ -406,8 +476,8 @@ if code == 200 then
 			print(code, status);
 			print("-------注意认证SINA失败-------")
 		end
-		if proceed == true and sinaapp == true then
-		-- if proceed == true then
+		-- if proceed == true and sinaapp == true then
+		if sinaapp == true then
 			local records = tonumber(xscene[1][1]);
 			if records > 0 then
 				print("+++ { " .. records .. " } Lines 往返总量+++");
@@ -532,7 +602,7 @@ if code == 200 then
 					-- print(JSON.encode(bunktb))
 					-- do the rt request for rt+ow data
 					print("---- begin to rt request of {" .. r .. "} line...")
-					sleep(0.1)
+					sleep(0.5)
 					local codenum, status, xmldata = dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, groute)
 					-- if xmldata ~= JSON.null then
 					if codenum == 200 then
@@ -567,7 +637,7 @@ if code == 200 then
 						print("++++RT api return status {" .. r .. "} is NOT 200++++")
 						print(xmldata);
 					end
-					sleep(1)
+					sleep(0.3)
 				end
 				if table.getn(wholepri) > 0 then
 					print(records, RecordsCount, table.getn(wholepri));
@@ -968,7 +1038,7 @@ if code == 200 then
 								end
 								-- history union data
 								print("---- begin to set compress union data into baidu");
-								sleep(0.2)
+								sleep(0.1)
 								local data = zlib.compress(JSON.encode(rfid[v]));
 								cl = string.len(data);
 								-- api post file.
@@ -1034,7 +1104,7 @@ if code == 200 then
 								else
 									print("----++failed to set compress union data {" .. v .. "} into baidu");
 								end
-								sleep(0.2)		
+								sleep(0.1)		
 							end
 						else
 							print("---- uni data is null of {" .. JSON.encode(bigtab) .. "}")
@@ -1156,7 +1226,6 @@ if code == 200 then
 									print("-------well done " .. arg[1] .. "--------")
 								end
 							end
-							--]]
 							client:hdel('intl:ctrip:' .. tkey, org .. dst);
 							local newdata = md5res .. filet;
 							local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, newdata)
@@ -1166,6 +1235,8 @@ if code == 200 then
 								client:expire('intl:ctrip:' .. tkey, (expiret - os.time()))
 								print("-------well done " .. arg[1] .. "--------")
 							end
+							--]]
+							local newdata = md5res .. filet;
 							-- init response table
 							local respbody = {};
 							print(newdata);
@@ -1217,7 +1288,7 @@ if code == 200 then
 							end
 							print(resjson);
 							print("---- begin to set newest data into pfiles in baidu");
-							sleep(0.2)
+							sleep(0.1)
 							obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
 							-- cl = string.len(pfiles);
 							-- compressed data instead of uncompressed data

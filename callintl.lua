@@ -19,33 +19,16 @@ while url do
 		if JSON.decode(body).resultCode == 0 then
 			local arg = JSON.decode(body).taskQueues[1];
 			local xarg = string.sub(arg, 3, -1);
-			local xcmd = "/usr/local/bin/lua /data/rails2.3.5/itourcrawler/domup.lua " .. xarg;
-			arg = string.gsub(xarg, "bjs", "bbb")
-			arg = string.gsub(arg, "sha", "sss")
-			arg = string.gsub(arg, "sia", "xiy")
-			print(arg)
-			print("-------------")
-			local cmd = "/usr/local/bin/lua /data/rails2.3.5/itourcrawler/dombae.lua " .. arg .. " " .. "127.0.0.1:8088";
-			-- local cmd = "/usr/local/bin/lua /data/rails2.3.5/itourcrawler/dombae.lua " .. arg;
+			local cmd = "";
+			if string.len(xarg) == 26 then
+				-- print("RT")
+				cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlrt.lua " .. xarg;
+			end
+			if string.len(xarg) == 17 then
+				-- print("OW")
+				cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlow.lua " .. xarg;
+			end
 			os.execute(cmd);
-			print(xarg)
-			print("-------------")
-			os.execute(xcmd);
-			--[[
-			while true do
-				local ok, err = client:rpush("price:comb", arg)
-				if ok then
-					print("----------price:comb ok-----------")
-					break;
-				end
-			end
-			local body, code, headers = http.request(dis .. arg)
-	                if code == 200 then
-				print("---------Distribute sucess-------------")
-			else
-				print("---------Distribute failer-------------")
-			end
-			--]]
 		else
 			print("------------NO mission left-----------")
 			sleep(5)

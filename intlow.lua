@@ -5,15 +5,14 @@ local md5 = require 'md5'
 local zlib = require 'zlib'
 local base64 = require 'base64'
 local crypto = require 'crypto'
-local client = require 'soap.client'
+-- local client = require 'soap.client'
 package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local xml = require 'LuaXml'
 --[[
 local redis = require 'redis'
 local params = {
-    --- host = 'sin.bestfly.cn',
-	host = '127.0.0.1',
-    port = 6389,
+    host = 'sin.bestfly.cn',
+    port = 61088,
 }
 local client = redis.connect(params)
 client:select(0) -- for testing purposes
@@ -74,6 +73,74 @@ function formencode(form)
  	end
  	return table.concat(result, "&");
 end
+
+function fatchkey (exProxy)
+	local sinaurl = "http://yougola.sinaapp.com/";
+	local md5uri = "fatchkey/";
+	-- local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
+	print("--------------")
+	print(sinaurl .. md5uri);
+	print("--------------")
+	-- init response table
+	local respsina = {};
+	-- local body, code, headers = http.request(baseurl .. md5uri)
+	local body, code, headers, status = http.request {
+	-- local ok, code, headers, status, body = http.request {
+		-- url = "http://cloudavh.com/data-gw/index.php",
+		url = sinaurl .. md5uri,
+		proxy = exProxy,
+		-- proxy = "http://10.123.74.137:808",
+		-- proxy = "http://" .. tostring(arg[2]),
+		timeout = 10000,
+		method = "GET", -- POST or GET
+		-- add post content-type and cookie
+		headers = {
+			["Host"] = "yougola.sinaapp.com",
+			-- ["SOAPAction"] = "http://ctrip.com/Request",
+			["Cache-Control"] = "no-cache",
+			-- ["Auth-Timestamp"] = filet,
+			-- ["Auth-Signature"] = md5.sumhexa(sinakey .. filet),
+			-- ["Accept-Encoding"] = "gzip",
+			-- ["Accept"] = "*/*",
+			["Connection"] = "keep-alive",
+			-- ["Content-Type"] = "text/xml; charset=utf-8",
+			-- ["Content-Length"] = string.len(request)
+		},
+		-- body = formdata,
+		-- source = ltn12.source.string(form_data);
+		-- source = ltn12.source.string(request),
+		sink = ltn12.sink.table(respsina)
+	}
+	if code == 200 then
+		local resjson = "";
+		local reslen = table.getn(respsina)
+		for i = 1, reslen do
+			-- print(respbody[i])
+			resjson = resjson .. respsina[i]
+		end
+		if JSON.decode(resjson).ret_code == 0 then
+			return 200, resjson
+		else
+			return 401, resjson
+		end
+	else
+		return code, JSON.null
+	end
+end
+local apikey = ""
+local siteid = ""
+local unicode = ""
+while true do
+	local codenum, resbody = fatchkey ()
+	if codenum == 200 then
+		resbody = JSON.decode(resbody);
+		unicode = resbody.aid
+		apikey = tostring(resbody.api_key)
+		siteid = resbody.sid
+		break;
+	end
+end
+print(apikey, siteid, unicode);
 local ak = "8fed80908d9683600e1d30f2a64006f2"
 local sk = "8047E3D8b60e2887d1d866b4b12028c6"
 local org = string.sub(arg[1], 1, 3);
@@ -85,14 +152,11 @@ local today = os.date("%Y-%m-%d", os.time());
 local baseurl = "http://openapi.ctrip.com"
 -- local domuri = "/Flight/DomesticFlight/OTA_FlightSearch.asmx"
 local intluri = "/Flight/IntlFlight/OTA_IntlFlightSearch.asmx"
-local apikey = "15AAF13C-2CDB-4078-AADE-FC5D6307394C"
-local siteid = "328547"
-local unicode = "9134"
 -- Signature=Md5(TimeStamp+AllianceID+MD5(密钥).ToUpper()+SID+RequestType).ToUpper()
 local ts = os.time()
 -- local ts = "1380250839"
 local sign = string.upper(md5.sumhexa(ts .. unicode .. string.upper(md5.sumhexa(apikey)) .. siteid .. "OTA_IntlFlightSearch"))
--- print("-----------------")
+print("-----------------")
 -- print(ts)
 -- print(sign)
 print(string.upper(org), string.upper(dst), date, today)
@@ -192,7 +256,8 @@ local body, code, headers, status = http.request {
 		["Accept"] = "*/*",
 		["Connection"] = "keep-alive",
 		["Content-Type"] = "text/xml; charset=utf-8",
-		["Content-Length"] = string.len(request)
+		["Content-Length"] = string.len(request),
+		["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36"
 	},
 	-- body = formdata,
 	-- source = ltn12.source.string(form_data);
@@ -236,8 +301,8 @@ if code == 200 then
 		-- caculate md5 of IntlFlightSearchResponse
 		local md5res = md5.sumhexa(orixml);
 		local filet = os.time() + 3600;
-		--[[
 		-- Redis
+		--[[
 		local proceed = false;
 		local res, err = client:hget('intl:ctrip:' .. tkey, org .. dst)
 		if res ~= nil and res ~= JSON.null and res ~= "" then
@@ -307,8 +372,8 @@ if code == 200 then
 			print(code, status);
 			print("-------注意认证SINA失败-------")
 		end
-		if sinaapp == true then
 		-- if proceed == true and sinaapp == true then
+		if sinaapp == true then
 			local rfid = {};
 			local imax = {};
 			local bigtab = {};
@@ -503,7 +568,7 @@ if code == 200 then
 						-- print(JSON.encode(seginf))
 						-- table.insert(pfid, ctrip)
 					end
-					-- ifl data check ended	
+					-- ifl data check ended
 					-- begin to store into redis
 					--[[
 					-- cancel store into redis because splitting the crawler and caculate program;
@@ -679,7 +744,7 @@ if code == 200 then
 							end
 							-- history union data
 							print("---- begin to set compress union data into baidu");
-							sleep(0.2)
+							sleep(0.1)
 							local data = zlib.compress(JSON.encode(rfid[v]));
 							cl = string.len(data);
 							-- api post file.
@@ -758,7 +823,7 @@ if code == 200 then
 							else
 								print("----++failed to set compress union data {" .. v .. "} into baidu");
 							end
-							sleep(0.2)
+							sleep(0.1)
 						end
 					else
 						print("---- uni data is null of {" .. JSON.encode(bigtab) .. "}")
@@ -794,7 +859,7 @@ if code == 200 then
 					print(urlencode(requri))
 					print(timestamp)
 					print("--------------")
-					sleep(0.2)
+					sleep(0.1)
 					-- PUT compressed JSON file into duapp.
 					local body, code, headers, status = http.request {
 					-- local ok, code, headers, status, body = http.request {
@@ -880,10 +945,7 @@ if code == 200 then
 								print("-------well done " .. arg[1] .. "--------")
 							end
 						end
-						--]]
 						-- begin to set newest data to pfiles in baidu
-						local newdata = md5res .. filet;
-						--[[
 						client:hdel('intl:ctrip:' .. tkey, org .. dst);
 						local newdata = md5res .. filet;
 						local res, err = client:hset('intl:ctrip:' .. tkey, org .. dst, newdata)
@@ -894,6 +956,7 @@ if code == 200 then
 							print("-------well done " .. arg[1] .. "--------")
 						end
 						--]]
+						local newdata = md5res .. filet;
 						-- init response table
 						local respbody = {};
 						print(newdata);
@@ -975,7 +1038,7 @@ if code == 200 then
 							print("-- Del ok.")
 						--]]
 						print("---- begin to set newest data into pfiles in baidu");
-						sleep(0.2)
+						sleep(0.1)
 						obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
 						cl = string.len(pfiles);
 						-- api post file.
@@ -1063,11 +1126,11 @@ end
 print("--------------")
 print(domxml)
 local ns, meth, ent = client.call {
-	url = baseurl .. domuri, 
+	url = baseurl .. domuri,
 	soapaction = "http://ctrip.com/Request",
 	namespace = "http://ctrip.com",
 	method = "Request",
-	entries = { 
+	entries = {
 		{ tag = "xsd:requestXML", domxml },
 	}
 }
