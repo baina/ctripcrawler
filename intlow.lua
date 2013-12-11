@@ -73,7 +73,7 @@ function formencode(form)
  	end
  	return table.concat(result, "&");
 end
-
+-- Obtain key
 function fatchkey (exProxy)
 	local sinaurl = "http://yougola.sinaapp.com/";
 	local md5uri = "fatchkey/";
@@ -141,11 +141,55 @@ while true do
 	end
 end
 print(apikey, siteid, unicode);
+-- retry to do the mission again
+function retry(mission)
+	local queuesurl = "http://api.bestfly.cn/";
+	local md5uri = "task-queues";
+	-- local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
+	print("--------------")
+	print(queuesurl .. md5uri, mission);
+	print("--------------")
+	-- init response table
+	local resp = {};
+	-- local body, code, headers = http.request(baseurl .. md5uri)
+	local body, code, headers, status = http.request {
+	-- local ok, code, headers, status, body = http.request {
+		-- url = "http://cloudavh.com/data-gw/index.php",
+		url = queuesurl .. md5uri,
+		-- proxy = exProxy,
+		-- proxy = "http://10.123.74.137:808",
+		-- proxy = "http://" .. tostring(arg[2]),
+		timeout = 10000,
+		method = "POST", -- POST or GET
+		-- add post content-type and cookie
+		headers = {
+			["Host"] = "api.bestfly.cn",
+			-- ["SOAPAction"] = "http://ctrip.com/Request",
+			["Cache-Control"] = "no-cache",
+			-- ["Auth-Timestamp"] = filet,
+			-- ["Auth-Signature"] = md5.sumhexa(sinakey .. filet),
+			-- ["Accept-Encoding"] = "gzip",
+			-- ["Accept"] = "*/*",
+			["Connection"] = "keep-alive",
+			-- ["Content-Type"] = "text/xml; charset=utf-8",
+			["Content-Length"] = string.len(mission)
+		},
+		-- body = formdata,
+		-- source = ltn12.source.string(form_data);
+		source = ltn12.source.string(mission),
+		sink = ltn12.sink.table(resp)
+	}
+	if code == 200 then
+		return code
+	else
+		return 400
+	end
+end
 local ak = "8fed80908d9683600e1d30f2a64006f2"
 local sk = "8047E3D8b60e2887d1d866b4b12028c6"
 local org = string.sub(arg[1], 1, 3);
 local dst = string.sub(arg[1], 5, 7);
-local tkey = string.sub(arg[1], 9, -2);
+local tkey = string.sub(arg[1], 9, -3);
 local expiret = os.time({year=string.sub(tkey, 1, 4), month=tonumber(string.sub(tkey, 5, 6)), day=tonumber(string.sub(tkey, 7, 8)), hour="00"})
 local date = string.sub(arg[1], 9, 12) .. "-" .. string.sub(arg[1], 13, 14) .. "-" .. string.sub(arg[1], 15, 16);
 local today = os.date("%Y-%m-%d", os.time());
@@ -1105,6 +1149,16 @@ if code == 200 then
 				-- print check data of ifl
 				-- print(JSON.encode(rfid))
 			else
+				local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
+				local t = 0;
+				while true do
+					local code = retry(todo)
+					t = t + 1;
+					if code == 200 or t > 3 then
+						sleep(0.5)
+						break;
+					end
+				end
 				print("-- ctrip api result intldata is NULL-----")
 			end
 		else
@@ -1115,12 +1169,34 @@ if code == 200 then
 		print("--------------")
 		print(resxml)
 		print("-----ctrip api result xml is wrong-----")
+		local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
+		local t = 0;
+		while true do
+			local code = retry(todo)
+			t = t + 1;
+			print(t, code)
+			print("-------------")
+			if code == 200 or t > 3 then
+				sleep(0.5)
+				break;
+			end
+		end
 	end
 else
 	print(code)
 	print("-----ctrip api return status is NOT 200-----")
 	print(status)
 	print(body)
+	local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
+	local t = 0;
+	while true do
+		local code = retry(todo)
+		t = t + 1;
+		if code == 200 or t > 3 then
+			sleep(0.5)
+			break;
+		end
+	end
 end
 --[[
 print("--------------")

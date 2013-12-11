@@ -15,23 +15,37 @@ local url = "http://rhosouth001/task-queues/intl/1/";
 while url do
 	local body, code, headers = http.request(url)
 	if code == 200 then
+		print(body)
 		-- print(JSON.decode(body).taskQueues[1]);
 		if JSON.decode(body).resultCode == 0 then
 			local arg = JSON.decode(body).taskQueues[1];
-			local xarg = string.sub(arg, 3, -1);
-			local cmd = "";
-			if string.len(xarg) == 26 then
-				-- print("RT")
-				cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlrt.lua " .. xarg;
+			local fail = string.sub(arg, -1, -1);
+			print(arg, fail, tonumber(fail))
+			-- drop over 3 fails
+			if tonumber(fail) > 3 then
+				print("++ Droped " .. arg .. " -has failure over 3 ++");
+				-- return
+			else
+				local xarg = string.sub(arg, 3, -1);
+				print("++++++++++++++++")
+				print(xarg, string.len(xarg))
+				print("++++++++++++++++")
+				local cmd = "";
+				if string.len(xarg) == 27 then
+					-- print("RT")
+					-- cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlrt.lua " .. xarg;
+					cmd = "/usr/local/bin/lua /data/rails2.3.5/ctripcrawler/intlrt.lua " .. xarg;
+				end
+				if string.len(xarg) == 18 then
+					-- print("OW")
+					-- cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlow.lua " .. xarg;
+					cmd = "/usr/local/bin/lua /data/rails2.3.5/ctripcrawler/intlow.lua " .. xarg;
+				end
+				os.execute(cmd);
 			end
-			if string.len(xarg) == 17 then
-				-- print("OW")
-				cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlow.lua " .. xarg;
-			end
-			os.execute(cmd);
 		else
 			print("------------NO mission left-----------")
-			sleep(5)
+			sleep(8)
 		end
 	else
 		-- if get no mission sleep 10;

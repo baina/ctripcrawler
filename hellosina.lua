@@ -56,9 +56,9 @@ local respbody = {};
 local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
-	url = "http://yougola.sinaapp.com/tools/proxy2/?url=" .. urlencode(baseurl .. md5uri),
-	-- url = baseurl .. md5uri,
-	-- proxy = "http://172.16.30.174:8087",
+	-- url = "http://yougola.sinaapp.com/tools/proxy2/?url=" .. urlencode(baseurl .. md5uri),
+	url = baseurl .. md5uri,
+	proxy = "http://172.16.30.172:8088",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 10000,
 	method = "GET", -- POST or GET
@@ -66,7 +66,7 @@ local body, code, headers, status = http.request {
 	-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 	-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
 	headers = {
-		-- ["Host"] = "yougola.sinaapp.com",
+		["Host"] = "yougola.sinaapp.com",
 		-- ["SOAPAction"] = "http://ctrip.com/Request",
 		["Cache-Control"] = "no-cache",
 		["Auth-Timestamp"] = timestamp,
@@ -112,7 +112,7 @@ local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	url = baseurl .. md5uri,
-	-- proxy = "http://172.16.30.174:8087",
+	proxy = "http://172.16.30.172:8088",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 10000,
 	method = "POST", -- POST or GET
@@ -120,7 +120,7 @@ local body, code, headers, status = http.request {
 	-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 	-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
 	headers = {
-		-- ["Host"] = "yougola.sinaapp.com",
+		["Host"] = "yougola.sinaapp.com",
 		-- ["SOAPAction"] = "http://ctrip.com/Request",
 		["Cache-Control"] = "no-cache",
 		["Auth-Timestamp"] = timestamp,
