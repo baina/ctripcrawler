@@ -186,10 +186,12 @@ function retry(mission)
 end
 local ak = "8fed80908d9683600e1d30f2a64006f2"
 local sk = "8047E3D8b60e2887d1d866b4b12028c6"
+-- arg[1]; 
+-- can/bjs/20131030/20131130/{0~3}
 local org = string.sub(arg[1], 1, 3);
 local dst = string.sub(arg[1], 5, 7);
-local tkey = string.sub(arg[1], 9, -11); -- can/bjs/20131030/20131130/
-local rtkey = string.sub(arg[1], 9, -2);
+local tkey = string.sub(arg[1], 9, 16);
+local rtkey = string.sub(arg[1], 9, -3);
 rtkey = string.gsub(rtkey, "/", ".");
 local expiret = os.time({year=string.sub(tkey, 1, 4), month=tonumber(string.sub(tkey, 5, 6)), day=tonumber(string.sub(tkey, 7, 8)), hour="00"})
 local gdate = string.sub(arg[1], 9, 12) .. "-" .. string.sub(arg[1], 13, 14) .. "-" .. string.sub(arg[1], 15, 16);
@@ -692,7 +694,7 @@ if code == 200 then
 								print(xmldata);
 							end
 						end
-						sleep(1)
+						sleep(1.1)
 					end
 					sleep(0.3)
 				end
@@ -1095,7 +1097,7 @@ if code == 200 then
 								end
 								-- history union data
 								print("---- begin to set compress union data into baidu");
-								sleep(0.1)
+								sleep(0.03)
 								local data = zlib.compress(JSON.encode(rfid[v]));
 								cl = string.len(data);
 								-- api post file.
@@ -1161,7 +1163,7 @@ if code == 200 then
 								else
 									print("----++failed to set compress union data {" .. v .. "} into baidu");
 								end
-								sleep(0.1)		
+								sleep(0.03)		
 							end
 						else
 							print("---- uni data is null of {" .. JSON.encode(bigtab) .. "}")
@@ -1345,7 +1347,7 @@ if code == 200 then
 							end
 							print(resjson);
 							print("---- begin to set newest data into pfiles in baidu");
-							sleep(0.1)
+							sleep(0.01)
 							obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
 							-- cl = string.len(pfiles);
 							-- compressed data instead of uncompressed data
