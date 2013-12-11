@@ -647,39 +647,52 @@ if code == 200 then
 					-- do the rt request for rt+ow data
 					print("---- begin to rt request of {" .. r .. "} line...")
 					sleep(0.5)
-					local codenum, status, xmldata = dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, groute)
-					-- if xmldata ~= JSON.null then
-					if codenum == 200 then
-						-- print(xmldata)
-						-- print("--------------")
-						local pr_xml = xml.eval(xmldata);
-						local xscene = pr_xml:find("IntlFlightSearchResponse");
-						if xscene ~= nil then
-							local rtcords = tonumber(xscene[1][1]);
-							if rtcords > 0 then
-								RecordsCount = RecordsCount + rtcords
-								print("---- sucess to Get the rt response of {" .. r .. "}")
-								-- ShoppingResultInfo
-								for rr = 1, rtcords do
-									table.insert(wholepri, xscene[2][rr])
+					-- RT failover three.
+					local timejudge = 0;
+					local codenum = "";
+					while true do
+						timejudge = timejudge + 1;
+						if timejudge > 3 then
+							print("++++++++ RT Failed of {" .. r .. "} ++++++++")
+							break;
+						else
+							local codenum, status, xmldata = dortreq(unicode, siteid, ts, sign, shopping, org, dst, gdate, bdate, groute)
+							-- if xmldata ~= JSON.null then
+							if codenum == 200 then
+								-- print(xmldata)
+								-- print("--------------")
+								local pr_xml = xml.eval(xmldata);
+								local xscene = pr_xml:find("IntlFlightSearchResponse");
+								if xscene ~= nil then
+									local rtcords = tonumber(xscene[1][1]);
+									if rtcords > 0 then
+										RecordsCount = RecordsCount + rtcords
+										print("---- sucess to Get the rt response of {" .. r .. "}")
+										-- ShoppingResultInfo
+										for rr = 1, rtcords do
+											table.insert(wholepri, xscene[2][rr])
+										end
+										break;
+									else
+										print(codenum, status)
+										print("--------------")
+										print(xmldata)
+										print("++++RT api result intldata {" .. r .. "} is NULL++++")
+									end
+								else
+									print(code)
+									print("++++RT api result xml {" .. r .. "} is wrong++++")
+									print(status)
+									print(shopping)
+									print(groute)
 								end
 							else
 								print(codenum, status)
-								print("--------------")
-								print(xmldata)
-								print("++++RT api result intldata {" .. r .. "} is NULL++++")
+								print("++++RT api return status {" .. r .. "} is NOT 200++++")
+								print(xmldata);
 							end
-						else
-							print(code)
-							print("++++RT api result xml {" .. r .. "} is wrong++++")
-							print(status)
-							print(shopping)
-							print(groute)
 						end
-					else
-						print(codenum, status)
-						print("++++RT api return status {" .. r .. "} is NOT 200++++")
-						print(xmldata);
+						sleep(1)
 					end
 					sleep(0.3)
 				end
