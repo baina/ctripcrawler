@@ -1149,11 +1149,13 @@ if code == 200 then
 				-- print check data of ifl
 				-- print(JSON.encode(rfid))
 			else
-				local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
+				local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:ctrip", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
 				local t = 0;
 				while true do
 					local code = retry(todo)
 					t = t + 1;
+					print(t, code)
+					print("-------------")
 					if code == 200 or t > 3 then
 						sleep(0.5)
 						break;
@@ -1169,7 +1171,7 @@ if code == 200 then
 		print("--------------")
 		print(resxml)
 		print("-----ctrip api result xml is wrong-----")
-		local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
+		local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:ctrip", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
 		local t = 0;
 		while true do
 			local code = retry(todo)
@@ -1187,11 +1189,13 @@ else
 	print("-----ctrip api return status is NOT 200-----")
 	print(status)
 	print(body)
-	local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
+	local todo = JSON.encode({ ["type"] = 1, ["queues"] = "intl:ctrip", ["qbody"] = string.sub(arg[1], 1, -2) .. tostring(tonumber(string.sub(arg[1], -1, -1))+1) });
 	local t = 0;
 	while true do
 		local code = retry(todo)
 		t = t + 1;
+		print(t, code)
+		print("-------------")
 		if code == 200 or t > 3 then
 			sleep(0.5)
 			break;
