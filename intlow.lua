@@ -95,7 +95,6 @@ function fatchkey (exProxy)
 		method = "GET", -- POST or GET
 		-- add post content-type and cookie
 		headers = {
-			-- ["Proxy-Authorization"] = "123",
 			["Host"] = "yougola.sinaapp.com",
 			-- ["SOAPAction"] = "http://ctrip.com/Request",
 			["Cache-Control"] = "no-cache",
