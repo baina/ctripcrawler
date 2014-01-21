@@ -51,7 +51,7 @@ else
 		pcontent = JSON.decode(pcontent)
 		local qbody = string.lower(pcontent.qbody)
 		local otype = pcontent.type
-		local qn = pcontent.queues
+		local qn = string.lower(pcontent.queues)
 		local idx = string.find(qn, ":");
 		if idx ~= nil then
 			-- string.sub(qn, idx+1, -1)
