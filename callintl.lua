@@ -11,7 +11,7 @@ local JSON = require 'cjson'
 function sleep(n)
    socket.select(nil, nil, n)
 end
-local url = "http://rhosouth001/task-queues/intl/1/";
+local url = "http://api.bestfly.cn/task-queues/intl/1/";
 while url do
 	local body, code, headers = http.request(url)
 	if code == 200 then
@@ -26,20 +26,23 @@ while url do
 				print("++ Droped " .. arg .. " -has failure over 3 ++");
 				-- return
 			else
-				local xarg = string.sub(arg, 3, -1);
+				local sourcename = string.sub(arg, 1, 5);
+				local xarg = string.sub(arg, 9, -1);
 				print("++++++++++++++++")
 				print(xarg, string.len(xarg))
 				print("++++++++++++++++")
 				local cmd = "";
-				if string.len(xarg) == 27 then
-					-- print("RT")
-					-- cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlrt.lua " .. xarg;
-					cmd = "/usr/local/bin/lua /data/rails2.3.5/ctripcrawler/intlrt.lua " .. xarg;
-				end
-				if string.len(xarg) == 18 then
-					-- print("OW")
-					-- cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlow.lua " .. xarg;
-					cmd = "/usr/local/bin/lua /data/rails2.3.5/ctripcrawler/intlow.lua " .. xarg;
+				if sourcename ~= "ctrip" then
+					cmd = "/usr/local/bin/node /tmp/" .. sourcename .. "/get.js " .. xarg;
+				else
+					if string.len(xarg) == 27 then
+						-- print("RT")
+						cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlrt.lua " .. xarg;
+					end
+					if string.len(xarg) == 18 then
+						-- print("OW")
+						cmd = "/usr/local/bin/lua /tmp/ctripcrawler/intlow.lua " .. xarg;
+					end
 				end
 				os.execute(cmd);
 			end
