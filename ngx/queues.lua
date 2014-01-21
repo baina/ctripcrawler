@@ -49,7 +49,7 @@ else
 	if pcontent then
 		-- ngx.print(pcontent);
 		pcontent = JSON.decode(pcontent)
-		local qbody = pcontent.qbody
+		local qbody = string.lower(pcontent.qbody)
 		local otype = pcontent.type
 		local qn = pcontent.queues
 		local idx = string.find(qn, ":");
