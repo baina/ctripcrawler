@@ -98,10 +98,10 @@ if ngx.var.request_method == "POST" then
 			end
 			if tmpxml["label"] == "TransactionID" then
 				SyncReq["TransactionID"] = tmpxml[1]
-				t = tostring(tmpxml[1])
 			end
 			if tmpxml["label"] == "OrderID" then
 				SyncReq["OrderID"] = tmpxml[1]
+				t = tostring(tmpxml[1])
 			end
 			if tmpxml["label"] == "FeeMSISDN" then
 				SyncReq["FeeMSISDN"] = tmpxml[1]
@@ -143,11 +143,11 @@ if ngx.var.request_method == "POST" then
 					table.insert(formdata, "platkey=mm");
 					table.insert(formdata, "account=" .. account);
 					table.insert(formdata, "serverid=" .. serverid);
-					table.insert(formdata, "orderid=" .. SyncReq["OrderID"]);
+					table.insert(formdata, "orderid=" .. t);
 					table.insert(formdata, "money=" .. SyncReq["TotalPrice"]);
 					table.insert(formdata, "time=" .. timestamp);
 					-- sign=md5(account+serverid+orderid+money+time+key)
-					table.insert(formdata, "sign=" .. ngx.md5(account .. serverid .. SyncReq["OrderID"] .. SyncReq["TotalPrice"] .. timestamp .. "b66a2962b81e47f09a66e47dad032619"));
+					table.insert(formdata, "sign=" .. ngx.md5(account .. serverid .. t .. SyncReq["TotalPrice"] .. timestamp .. "b66a2962b81e47f09a66e47dad032619"));
 					form_data = table.concat(formdata, "&");
 					local hc = http:new()
 					local ok, code, headers, status, body = hc:request {
@@ -165,7 +165,7 @@ if ngx.var.request_method == "POST" then
 					table.insert(tv, code)
 					table.insert(tv, body)
 					if code == 200 and tonumber(body) == 1 then
-						local res, err = red:hset("gwn:sync:0:" .. today, account .. "," .. SyncReq["OrderID"], JSON.encode(tv))
+						local res, err = red:hset("gwn:sync:0:" .. today, account .. "," .. t, JSON.encode(tv))
 						if not res then
 							ngx.say(error003("failed to hset the OrderID of the TransactionID [gwn:sync:0:" .. account .. "]", err));
 							return
@@ -175,7 +175,7 @@ if ngx.var.request_method == "POST" then
 						end
 					else
 						-- tv["OrderID"] = SyncReq["OrderID"];
-						table.insert(tv, SyncReq["OrderID"]);
+						table.insert(tv, t);
 						local res, err = red:hset("gwn:sync:1:" .. today, account .. "," .. timestamp, JSON.encode(tv))
 						if not res then
 							ngx.say(error003("failed to hset the OrderID of the TransactionID [gwn:sync:1:" .. account .. "]", err));
