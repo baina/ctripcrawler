@@ -58,7 +58,7 @@ local body, code, headers, status = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	-- url = "http://yougola.sinaapp.com/tools/proxy2/?url=" .. urlencode(baseurl .. md5uri),
 	url = baseurl .. md5uri,
-	proxy = "http://112.124.211.29:18085",
+	-- proxy = "http://112.124.211.29:18085",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 10000,
 	method = "GET", -- POST or GET
@@ -112,7 +112,7 @@ local body, code, headers, status = http.request {
 -- local ok, code, headers, status, body = http.request {
 	-- url = "http://cloudavh.com/data-gw/index.php",
 	url = baseurl .. md5uri,
-	proxy = "http://112.124.211.29:18085",
+	-- proxy = "http://112.124.211.29:18085",
 	-- proxy = "http://" .. tostring(arg[2]),
 	timeout = 10000,
 	method = "POST", -- POST or GET

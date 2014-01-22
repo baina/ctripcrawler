@@ -2,7 +2,7 @@
 -- License: same to the Lua one
 -- TODO: copy the LICENSE file
 -------------------------------------------------------------------------------
--- begin of the idea : http://rhomobi.com/topics/150
+-- begin of the idea : http://labs.rhomobi.com/deal
 -- Rholog interface
 -- load library
 local JSON = require("cjson");
@@ -22,7 +22,7 @@ end
 red:set_timeout(1000) -- 1 sec
 -- ota:set_timeout(1000) -- 1 sec
 -- nosql connect
-local ok, err = red:connect("127.0.0.1", 6389)
+local ok, err = red:connect("127.0.0.1", 6379)
 if not ok then
 	ngx.say("failed to connect main redis: ", err)
 	return
@@ -86,6 +86,10 @@ if ngx.var.request_method == "POST" then
 		local pr_xml = collect(pcontent);
 		local SyncReq = {};
 		local check = "";
+		local t = "";
+		local o = "";
+		local timestamp = os.time();
+		local today = os.date("%Y%m%d", timestamp);
 		for i = 1, table.getn(pr_xml[2]) do
 			local tmpxml = pr_xml[2][i]
 			-- print(tmpxml["label"])
@@ -94,6 +98,7 @@ if ngx.var.request_method == "POST" then
 			end
 			if tmpxml["label"] == "TransactionID" then
 				SyncReq["TransactionID"] = tmpxml[1]
+				t = tostring(tmpxml[1])
 			end
 			if tmpxml["label"] == "OrderID" then
 				SyncReq["OrderID"] = tmpxml[1]
@@ -104,16 +109,92 @@ if ngx.var.request_method == "POST" then
 			if tmpxml["label"] == "TradeID" then
 				SyncReq["TradeID"] = tmpxml[1]
 			end
+			if tmpxml["label"] == "ExData" then
+				SyncReq["ExData"] = tmpxml[1]
+				o = tostring(tmpxml[1])
+			end
+			if tmpxml["label"] == "AppID" then
+				SyncReq["AppID"] = tmpxml[1]
+			end
+			if tmpxml["label"] == "PayCode" then
+				SyncReq["PayCode"] = tmpxml[1]
+			end
+			if tmpxml["label"] == "Price" then
+				SyncReq["Price"] = tmpxml[1]
+			end
+			if tmpxml["label"] == "TotalPrice" then
+				SyncReq["TotalPrice"] = tmpxml[1]
+			end
 		end
 		if check ~= "SyncAppOrderReq" then
 			return
 		else
-			local res, err = red:hset("ord:" .. SyncReq["TransactionID"], SyncReq["OrderID"], JSON.encode(SyncReq))
-			if not res then
-				ngx.say(error003("failed to hset the OrderID of the TransactionID [ord]:" .. SyncReq["TransactionID"] .. "]", err));
-				return
+			-- wx391|1600400
+			local idx = string.find(o, "|")
+			if idx ~= nil then
+				local res, err = red:hset("gwn:ord:" .. today, t, JSON.encode(SyncReq))
+				if not res then
+					ngx.say(error003("failed to hset the OrderID of the TransactionID [gwn:ord:" .. t .. "]", err));
+					return
+				else
+					local account = string.sub(o, 1, idx-1)
+					local serverid = string.sub(o, idx+1, -1)
+					local formdata = {};
+					table.insert(formdata, "platkey=mm");
+					table.insert(formdata, "account=" .. account);
+					table.insert(formdata, "serverid=" .. serverid);
+					table.insert(formdata, "orderid=" .. SyncReq["OrderID"]);
+					table.insert(formdata, "money=" .. SyncReq["TotalPrice"]);
+					table.insert(formdata, "time=" .. timestamp);
+					-- sign=md5(account+serverid+orderid+money+time+key)
+					table.insert(formdata, "sign=" .. ngx.md5(account .. serverid .. SyncReq["OrderID"] .. SyncReq["TotalPrice"] .. timestamp .. "b66a2962b81e47f09a66e47dad032619"));
+					form_data = table.concat(formdata, "&");
+					local hc = http:new()
+					local ok, code, headers, status, body = hc:request {
+						url = "http://api.xb.1732.com/phone/pay.ashx",
+						-- http://api.xb.1732.com/phone/pay.ashx?platkey=mm
+						-- proxy = "http://" .. ngx.decode_base64(ngx.var.proxy),
+						timeout = 4000,
+						method = "POST", -- POST or GET
+						-- add post content-type and cookie
+						headers = { ["Host"] = "api.xb.1732.com", ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data), ["User-Agent"] = "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6"},
+						-- body = ltn12.source.string(form_data),
+						body = form_data,
+					}
+					local tv = {};
+					table.insert(tv, code)
+					table.insert(tv, body)
+					if code == 200 and tonumber(body) == 1 then
+						local res, err = red:hset("gwn:sync:0:" .. today, account .. "," .. SyncReq["OrderID"], JSON.encode(tv))
+						if not res then
+							ngx.say(error003("failed to hset the OrderID of the TransactionID [gwn:sync:0:" .. account .. "]", err));
+							return
+						else
+							ngx.say(JSON.encode(SyncReq));
+							ngx.exit(200);
+						end
+					else
+						-- tv["OrderID"] = SyncReq["OrderID"];
+						table.insert(tv, SyncReq["OrderID"]);
+						local res, err = red:hset("gwn:sync:1:" .. today, account .. "," .. timestamp, JSON.encode(tv))
+						if not res then
+							ngx.say(error003("failed to hset the OrderID of the TransactionID [gwn:sync:1:" .. account .. "]", err));
+							return
+						else
+							ngx.say(JSON.encode(SyncReq));
+							ngx.exit(200);
+						end
+					end
+				end
 			else
-				ngx.exit(200);
+				local res, err = red:hset("gwn:err:" .. today, t, JSON.encode(SyncReq))
+				if not res then
+					ngx.say(error003("failed to hset the OrderID of the TransactionID [gwn:err:" .. t .. "]", err));
+					return
+				else
+					ngx.say(JSON.encode(SyncReq));
+					ngx.exit(200);
+				end
 			end
 		end
 	end

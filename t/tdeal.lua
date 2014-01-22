@@ -112,9 +112,4 @@ if prdata then
 			SyncReq["TradeID"] = tmpxml[1]
 		end
 	end
-	if check ~= "SyncAppOrderReq" then
-		return
-	else
-		
-	end
 end
