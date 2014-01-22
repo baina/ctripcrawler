@@ -100,7 +100,7 @@ if ngx.var.request_method == "POST" then
 				SyncReq["TransactionID"] = tmpxml[1]
 			end
 			if tmpxml["label"] == "OrderID" then
-				SyncReq["OrderID"] = tmpxml[1]
+				-- SyncReq["OrderID"] = tmpxml[1]
 				t = tostring(tmpxml[1])
 			end
 			if tmpxml["label"] == "FeeMSISDN" then
