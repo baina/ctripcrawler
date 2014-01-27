@@ -1,3 +1,10 @@
+-- jijilu <huangqi@travelsky.com> 20140124 (v0.5.1)
+-- License: same to the Lua one
+-- TODO: copy the LICENSE file
+-------------------------------------------------------------------------------
+-- begin of the idea : http://rhomobi.com/topics/
+-- ctrip agent service of crawler for bestfly service
+-- load library
 local socket = require 'socket'
 local http = require 'socket.http'
 local JSON = require 'cjson'
@@ -579,8 +586,8 @@ if code == 200 then
 						end
 						table.insert(bunktb, tbunks)
 						-- break after get the first pricedata;
-						break;
-						-- polidx = polidx + 1;
+						-- break;
+						polidx = polidx + 1;
 					end
 					-- get the segment data from xml of {r}
 					local routes = {};

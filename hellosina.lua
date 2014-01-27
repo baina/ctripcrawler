@@ -41,8 +41,8 @@ end
 -- http://yougola.sinaapp.com/checker/?/intl/ctrip/20131201.20131231/shalon
 -- http://yougola.sinaapp.com/checker/?intl/ctrip/20131130.20131230/bjslon
 local sinaapp = false;
-local baseurl = "http://cloudavh.sinaapp.com/";
-local md5uri = "checker/?intl/kayak/20131130.20131230/bjslon";
+local baseurl = "http://yougola.sinaapp.com/";
+local md5uri = "checker/?intl/ctrip/20131130.20131230/bjslon";
 local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
 local timestamp = os.time() + 3600;
 print(timestamp);
@@ -66,7 +66,7 @@ local body, code, headers, status = http.request {
 	-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 	-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
 	headers = {
-		["Host"] = "cloudavh.sinaapp.com",
+		-- ["Host"] = "yougola.sinaapp.com",
 		-- ["SOAPAction"] = "http://ctrip.com/Request",
 		["Cache-Control"] = "no-cache",
 		["Auth-Timestamp"] = timestamp,
@@ -120,7 +120,7 @@ local body, code, headers, status = http.request {
 	-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
 	-- headers = { ["Host"] = "flight.itour.cn", ["X-AjaxPro-Method"] = "GetFlight", ["Cache-Control"] = "no-cache", ["Accept-Encoding"] = "gzip,deflate,sdch", ["Accept"] = "*/*", ["Origin"] = "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm", ["Connection"] = "keep-alive", ["Content-Type"] = "application/json", ["Content-Length"] = string.len(JSON.encode(request)), ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36" },
 	headers = {
-		["Host"] = "cloudavh.sinaapp.com",
+		-- ["Host"] = "yougola.sinaapp.com",
 		-- ["SOAPAction"] = "http://ctrip.com/Request",
 		["Cache-Control"] = "no-cache",
 		["Auth-Timestamp"] = timestamp,
