@@ -44,7 +44,7 @@ end
 -- http://yougola.sinaapp.com/checker/?intl/ctrip/20131130.20131230/bjslon
 local sinaapp = false;
 local baseurl = "http://cloudavh.sinaapp.com/";
-local md5uri = "checker/?intl/kayak/20140719.20140721/canlax";
+local md5uri = "checker/?intl/kayak/20140719.20140724/hkgcdg";
 local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
 local timestamp = os.time() + 3600;
 print(timestamp);

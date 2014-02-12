@@ -1,0 +1,76 @@
+kayak分析
+根据url请求http://www.kayak.com/flights/HKG-SFO/2013-12-13
+获取信息：
+_currentsortid= "price"  ;
+_lastdirection=true;
+window.Streaming = Streamer( false ,
+                              1385886542706 ,
+                            60000);
+        Streaming.start(250);
+var searchid = "HGECBJUWKy";
+var experiment = 'no-op-cmp2bottombaronrpwide';
+ 
+开始发送post请求
+http://www.kayak.com/s/jsresults?ss=1&poll=1&final=false&updateStamp=1385886542706
+构造post的数据
+lmname=&lmname2=&c=15&s=price&searchid=HGECBJUWKy&itd=&poll=1&seo=false&vw=list&urlViewState=&streaming=true
+同时在header里面加入
+POST /s/jsresults?ss=1&poll=1&final=false&updateStamp=1385886542706 HTTP/1.1
+Host: www.kayak.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.2.10) Gecko/20100914 Firefox/3.6.10
+Accept: text/html, */*; q=0.01
+Accept-Language: zh-cn,zh;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: GB2312,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 115
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Referer: http://www.kayak.com/flights/HKG-SFO/2013-12-13
+Content-Length: 108
+Cookie: Apache=twPRmg-AAABQq1E8Wo-8c-VvoyNw; kayak=rWO1lTLunnLvAyYX5wHT; cluster=5; p1.med.sid=4-56jvM1imS1NlaRllEW0O1; p1.med._hmc=KvtjB9ISLuD-eSWkQI5T3mhFLG4; p1.med.admin=false; p1.med.token=fUkLvdDCo3ryKAXOCEgp3X; NSC_q5-tqbslmf=ffffffff09892a0445525d5f4f58455e445a4a422a59; p1.med.bsc=HlVW8jVxSpbK; im_puid=014b624b-df4a-4d11-aa21-c9690dcf8a90; p1.med.tab=FLIGHTS; p1.med.r9Origin=HKG; p1.med.sc=1; p1.med.searched=true
+Pragma: no-cache
+Cache-Control: no-cache
+
+接着获取返回数据：
+ 
+<div class="exec">
+   Streaming.lastPoll=1385886544079;
+</div>
+
+根据Streaming.lastPoll=1385886544079;开始二次post请求
+http://www.kayak.com/s/jsresults?ss=1&poll=1&final=false&updateStamp=1385886544079
+POST /s/jsresults?ss=1&poll=2&final=false&updateStamp=1385886544079 HTTP/1.1
+Host: www.kayak.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.2.10) Gecko/20100914 Firefox/3.6.10
+Accept: text/html, */*; q=0.01
+Accept-Language: zh-cn,zh;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: GB2312,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 115
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Referer: http://www.kayak.com/flights/HKG-SFO/2013-12-13
+Content-Length: 112
+Cookie: Apache=twPRmg-AAABQq1E8Wo-8c-VvoyNw; kayak=rWO1lTLunnLvAyYX5wHT; cluster=5; p1.med.sid=4-56jvM1imS1NlaRllEW0O1; p1.med._hmc=KvtjB9ISLuD-eSWkQI5T3mhFLG4; p1.med.admin=false; p1.med.token=fUkLvdDCo3ryKAXOCEgp3X; NSC_q5-tqbslmf=ffffffff09892a0445525d5f4f58455e445a4a422a59; p1.med.bsc=HlVW8jVxSpbK; im_puid=014b624b-df4a-4d11-aa21-c9690dcf8a90; p1.med.tab=FLIGHTS; p1.med.r9Origin=HKG; p1.med.sc=1; p1.med.searched=true; __gads=ID=d8de9d8365392445:T=1385886545:S=ALNI_MZzet1GsfZaJmzU9YMlT8RsvzN0Ng
+Pragma: no-cache
+Cache-Control: no-cache
+lmname=&lmname2=&c=15&s=price&searchid=HGECBJUWKy&itd=&poll=2&seo=false&fs=&vw=list&urlViewState=&streaming=true
+
+ 
+依次类推，到最后一次post请求，返回数据中没有时间戳，代替为：<div class="exec first">
+  if(!Streaming.done)
+  {
+    Streaming.dbg("AV=650; TC=650;  FI=577; UP=;");
+    }
+         
+表示完毕
+
+将多次post的返回数据合并，分析出里面的resultid
+ 
+开始循环取每一条数据的details（线路数据）和fare（价格数据包括价格、来源和跳转地址）
+ 
+按照一定目录结构入云
+ 
+结束
