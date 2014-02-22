@@ -1052,6 +1052,8 @@ if code == 200 then
 							local timestamp = os.date("%a, %d %b %Y %X GMT", os.time())
 							for k, v in pairs(union) do
 								-- upload every union data into cloud first and cover old union data[pfiles bunket]
+								--[[
+								-- Cancel Pfiles union data into baidu.
 								local everyunion = JSON.encode(rfid[v]);
 								print("---- begin to set union data into pfiles in baidu");
 								local obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. v .. ".json";
@@ -1102,9 +1104,10 @@ if code == 200 then
 									print(status)
 									print(body)
 								end
+								--]]
 								-- history union data
 								print("---- begin to set compress union data into baidu");
-								sleep(0.03)
+								-- sleep(0.03)
 								local data = zlib.compress(JSON.encode(rfid[v]));
 								cl = string.len(data);
 								-- api post file.
@@ -1353,6 +1356,9 @@ if code == 200 then
 								resjson = resjson .. respbody[i]
 							end
 							print(resjson);
+							print("---- Cancel newest data into pfiles in baidu");
+							-- Cancel the pfiles no compress data set.
+							--[[
 							print("---- begin to set newest data into pfiles in baidu");
 							sleep(0.01)
 							obj = "/intl/ctrip/" .. tkey .. "/" .. org .. dst .. "/main.json";
@@ -1409,6 +1415,7 @@ if code == 200 then
 								print(status)
 								print(body)
 							end
+							--]]
 						else
 							print(code)
 							print("-----upload to baidu failure-------")
