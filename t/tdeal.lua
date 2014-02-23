@@ -95,7 +95,7 @@ if prdata then
 	local check = "";
 	for i = 1, table.getn(pr_xml[2]) do
 		local tmpxml = pr_xml[2][i]
-		-- print(tmpxml["label"])
+		print(tmpxml["label"])
 		if tmpxml["label"] == "MsgType" then
 			check = tmpxml[1]
 		end

@@ -1,0 +1,202 @@
+http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=2614022311000015920&QueryType=1&cityPairAirline=first&withDirectAirline=T&RdNo=2103213618&sPassType=NOR&ind=312,303,315,307
+
+result JSON
+
+queryLogTransNo=2614022311000015920
+RdNo=2103213618
+ind=312,303,315,307
+
+
+
+
+http://flights.ctrip.com/international/SearchFlights.aspx
+POST
+
+
+键	值
+Accept	text/html, application/xhtml+xml, */*
+
+键	值
+Referer	http://flights.ctrip.com/international/
+
+键	值
+Accept-Language	zh-CN
+
+键	值
+User-Agent	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch)
+
+键	值
+Content-Type	application/x-www-form-urlencoded
+
+键	值
+Accept-Encoding	gzip, deflate
+
+键	值
+Proxy-Connection	Keep-Alive
+
+键	值
+Pragma	no-cache
+
+键	值
+DNT	1
+
+
+
+键	值
+Cookie	waitStatus=1393127342383; _bfa=1.1393127197827.bspj2u.1.1393127197827.1393127197827.1.4; _bfs=1.4; _bfi=p1%3D104001%26p2%3D104002%26v1%3D4%26v2%3D3; zdata=zdata=ft4uk70V+KRAwFabiVzLxvIVnL0=; bid=bid=F; i_v=o=0&i=yeisn7&p=4&l=sh02svr2513.4xs2jsbus&s=1; i_s=i=3df0za2; i_b=i=hrzrysdy; __lpi=p=104001&p2=104002; __utma=1.1788188345.1393127205.1393127205.1393127205.1; __utmb=1.6.10.1393127205; __utmc=1; __utmz=1.1393127205.1.1.utmcsr=ctrip.com|utmccn=(referral)|utmcmd=referral|utmcct=/; pv_id=v=2014022302352520; LoginPagePassed=; _abtest_=53586910-21e1-4615-ada0-539daaa405c6; flightintl_searchBoxVals_gb2312=%7B%22multipleRound%22%3A%22S%22%2C%22flightintl_startcity_single%22%3A%22%E5%B9%BF%E5%B7%9E(CAN)%7C32%22%2C%22flightintl_arrivalcity_single%22%3A%22%E9%A6%96%E5%B0%94(SEL)%7C274%7CSEOUL%EF%BC%8CSOUTH%20KOREA%22%2C%22flightintl_startdate_single%22%3A%222014-02-25%22%7D; ASP.NET_SessionId=5honql0n4bpwrsw012wawkfv; AX-20480-flights_international=DJADAIAKFAAA
+
+
+－－－－－
+
+FlightWay=S&homecity_name=香港(HKG)&HomeCityID=58&DDatePeriod1=2014-03-01&destcity1_name=巴黎(PAR)&destcityID=192&ADatePeriod1=&txtBeginAddress1=香港(HKG)&txtDatePeriod1=&txtEndAddress1=巴黎(PAR)&txtBeginCityCode1=58&txtEndCityCode1=192&txtBeginAddress2=&txtDatePeriod2=&txtEndAddress2=&txtBeginCityCode2=&txtEndCityCode2=&txtBeginAddress3=&txtDatePeriod3=&txtEndAddress3=&txtBeginCityCode3=&txtEndCityCode3=&Quantity=1&txtAirline=&Airline=All&childtype=ADT&drpSubClass=Y&hdn_enableCitySelectAjaxCall=1
+
+－－－－－
+Host: flights.ctrip.com
+Proxy-Connection: Keep-Alive
+
+FlightWay=S
+&homecity_name=香港(HKG)
+&HomeCityID=58
+&DDatePeriod1=2014-03-01
+&destcity1_name=巴黎(PAR)
+&destcityID=192
+&ADatePeriod1=
+&txtBeginAddress1=香港(HKG)
+&txtDatePeriod1=
+&txtEndAddress1=巴黎(PAR)
+&txtBeginCityCode1=58
+&txtEndCityCode1=192
+&txtBeginAddress2=
+&txtDatePeriod2=
+&txtEndAddress2=
+&txtBeginCityCode2=
+&txtEndCityCode2=
+&txtBeginAddress3=
+&txtDatePeriod3=
+&txtEndAddress3=
+&txtBeginCityCode3=
+&txtEndCityCode3=
+&Quantity=1
+&txtAirline=
+&Airline=All
+&childtype=ADT
+&drpSubClass=Y
+&hdn_enableCitySelectAjaxCall=1
+
+－－－－－
+
+
+CurrentFirstDomain=ctrip.com&__VIEWSTATE=%2FwEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCTIwMTUtMi0yM2QCBw8PZBYCHwIFCTIwMTUtMi0yM2QCKw8PZBYCHghkaXNhYmxlZAUEdHJ1ZWQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgUFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9zBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X2QFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9vBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbw%3D%3D&CorrelationId=2623019748319074752&ctl00%24MainContentPlaceHolder%24drpFlightWay=S&ctl00%24MainContentPlaceHolder%24txtDCity=%B9%E3%D6%DD%28CAN%29&ctl00%24MainContentPlaceHolder%24dest_city_1=%CA%D7%B6%FB%28SEL%29&ctl00%24MainContentPlaceHolder%24txtDDatePeriod1=2014-02-25&ctl00%24MainContentPlaceHolder%24txtADatePeriod1=&ctl00%24MainContentPlaceHolder%24txtBeginAddress1=%B9%E3%D6%DD%28CAN%29&ctl00%24MainContentPlaceHolder%24txtEndAddress1=%CA%D7%B6%FB%28SEL%29&ctl00%24MainContentPlaceHolder%24txtDatePeriod1=2014-02-25&ctl00%24MainContentPlaceHolder%24txtBeginCityCode1=32&ctl00%24MainContentPlaceHolder%24txtEndCityCode1=274&ctl00%24MainContentPlaceHolder%24txtBeginAddress2=&ctl00%24MainContentPlaceHolder%24txtEndAddress2=&ctl00%24MainContentPlaceHolder%24txtDDatePeriod2=&ctl00%24MainContentPlaceHolder%24txtBeginCityCode2=&ctl00%24MainContentPlaceHolder%24txtEndCityCode2=&ctl00%24MainContentPlaceHolder%24txtBeginAddress3=&ctl00%24MainContentPlaceHolder%24txtEndAddress3=&ctl00%24MainContentPlaceHolder%24txtDDatePeriod3=&ctl00%24MainContentPlaceHolder%24txtBeginCityCode3=&ctl00%24MainContentPlaceHolder%24txtEndCityCode3=&ctl00%24MainContentPlaceHolder%24drpQuantity=1&ctl00%24MainContentPlaceHolder%24ticket_city=&ctl00%24MainContentPlaceHolder%24txtSourceCityID=&ctl00%24MainContentPlaceHolder%24drpSubClass=Y&ctl00%24MainContentPlaceHolder%24selUserType=ADT&txtAirline=&ctl00%24MainContentPlaceHolder%24btnSearchFlight=%CB%D1%CB%F7&ctl00%24MainContentPlaceHolder%24txtDCityID=32&ctl00%24MainContentPlaceHolder%24txtDestcityID=274&ctl00%24MainContentPlaceHolder%24txtOpenJawCityID3=&ctl00%24MainContentPlaceHolder%24txtOpenJawCityID4=&FlightWay=D&HomeCity=&DestCity1=&DestCity2=&TicketAgency_List=&DDatePeriod1=&startPeriod=All&ADatePeriod1=&startPeriod2=All&ChildType=ADU&DSeatClass=Y&Quantity=1&strCorpID=&Airline=All&ExpenseType=PUB&IsFavFull=
+
+
+
+CurrentFirstDomain=ctrip.com
+&__VIEWSTATE=/wEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCTIwMTUtMi0yM2QCBw8PZBYCHwIFCTIwMTUtMi0yM2QCKw8PZBYCHghkaXNhYmxlZAUEdHJ1ZWQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgUFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9zBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X2QFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9vBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbw==
+
+&CorrelationId=2623019748319074752
+
+&ctl00$MainContentPlaceHolder$drpFlightWay=S
+
+&ctl00$MainContentPlaceHolder$txtDCity=广州(CAN)
+
+&ctl00$MainContentPlaceHolder$dest_city_1=首尔(SEL)
+
+&ctl00$MainContentPlaceHolder$txtDDatePeriod1=2014-02-25
+
+&ctl00$MainContentPlaceHolder$txtADatePeriod1=
+
+&ctl00$MainContentPlaceHolder$txtBeginAddress1=广州(CAN)
+
+&ctl00$MainContentPlaceHolder$txtEndAddress1=首尔(SEL)
+
+&ctl00$MainContentPlaceHolder$txtDatePeriod1=2014-02-25
+
+&ctl00$MainContentPlaceHolder$txtBeginCityCode1=32
+
+&ctl00$MainContentPlaceHolder$txtEndCityCode1=274
+
+&ctl00$MainContentPlaceHolder$txtBeginAddress2=
+
+&ctl00$MainContentPlaceHolder$txtEndAddress2=
+
+&ctl00$MainContentPlaceHolder$txtDDatePeriod2=
+
+&ctl00$MainContentPlaceHolder$txtBeginCityCode2=
+
+&ctl00$MainContentPlaceHolder$txtEndCityCode2=
+
+&ctl00$MainContentPlaceHolder$txtBeginAddress3=
+
+&ctl00$MainContentPlaceHolder$txtEndAddress3=
+
+&ctl00$MainContentPlaceHolder$txtDDatePeriod3=
+
+&ctl00$MainContentPlaceHolder$txtBeginCityCode3=
+
+&ctl00$MainContentPlaceHolder$txtEndCityCode3=
+
+&ctl00$MainContentPlaceHolder$drpQuantity=1
+
+&ctl00$MainContentPlaceHolder$ticket_city=
+
+&ctl00$MainContentPlaceHolder$txtSourceCityID=
+
+&ctl00$MainContentPlaceHolder$drpSubClass=Y
+
+&ctl00$MainContentPlaceHolder$selUserType=ADT
+
+&txtAirline=
+
+&ctl00$MainContentPlaceHolder$btnSearchFlight=搜索
+
+&ctl00$MainContentPlaceHolder$txtDCityID=32
+
+&ctl00$MainContentPlaceHolder$txtDestcityID=274
+
+&ctl00$MainContentPlaceHolder$txtOpenJawCityID3=
+
+&ctl00$MainContentPlaceHolder$txtOpenJawCityID4=
+
+&FlightWay=D
+
+&HomeCity=
+
+&DestCity1=
+
+&DestCity2=
+
+&TicketAgency_List=
+
+&DDatePeriod1=
+
+&startPeriod=All
+
+&ADatePeriod1=
+
+&startPeriod2=All
+
+&ChildType=ADU
+
+&DSeatClass=Y
+
+&Quantity=1
+
+&strCorpID=
+
+&Airline=All
+
+&ExpenseType=PUB
+
+&IsFavFull=
+
+
+
+snapshot
+
+1\<input type="hidden" name="ind" id="ind" value="302,301,307,295" />
+2\
+    <input type="hidden" id="queryLogTransNo" name="queryLogTransNo" value="2614022311000015920"/>
+3\	
+	<script language="javascript" type="text/javascript">
+	var FlightList={FlightWay:"S",SortType:"Price",OrderBy:"asc",DCityCode:"CAN",ACityCode:"SEL",GoDate:"2014-2-25 0:00:00",BackDate:"",RdNo:"2103213618"};
+	</script>
