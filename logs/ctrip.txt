@@ -190,6 +190,18 @@ CurrentFirstDomain=ctrip.com
 &IsFavFull=
 
 
+cookie
+---------
+waitStatus=1393644232564; ASP.NET_SessionId=xj5fw502nxmymhdgmt4fyvue; _bfa=1.1393644154172.s0d8ck.1.1393644154172.1393644154172.1.1; _bfs=1.1; _bfi=p1%3D104001%26p2%3D0%26v1%3D1%26v2%3D0; __utma=1.1892391866.1393644154.1393644154.1393644154.1; __utmb=1.2.10.1393644154; __utmc=1; __utmz=1.1393644154.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); i_v=o=0&i=yluegr&p=1&l=sh02svr2503.4xug0xl7c&s=1; i_s=i=3duu3vc; i_b=i=hs8bqwjb; pv_id=v=2014030102423128; AX-20480-flights_domestic=DHACAIAKFAAA; AX-20480-flights_international=EKACAIAKFAAA; flightintl_searchBoxVals_gb2312=%7B%22multipleRound%22%3A%22S%22%2C%22flightintl_startcity_single%22%3A%22%E4%B8%8A%E6%B5%B7(SHA)%7C2%22%2C%22flightintl_arrivalcity_single%22%3A%22%E6%82%89%E5%B0%BC(%E6%BE%B3%E5%A4%A7%E5%88%A9%E4%BA%9A)(SYD)%7C501%7CSYDNEY%EF%BC%8CAUSTRALIA%22%2C%22flightintl_startdate_single%22%3A%222014-03-21%22%7D; __lpi=p=104001&p2=104001
+----------
+waitStatus=1393644232564; ASP.NET_SessionId=xj5fw502nxmymhdgmt4fyvue; _bfa=1.1393644154172.s0d8ck.1.1393644154172.1393644154172.1.1; _bfs=1.1; _bfi=p1=104001&p2=0&v1=1&v2=0; __utma=1.1892391866.1393644154.1393644154.1393644154.1; __utmb=1.2.10.1393644154; __utmc=1; __utmz=1.1393644154.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); i_v=o=0&i=yluegr&p=1&l=sh02svr2503.4xug0xl7c&s=1; i_s=i=3duu3vc; i_b=i=hs8bqwjb; pv_id=v=2014030102423128; AX-20480-flights_domestic=DHACAIAKFAAA; AX-20480-flights_international=EKACAIAKFAAA; flightintl_searchBoxVals_gb2312={"multipleRound":"S","flightintl_startcity_single":"上海(SHA)|2","flightintl_arrivalcity_single":"悉尼(澳大利亚)(SYD)|501|SYDNEY，AUSTRALIA","flightintl_startdate_single":"2014-03-21"}; __lpi=p=104001&p2=104001
+
+-----------
+waitStatus=1393649396424; ASP.NET_SessionId=xj5fw502nxmymhdgmt4fyvue; AX-20480-flights_domestic=DHACAIAKFAAA; userSearchClassGrade=Y; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; __utma=1.1892391866.1393644154.1393644154.1393644154.1; __utmc=1; __utmz=1.1393644154.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.1393644154172.s0d8ck.1.1393644154172.1393644154172.1.2; i_v=o=0&i=yluegr&p=2&l=sh02svr2503.4xug1fe9o&s=1; i_b=i=hs8bqwjb; pv_id=v=2014030102438247; _bfi=p1=104002&p2=104001&v1=2&v2=1; AX-20480-flights_international=EKACAIAKFAAA; flightintl_searchBoxVals_gb2312={"multipleRound":"S","flightintl_startcity_single":"东京(TYO)|228|TOKYO，JAPAN","flightintl_arrivalcity_single":"悉尼(澳大利亚)(SYD)|501|SYDNEY，AUSTRALIA","flightintl_startdate_single":"2014-03-21"}; __lpi=p=104002&p2=104001
+
+------------
+
+waitStatus=1393649618419; ASP.NET_SessionId=xj5fw502nxmymhdgmt4fyvue; AX-20480-flights_domestic=DHACAIAKFAAA; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.1892391866.1393644154.1393644154.1393649400.2; __utmb=1.2.10.1393649400; __utmc=1; __utmz=1.1393644154.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.1393644154172.s0d8ck.1.1393644154172.1393649400916.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030103276201; _bfi=p1=104002&p2=104002&v1=3&v2=2; AX-20480-flights_international=EKACAIAKFAAA; flightintl_searchBoxVals_gb2312={"multipleRound":"S","flightintl_startcity_single":"广州(CAN)|32|GUANGZHOU，CHINA","flightintl_arrivalcity_single":"首尔(SEL)|274|SEOUL，SOUTH KOREA","flightintl_startdate_single":"2014-03-21"}; __lpi=p=104002&p2=104001
 
 snapshot
 
@@ -200,3 +212,13 @@ snapshot
 	<script language="javascript" type="text/javascript">
 	var FlightList={FlightWay:"S",SortType:"Price",OrderBy:"asc",DCityCode:"CAN",ACityCode:"SEL",GoDate:"2014-2-25 0:00:00",BackDate:"",RdNo:"2103213618"};
 	</script>
+	
+	
+	http://www.ctrip.com/rp/uiServer2.asp?action=v1&amp;d=%2527flights.ctrip.com%2527%252C%2527%2Finternational%2FFlightResult.aspx%2527%252C%2527%2527%252C%2527http%253A%2F%2Fflights.ctrip.com%2Finternational%2FFlightResult.aspx%2527%252C%2527104002%2527%252C%2527%2527%252C2092540347%252C%25273%2527%252C12%252C0%252C%2527sh02svr2503.4xuhw1kjj%2527%252C7368229503%252C1393644155447%252C%2527sh02svr2503.4xuhx8rzm%2527%252C%2527%2527%252C1393655626186%252C1393655628982%252C1393655628999%252C0%252C0%252C1393684427691%252C1393684427691%252C%2527MacIntel%2527%252C%2527presto%2Ffalse%2527%252C%25271280x800%2527%252C12%252C%252712%2F0%2527%252C1%252C1%252C%2527en-US%2527%252C1%252C%2527Google%2520Inc.%2527%252C%2527Gecko%2F20030107%2527&amp
+	
+	
+	http://s.c-ctrip.com/bf.gif?ac=record&pv=1393644154172.s0d8ck.3.12&pi=104002&ct=1393656179464&x=-587&y=199&xp=140127_FLI_ZFYX:/BODY/FORM&ppi=104002&va1=140127_fli_zfyx:&va2=&va3=&v=6&rd=18155017&mt=1393656179465&v=2.0.8
+	
+	
+	
+	

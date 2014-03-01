@@ -41,7 +41,8 @@ end
 -- http://yougola.sinaapp.com/checker/?/intl/ctrip/20131201.20131231/shalon
 -- http://yougola.sinaapp.com/checker/?intl/ctrip/20131130.20131230/bjslon
 local sinaapp = false;
-local baseurl = "http://yougola.sinaapp.com/";
+-- local baseurl = "http://yougola.sinaapp.com/";
+local baseurl = "http://bcc.bestfly.cn/";
 local md5uri = "checker/?intl/ctrip/20131130.20131230/bjslon";
 local sinakey = "5P826n55x3LkwK5k88S5b3XS4h30bTRg";
 local timestamp = os.time() + 3600;

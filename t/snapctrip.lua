@@ -54,7 +54,7 @@ function fatchkey (exUrl, exProxy)
 		-- url = "http://cloudavh.com/data-gw/index.php",
 		url = exUrl,
 		proxy = exProxy,
-		timeout = 10000,
+		timeout = 3000,
 		method = "GET", -- POST or GET
 		-- add post content-type and cookie
 		headers = {
@@ -68,6 +68,7 @@ function fatchkey (exUrl, exProxy)
 			-- ["Accept"] = "*/*",
 			["Connection"] = "keep-alive",
 			["Accept"] = "text/html, application/xhtml+xml, */*",
+			["DNT"] = 1,
 			["User-Agent"] = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch)"
 			-- ["Content-Length"] = string.len(request)
 		},
@@ -89,29 +90,44 @@ function fatchkey (exUrl, exProxy)
 		  output = function(byte) output[#output+1] = string.char(byte) end
 		}
 		resbody = table.concat(output)
-		return code, resbody
+		return code, resbody, headers
 	else
-		return code, status
+		return code, status, headers
 	end
 end
 -- static
-local tsproxy = "http://172.16.30.223:8088"
+local tsproxy = "http://172.16.30.229:8088"
+-- local tsproxy = "http://10.123.77.144:808"
 local no01 = "http://flights.ctrip.com/international/";
 local CorrelationId = "";
 local __VIEWSTATE = "";
+local sid = "";
+-- ASP.NET_SessionId=rtx1igbp4bzbwpwlhulbczz2;
+local axf = "";
+-- AX-20480-flights_international
 while true do
-	-- local codenum, resbody = fatchkey (no01, tsproxy)
-	local codenum, resbody = fatchkey (no01)
+	local codenum, resbody, ch = fatchkey (no01, tsproxy)
+	-- local codenum, resbody, ch = fatchkey (no01)
 	if codenum == 200 then
+		-- print(resbody)
+		local tmpcookie = ch["set-cookie"];
+		-- print(tmpcookie)
+		-- print("--------------")
+		local t = {}
+		for x, y in string.gmatch(tmpcookie, "(%D+)=(%w+)") do
+			t[x]=y
+		end
 		for k in string.gmatch(resbody, '<input type="hidden" id="CorrelationId" name="CorrelationId" value="(%w+)"/>') do
 			CorrelationId = k;
 		end
 		-- <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="" />
-		for j in string.gmatch(resbody, '<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="(.+)==" />') do
+		for j in string.gmatch(resbody, '<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="(.+)=" />') do
 		-- for j in string.gmatch(resbody, '<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="(^%w+)" />') do
-			__VIEWSTATE = j .. "==";
+			__VIEWSTATE = j .. "=";
 		end
 		if string.len(CorrelationId) > 3 then
+			sid = t["ASP.NET_SessionId"]
+			axf = t["-flights_international"]
 			break;
 		end
 	end
@@ -119,6 +135,17 @@ end
 print(CorrelationId);
 print("--------------")
 print(__VIEWSTATE);
+print("--------------")
+print(sid, axf);
+print("--------------")
+--flightintl_searchBoxVals_gb2312
+--{"multipleRound":"S","flightintl_startcity_single":"上海(SHA)|2","flightintl_arrivalcity_single":"悉尼(澳大利亚)(SYD)|501|SYDNEY，AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
+--{"multipleRound":"S","flightintl_startcity_single":"东京(TYO)|228|TOKYO，JAPAN","flightintl_arrivalcity_single":"悉尼(澳大利亚)(SYD)|501|SYDNEY，AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
+local timestamp = os.time();
+local flightintl_searchBoxVals_gb2312 = '{"multipleRound":"S","flightintl_startcity_single":"广州(CAN)|32|GUANGZHOU，CHINA","flightintl_arrivalcity_single":"首尔(SEL)|274|SEOUL，SOUTH KOREA","flightintl_startdate_single":"2014-05-01"}';
+local ck = ([=[waitStatus=%s; ASP.NET_SessionId=%s; AX-20480-flights_domestic=DHACAIAKFAAA; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.%s.%s.%s.%s.%s; __utmb=1.2.10.%s; __utmc=1; __utmz=1.1393644154.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.1393644154172.s0d8ck.1.1393644154172.1393649400916.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030103276201; _bfi=p1=104002&p2=104002&v1=3&v2=2; AX-20480-flights_international=%s; flightintl_searchBoxVals_gb2312=%s; __lpi=p=104002&p2=104001
+]=]):format(timestamp, sid, axf, flightintl_searchBoxVals_gb2312)
+print(ck)
 
 local formdata = {};
 
@@ -129,11 +156,11 @@ table.insert(formdata, "CorrelationId=" .. CorrelationId);
 table.insert(formdata, "ctl00$MainContentPlaceHolder$drpFlightWay=S");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCity=广州(CAN)");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$dest_city_1=首尔(SEL)");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDDatePeriod1=2014-03-01");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDDatePeriod1=2014-05-01");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtADatePeriod1=");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginAddress1=广州(CAN)");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndAddress1=首尔(SEL)");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDatePeriod1=2014-03-01");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDatePeriod1=2014-05-01");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginCityCode1=32");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndCityCode1=274");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginAddress2=");
@@ -183,21 +210,7 @@ local intluri = "international/SearchFlights.aspx";
 local nextreq = ""
 print(baseurl .. intluri)
 print(request)
---[[
-Accept	text/html, application/xhtml+xml, */*
-Accept: image/jpeg, image/gif, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
-Referer: http://www.ctrip.com/
-Accept-Language: zh-CN
-User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729)
-Content-Type: application/x-www-form-urlencoded
-UA-CPU: AMD64
-Accept-Encoding: gzip, deflate
-Proxy-Connection: Keep-Alive
-Content-Length: 550
-Host: flights.ctrip.com
-Pragma: no-cache
-Cookie: _bfa=1.1390629488954.z2g51s.1.1393053851217.1393130314914.5.21; zdata=zdata=LYWfe7+2VyJy9JxTgN5QTWO6yk4=; i_v=o=0&i=xenway&p=17&l=sh02svr2481.4xs31p4kb&s=5; __utma=1.914592533.1390629491.1393053852.1393130316.6; __utmz=1.1393051876.4.2.utmcsr=bing|utmccn=(organic)|utmcmd=organic|utmctr=%E6%B5%B7%E5%8F%A3%E9%85%92%E5%BA%97; HotelCityID=206split%E9%95%BF%E6%B2%99splitChangshasplit2014-1-25split2014-01-26split0; _abtest_=89af67b9-a172-4b09-95ab-83c546991dd1; __zpa=9.2.1393051877.1393051946.1.387149; bid=bid=F; zdatactrip=zdatactrip=dff7094c0bed35a3; flightintl_searchBoxVals_gb2312=%7B%22multipleRound%22%3A%22S%22%2C%22flightintl_startcity_single%22%3A%22%5Cu9999%5Cu6e2f(HKG)%7C58%22%2C%22flightintl_arrivalcity_single%22%3A%22%5Cu5df4%5Cu9ece(PAR)%7C192%22%2C%22flightintl_startdate_single%22%3A%222014-03-01%22%2C%22moreflightMin%22%3A3%7D; Session=smartlinkcode=U130727&smartlinklanguage=zh&SmartLinkKeyWord=&SmartLinkQuary=&SmartLinkHost=; Union=AllianceID=4902&SID=130727&OUID=; __zpr=hotels.ctrip.com%7C; AX_WWW-20480=BFACAIAKFAAA; _bfs=1.1; _bfi=p1%3D100101991%26p2%3D0%26v1%3D21%26v2%3D0; __utmb=1.1.10.1393130316; __utmc=1; i_s=i=3dfdes3; i_b=i=hrzttm2z; pv_id=v=2014022302773741; __lpi=p=100101991&p2=100101991; AX-20480-flights_domestic=EPACAIAKFAAA; AX-20480-flights_international=ELACAIAKFAAA
---]]
+
 -- init response table
 local respbody = {};
 -- local hc = http:new()
@@ -206,7 +219,7 @@ local body, code, headers, status = http.request {
 	-- url = "http://gwn.bestfly.cn/login",
 	url = baseurl .. intluri,
 	-- proxy = "http://172.16.30.223:8088",
-	-- proxy = "http://" .. tostring(arg[2]),
+	proxy = tsproxy,
 	timeout = 3000,
 	method = "POST", -- POST or GET
 	-- add post content-type and cookie
@@ -219,6 +232,7 @@ local body, code, headers, status = http.request {
 		["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
 		["Proxy-Connection"] = "keep-alive",
 		["Content-Type"] = "application/x-www-form-urlencoded",
+		["Cookie"] = urlencode(ck),
 		["Content-Length"] = string.len(request),
 		["DNT"] = 1,
 		["Pragma"] = "no-cache",
@@ -246,4 +260,6 @@ resxml = table.concat(output)
 print(code)
 print(status)
 print("--------------")
--- print(resxml)
+print(urlencode(ck))
+print("--------------")
+print(resxml)
