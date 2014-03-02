@@ -16,5 +16,4 @@ i_b=i=hs9wzxlh;
 pv_id=v=2014030203425751; 
 __lpi=p=104001&p2=104001; 
 ASP.NET_SessionId=v211k1re0urc2ifvggdssdbb; 
-AX-20480-flights_international=DNACAIAKFAAA; 
-userSearchClassGrade=Y
+AX-20480-flights_international=DNACAIAKFAAA
