@@ -69,7 +69,7 @@ function fatchkey (exUrl, exProxy)
 			["Connection"] = "keep-alive",
 			["Accept"] = "text/html, application/xhtml+xml, */*",
 			["DNT"] = 1,
-			["User-Agent"] = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch)"
+			["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36"
 			-- ["Content-Length"] = string.len(request)
 		},
 		-- body = formdata,
@@ -96,7 +96,7 @@ function fatchkey (exUrl, exProxy)
 	end
 end
 -- static
-local tsproxy = "http://172.16.30.229:8088"
+local tsproxy = "http://172.16.30.234:8088"
 -- local tsproxy = "http://10.123.77.144:808"
 local no01 = "http://flights.ctrip.com/international/";
 local CorrelationId = "";
@@ -139,13 +139,18 @@ print("--------------")
 print(sid, axf);
 print("--------------")
 --flightintl_searchBoxVals_gb2312
---{"multipleRound":"S","flightintl_startcity_single":"‰∏äÊµ∑(SHA)|2","flightintl_arrivalcity_single":"ÊÇâÂ∞º(Êæ≥Â§ßÂà©‰∫ö)(SYD)|501|SYDNEYÔºåAUSTRALIA","flightintl_startdate_single":"2014-03-21"}
---{"multipleRound":"S","flightintl_startcity_single":"‰∏ú‰∫¨(TYO)|228|TOKYOÔºåJAPAN","flightintl_arrivalcity_single":"ÊÇâÂ∞º(Êæ≥Â§ßÂà©‰∫ö)(SYD)|501|SYDNEYÔºåAUSTRALIA","flightintl_startdate_single":"2014-03-21"}
+--{"multipleRound":"S","flightintl_startcity_single":"…œ∫£(SHA)|2","flightintl_arrivalcity_single":"œ§ƒ·(∞ƒ¥Û¿˚—«)(SYD)|501|SYDNEY£¨AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
+--{"multipleRound":"S","flightintl_startcity_single":"∂´æ©(TYO)|228|TOKYO£¨JAPAN","flightintl_arrivalcity_single":"œ§ƒ·(∞ƒ¥Û¿˚—«)(SYD)|501|SYDNEY£¨AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
 local timestamp = os.time();
-local flightintl_searchBoxVals_gb2312 = '{"multipleRound":"S","flightintl_startcity_single":"ÂπøÂ∑û(CAN)|32|GUANGZHOUÔºåCHINA","flightintl_arrivalcity_single":"È¶ñÂ∞î(SEL)|274|SEOULÔºåSOUTH KOREA","flightintl_startdate_single":"2014-05-01"}';
-local ck = ([=[waitStatus=%s; ASP.NET_SessionId=%s; AX-20480-flights_domestic=DHACAIAKFAAA; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.%s.%s.%s.%s.%s; __utmb=1.2.10.%s; __utmc=1; __utmz=1.1393644154.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.1393644154172.s0d8ck.1.1393644154172.1393649400916.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030103276201; _bfi=p1=104002&p2=104002&v1=3&v2=2; AX-20480-flights_international=%s; flightintl_searchBoxVals_gb2312=%s; __lpi=p=104002&p2=104001
-]=]):format(timestamp, sid, axf, flightintl_searchBoxVals_gb2312)
+local waitStatus = timestamp * 1000 + math.random(111,999)
+
+local flightintl_searchBoxVals_gb2312 = urlencode('{"multipleRound":"S","flightintl_startcity_single":"π„÷›(CAN)|32|GUANGZHOU£¨CHINA","flightintl_arrivalcity_single":" ◊∂˚(SEL)|274|SEOUL£¨SOUTH KOREA","flightintl_startdate_single":"2014-05-01"}');
+local ck = ([=[waitStatus=%s; ASP.NET_SessionId=%s; AX-20480-flights_domestic=%s; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.914592533.%s.%s.%s.%s; __utmb=1.2.10.%s; __utmc=1; __utmz=1.%s.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.%s.s0d8ck.1.%s.%s.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030118206201; _bfi=p1=104002&p2=104002&v1=3&v2=2; AX-20480-flights_international=%s; flightintl_searchBoxVals_gb2312=%s; __lpi=p=104002&p2=104001
+]=]):format(waitStatus, sid, "DHAC" .. string.sub(axf, 5, -1), timestamp - 1100372, timestamp - 100372, timestamp - 372, math.random(1,9), timestamp - 100370, timestamp - 100370, waitStatus - 1100102343, waitStatus - 100102343, waitStatus - 102343, axf, flightintl_searchBoxVals_gb2312)
+
+-- __utma=1.914592533.1390629491.1393130316.1393657216.7
 print(ck)
+print("--------------")
 
 local formdata = {};
 
@@ -154,12 +159,12 @@ table.insert(formdata, "__VIEWSTATE=" .. __VIEWSTATE);
 table.insert(formdata, "CorrelationId=" .. CorrelationId);
 
 table.insert(formdata, "ctl00$MainContentPlaceHolder$drpFlightWay=S");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCity=ÂπøÂ∑û(CAN)");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$dest_city_1=È¶ñÂ∞î(SEL)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCity=π„÷›(CAN)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$dest_city_1= ◊∂˚(SEL)");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDDatePeriod1=2014-05-01");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtADatePeriod1=");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginAddress1=ÂπøÂ∑û(CAN)");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndAddress1=È¶ñÂ∞î(SEL)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginAddress1=π„÷›(CAN)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndAddress1= ◊∂˚(SEL)");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDatePeriod1=2014-05-01");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginCityCode1=32");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndCityCode1=274");
@@ -179,7 +184,7 @@ table.insert(formdata, "ctl00$MainContentPlaceHolder$txtSourceCityID=");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$drpSubClass=Y");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$selUserType=ADT");
 table.insert(formdata, "txtAirline=");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$btnSearchFlight=ÊêúÁ¥¢");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$btnSearchFlight=À—À˜");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCityID=32");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDestcityID=274");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtOpenJawCityID3=");
@@ -205,12 +210,12 @@ local form_data = table.concat(formdata, "&");
 
 request = urlencode(form_data)
 local baseurl = "http://flights.ctrip.com/";
--- international/FlightResult.aspx
+-- http://flights.ctrip.com/international/FlightResult.aspx
+-- http://flights.ctrip.com/international/SearchFlights.aspx
 local intluri = "international/SearchFlights.aspx";
-local nextreq = ""
+-- local intluri = "international/FlightResult.aspx";
 print(baseurl .. intluri)
 print(request)
-
 -- init response table
 local respbody = {};
 -- local hc = http:new()
@@ -226,18 +231,20 @@ local body, code, headers, status = http.request {
 	headers = {
 		["Host"] = "flights.ctrip.com",
 		-- ["Host"] = "gwn.bestfly.cn",
-		["Accept-Language"] = "zh-CN",
+		["Accept-Language"] = "en-US,en;q=0.8,zh-CN;q=0.6,zh-TW;q=0.4",
 		["Referer"] = "http://flights.ctrip.com/international/",
 		["Accept-Encoding"] = "gzip, deflate",
 		["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+		["Cache-Control"] = "max-age=0",
+		["Origin"] = "http://flights.ctrip.com",
 		["Proxy-Connection"] = "keep-alive",
 		["Content-Type"] = "application/x-www-form-urlencoded",
-		["Cookie"] = urlencode(ck),
+		["Cookie"] = ck,
 		["Content-Length"] = string.len(request),
 		["DNT"] = 1,
 		["Pragma"] = "no-cache",
 		-- ["Content-Length"] = string.len(form_data),
-		["User-Agent"] = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch)"
+		["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36"
 	},
 	-- body = formdata,
 	-- source = ltn12.source.string(form_data);
@@ -259,7 +266,5 @@ deflate.gunzip {
 resxml = table.concat(output)
 print(code)
 print(status)
-print("--------------")
-print(urlencode(ck))
 print("--------------")
 print(resxml)
