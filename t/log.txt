@@ -1,48 +1,73 @@
-5952939548091899959
+700449729777601325
 --------------
 /wEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCDIwMTUtMy0yZAIHDw9kFgIfAgUIMjAxNS0zLTJkAisPD2QWAh4IZGlzYWJsZWQFBHRydWVkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYFBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X3MFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9kBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X28=
 --------------
-0o3eafvoacq50j2iv03q2fw3	FHADAIAKFAAA
+w4p30hva1r0viltfy5nf24sz	DMACAIAKFAAA
 --------------
-waitStatus=1393742170111; ASP.NET_SessionId=0o3eafvoacq50j2iv03q2fw3; AX-20480-flights_domestic=DHACAIAKFAAA; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.914592533.1392641798.1393641798.1393741798.2; __utmb=1.2.10.1393641800; __utmc=1; __utmz=1.1393641800.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.1392642067768.s0d8ck.1.1393642067768.1393742067768.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030214356201; _bfi=p1=104002&p2=104002&v1=3&v2=2; zdatactrip=zdatactrip=dff7094c0bed35a3; AX-20480-flights_international=FHADAIAKFAAA; flightintl_searchBoxVals_gb2312=%7b%22multipleRound%22%3a%22S%22%2c%22flightintl_startcity_single%22%3a%22%b9%e3%d6%dd%28CAN%29%7c32%7cGUANGZHOU%a3%acCHINA%22%2c%22flightintl_arrivalcity_single%22%3a%22%ca%d7%b6%fb%28SEL%29%7c274%7cSEOUL%a3%acSOUTH%20KOREA%22%2c%22flightintl_startdate_single%22%3a%222014-05-01%22%7d; __lpi=p=104002&p2=104001
-
+waitStatus=1393751970111; ASP.NET_SessionId=w4p30hva1r0viltfy5nf24sz; AX-20480-flights_domestic=DHACAIAKFAAA; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.914592533.1392651598.1393651598.1393751598.2; __utmb=1.2.10.1393651600; __utmc=1; __utmz=1.1393651600.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.1392651867768.s0d8ck.1.1393651867768.1393751867768.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030217193075; _bfi=p1=104002&p2=104002&v1=3&v2=2; zdatactrip=zdatactrip=dff7094c0bed35a3; AX-20480-flights_international=DMACAIAKFAAA; flightintl_searchBoxVals_gb2312=%7b%22multipleRound%22%3a%22S%22%2c%22flightintl_startcity_single%22%3a%22%b9%e3%d6%dd%28CAN%29%7c32%7cGUANGZHOU%a3%acCHINA%22%2c%22flightintl_arrivalcity_single%22%3a%22%ca%d7%b6%fb%28SEL%29%7c274%7cSEOUL%a3%acSOUTH%20KOREA%22%2c%22flightintl_startdate_single%22%3a%222014-05-01%22%7d; __lpi=p=104002&p2=104001
 --------------
 http://flights.ctrip.com/international/SearchFlights.aspx
-CurrentFirstDomain%3dctrip.com%26__VIEWSTATE%3d%2fwEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCDIwMTUtMy0yZAIHDw9kFgIfAgUIMjAxNS0zLTJkAisPD2QWAh4IZGlzYWJsZWQFBHRydWVkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYFBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X3MFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9kBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X28%3d%26CorrelationId%3d5952939548091899959%26ctl00%24MainContentPlaceHolder%24drpFlightWay%3dS%26ctl00%24MainContentPlaceHolder%24txtDCity%3d%b9%e3%d6%dd%28CAN%29%26ctl00%24MainContentPlaceHolder%24dest_city_1%3d%ca%d7%b6%fb%28SEL%29%26ctl00%24MainContentPlaceHolder%24txtDDatePeriod1%3d2014-05-01%26ctl00%24MainContentPlaceHolder%24txtADatePeriod1%3d%26ctl00%24MainContentPlaceHolder%24txtBeginAddress1%3d%b9%e3%d6%dd%28CAN%29%26ctl00%24MainContentPlaceHolder%24txtEndAddress1%3d%ca%d7%b6%fb%28SEL%29%26ctl00%24MainContentPlaceHolder%24txtDatePeriod1%3d2014-05-01%26ctl00%24MainContentPlaceHolder%24txtBeginCityCode1%3d32%26ctl00%24MainContentPlaceHolder%24txtEndCityCode1%3d274%26ctl00%24MainContentPlaceHolder%24txtBeginAddress2%3d%26ctl00%24MainContentPlaceHolder%24txtEndAddress2%3d%26ctl00%24MainContentPlaceHolder%24txtDDatePeriod2%3d%26ctl00%24MainContentPlaceHolder%24txtBeginCityCode2%3d%26ctl00%24MainContentPlaceHolder%24txtEndCityCode2%3d%26ctl00%24MainContentPlaceHolder%24txtBeginAddress3%3d%26ctl00%24MainContentPlaceHolder%24txtEndAddress3%3d%26ctl00%24MainContentPlaceHolder%24txtDDatePeriod3%3d%26ctl00%24MainContentPlaceHolder%24txtBeginCityCode3%3d%26ctl00%24MainContentPlaceHolder%24txtEndCityCode3%3d%26ctl00%24MainContentPlaceHolder%24drpQuantity%3d1%26ctl00%24MainContentPlaceHolder%24ticket_city%3d%26ctl00%24MainContentPlaceHolder%24txtSourceCityID%3d%26ctl00%24MainContentPlaceHolder%24drpSubClass%3dY%26ctl00%24MainContentPlaceHolder%24selUserType%3dADT%26txtAirline%3d%26ctl00%24MainContentPlaceHolder%24btnSearchFlight%3d%cb%d1%cb%f7%26ctl00%24MainContentPlaceHolder%24txtDCityID%3d32%26ctl00%24MainContentPlaceHolder%24txtDestcityID%3d274%26ctl00%24MainContentPlaceHolder%24txtOpenJawCityID3%3d%26ctl00%24MainContentPlaceHolder%24txtOpenJawCityID4%3d%26FlightWay%3dD%26HomeCity%3d%26DestCity1%3d%26DestCity2%3d%26TicketAgency_List%3d%26DDatePeriod1%3d%26startPeriod%3dAll%26ADatePeriod1%3d%26startPeriod2%3dAll%26ChildType%3dADU%26DSeatClass%3dY%26Quantity%3d1%26strCorpID%3d%26Airline%3dAll%26ExpenseType%3dPUB%26IsFavFull%3d
+CurrentFirstDomain%3dctrip.com%26__VIEWSTATE%3d%2fwEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCDIwMTUtMy0yZAIHDw9kFgIfAgUIMjAxNS0zLTJkAisPD2QWAh4IZGlzYWJsZWQFBHRydWVkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYFBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X3MFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9kBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X28%3d%26CorrelationId%3d700449729777601325%26ctl00%24MainContentPlaceHolder%24drpFlightWay%3dS%26ctl00%24MainContentPlaceHolder%24txtDCity%3d%b9%e3%d6%dd%28CAN%29%26ctl00%24MainContentPlaceHolder%24dest_city_1%3d%ca%d7%b6%fb%28SEL%29%26ctl00%24MainContentPlaceHolder%24txtDDatePeriod1%3d2014-05-01%26ctl00%24MainContentPlaceHolder%24txtADatePeriod1%3d%26ctl00%24MainContentPlaceHolder%24txtBeginAddress1%3d%b9%e3%d6%dd%28CAN%29%26ctl00%24MainContentPlaceHolder%24txtEndAddress1%3d%ca%d7%b6%fb%28SEL%29%26ctl00%24MainContentPlaceHolder%24txtDatePeriod1%3d2014-05-01%26ctl00%24MainContentPlaceHolder%24txtBeginCityCode1%3d32%26ctl00%24MainContentPlaceHolder%24txtEndCityCode1%3d274%26ctl00%24MainContentPlaceHolder%24txtBeginAddress2%3d%26ctl00%24MainContentPlaceHolder%24txtEndAddress2%3d%26ctl00%24MainContentPlaceHolder%24txtDDatePeriod2%3d%26ctl00%24MainContentPlaceHolder%24txtBeginCityCode2%3d%26ctl00%24MainContentPlaceHolder%24txtEndCityCode2%3d%26ctl00%24MainContentPlaceHolder%24txtBeginAddress3%3d%26ctl00%24MainContentPlaceHolder%24txtEndAddress3%3d%26ctl00%24MainContentPlaceHolder%24txtDDatePeriod3%3d%26ctl00%24MainContentPlaceHolder%24txtBeginCityCode3%3d%26ctl00%24MainContentPlaceHolder%24txtEndCityCode3%3d%26ctl00%24MainContentPlaceHolder%24drpQuantity%3d1%26ctl00%24MainContentPlaceHolder%24ticket_city%3d%26ctl00%24MainContentPlaceHolder%24txtSourceCityID%3d%26ctl00%24MainContentPlaceHolder%24drpSubClass%3dY%26ctl00%24MainContentPlaceHolder%24selUserType%3dADT%26txtAirline%3d%26ctl00%24MainContentPlaceHolder%24btnSearchFlight%3d%cb%d1%cb%f7%26ctl00%24MainContentPlaceHolder%24txtDCityID%3d32%26ctl00%24MainContentPlaceHolder%24txtDestcityID%3d274%26ctl00%24MainContentPlaceHolder%24txtOpenJawCityID3%3d%26ctl00%24MainContentPlaceHolder%24txtOpenJawCityID4%3d%26FlightWay%3dD%26HomeCity%3d%26DestCity1%3d%26DestCity2%3d%26TicketAgency_List%3d%26DDatePeriod1%3d%26startPeriod%3dAll%26ADatePeriod1%3d%26startPeriod2%3dAll%26ChildType%3dADU%26DSeatClass%3dY%26Quantity%3d1%26strCorpID%3d%26Airline%3dAll%26ExpenseType%3dPUB%26IsFavFull%3d
 200
 HTTP/1.1 200
 --------------
 <!DOCTYPE html>
 <html>
-<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=Gb2312" /><meta name="description" content="携程国际飞机票提供国际飞机票查询,国际机票预订和国际特价机票查询,国际打折机票查询服务。携程国际机票同时提供国际航班查询,国际机票查询时刻表及票价,是您网上预订特价国际机票,打折便宜机票的首选。" /><meta name="keywords" content="国际机票,国际机票预订,国际机票查询,国际飞机票,国际飞机票查询,国际特价机票,国际打折机票,订国际机票,国际机票价格查询,国际特价机票查询,国际飞机票价查询,国际航班" /><title>国际机票查询,国际航班预订,国际特价机票价格查询【携程国际机票】</title>
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=Gb2312" /><meta name="description" content="携程旅行网提供广州(CAN)到首尔(SEL)机票预订服务，超低的折扣价格，优质的预订服务，安全的支付平台，覆盖全国的服务网络，是您购买广州(CAN)到首尔(SEL)单程机票的首选。" /><meta name="keywords" content="广州(CAN)到首尔(SEL)机票预订, 广州(CAN)到首尔(SEL)航班查询, 广州(CAN)到首尔(SEL)单程机票" />
     <style type="text/css">
         #base_bd, .cui_nav, .cui_hd { width:950px; margin:0 auto; }
     </style>
 <title>
-	国际机票查询-国际航班预订-国际机票价格-国际特价机票-携程国际机票预订
+	广州(CAN)到首尔(SEL)机票预订-广州(CAN)到首尔(SEL)单程机票查询-携程国际机票
 </title></head>
 <body id="mainbody">
-<link href="http://webresource.c-ctrip.com/styles/common/public_flights_logo.css?releaseNo=PRO_20140225180000.css" type="text/css" rel="stylesheet" /><link href="http://webresource.c-ctrip.com/styles/common/cui110425.css" type="text/css" rel="stylesheet" /><link href="http://webresource.c-ctrip.com/ResFltIntlOnline/R8/Booking/css/fltinternational100913/private_index.css?releaseno=PRO_20140225180000" type="text/css" rel="stylesheet" />
-<form name="aspnetForm" method="post" action="./SearchFlights.aspx" id="aspnetForm">
+<link rel="stylesheet" type="text/css" href="http://webresource.c-ctrip.com/priceblur/f20/8d231e0129dc48d48a51f4e6fe0086a7.css" /><link rel="stylesheet" type="text/css" href="http://webresource.c-ctrip.com/priceblur/f14/3fe63154c9a64b7f8188989e8d0cb52d.css" /><link rel="stylesheet" type="text/css" href="http://webresource.c-ctrip.com/priceblur/f15/dd35415c01cd432a986bc1383eaa8825.css" /><link rel="stylesheet" type="text/css" href="http://webresource.c-ctrip.com/priceblur/f16/961292c0b05b40dbaf258cd4e75cb139.css" />
+<link href="http://webresource.c-ctrip.com/styles/common/cui110425.css?releaseNo=PRO_20140225180000.css" type="text/css" rel="stylesheet" /><link href="http://webresource.c-ctrip.com/styles/common/public_flights_logo.css?releaseNo=PRO_20140225180000.css" type="text/css" rel="stylesheet" /><link href="http://webresource.c-ctrip.com/ResFltIntlOnline/R8/Booking/css/fltinternational100913/fltinternational_130717.css?releaseno=PRO_20140225180000" type="text/css" rel="stylesheet" />
+<form name="aspnetForm" method="post" action="FlightResult.aspx" id="aspnetForm">
 <div>
+<input type="hidden" name="hidOrderID" id="hidOrderID" value="0" />
+<input type="hidden" name="SearchParameterID" id="SearchParameterID" value="363333" />
+<input type="hidden" name="CurrentDomain" id="CurrentDomain" value="www.ctrip.com" />
 <input type="hidden" name="CurrentFirstDomain" id="CurrentFirstDomain" value="ctrip.com" />
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCDIwMTUtMy0yZAIHDw9kFgIfAgUIMjAxNS0zLTJkAisPD2QWAh4IZGlzYWJsZWQFBHRydWVkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYFBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X3MFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9kBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X28=" />
+<input type="hidden" name="hidDDate1" id="hidDDate1" value="2014-5-1" />
+<input type="hidden" name="hidCorpID" id="hidCorpID" value="" />
+<input type="hidden" name="ind" id="ind" value="443,446,426,446" />
+<input type="hidden" name="AllPriceParam" id="AllPriceParam" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTkxNzY1OTA3MQ9kFgJmD2QWAgIBD2QWAmYPZBYQZg8WAh4EVGV4dAUj5bm/5bee4oaS6aaW5bCUKOmfqeWbvSnvvIjljZXnqIvvvIlkAgEPZBYCAgIPFgIeB1Zpc2libGVoZAICD2QWAmYPFgIfAWhkAgQPZBYEZg8WAh8ABaUB5Ye65Y+R5pel5pyf77yaPHNwYW4+MjAxNOW5tDXmnIgx5pelPC9zcGFuPu+8iDxzcGFuIGlkPSJzcGFuV2FpdEZvck1vcmUiPjxzcGFuIGNsYXNzPSJzaG93X2xvYWRpbmciPiZuYnNwOzwvc3Bhbj7or7fnqI3nrYnvvIzmraPlnKjkuLrmgqjmn6Xor6Lmm7TlpJrkvY7ku7c8L3NwYW4+77yJZAIBD2QWAmYPEGRkFgFmZAIFD2QWAgICD2QWCAIBDxBkZBYBZmQCAw8QZGQWAWZkAgUPEGRkFgFmZAIGDxBkZBYBZmQCCA9kFgJmDw8WAh4LTmF2aWdhdGVVcmwFa34vQ3VzdG9tUXVlcnkuYXNweD9kY2l0eWlkPTMyJmFjaXR5aWQ9Mjc0JmNwY2l0eWlkPTImZGRhdGU9MjAxNC01LTEmZGRhdGUyPSZ0eXBlPVMmcHR5cGU9QURUJnBudW09MSZjbGFzcz1ZZGQCCQ9kFgICAQ8WAh8BZxYCZg8PFgQfAAUR5bm/5beeIOiHsyDpppblsJQfAgUXfi9TY2hlZHVsZS9jYW4tc2VsLmh0bWxkZAILDw9kFgIeBXN0eWxlBRJ2aXNpYmlsaXR5OmhpZGRlbjtkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBT1jdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJFF1aWNrU2VhcmNoQ29udHJvbCRmbGlnaHRfZGlyZWN0" />
 </div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
 
     <div id="jsContainer" class="jsContainer" style="height:0">
         <textarea id="jsSaveStatus" style="display:none;"></textarea>
         <div id="tuna_alert" style="display:none;position:absolute;z-index:999;overflow:hidden;"></div>
         <div id="tuna_jmpinfo" style="visibility:hidden;position:absolute;z-index:120;"></div>
-        <div style="position:absolute;top:0; z-index: 120;display:none" id="tuna_calendar" class="tuna_calendar"></div>
-        <div id="jmp_text1" style="display:none" class="base_jmp jmp_text base_jmp_t"><div id="Div2" class="jmp_bd">${data}</div></div>
-        <div class="address_hot" style="display:none;top:0;-moz-box-shadow:2px 2px 5px #333;-webkit-box-shadow:2px 2px 5px #333;" id="address_hot">{$text}</div>
+        <div style="position: absolute;top:0; z-index: 120;display:none" id="tuna_calendar" class="tuna_calendar"></div>
     </div>
     <input type="hidden" id="releaseno" value="?releaseno=PRO_20140225180000" />
     <input type="hidden" id="resourceURL" value="http://webresource.c-ctrip.com/ResFltIntlOnline/R8/Booking/online/home/" />
     <input type="hidden" id="hdn_fltIntlSiteName" value="flights.ctrip.com" />
-    <input type="hidden" id="hdn_fltIntlHeaderName" value="IntlFltHeaderNew" />     
-    <input type="hidden" id="randomNumber" value="1869984431620135" />             
-        <input type="hidden" id="CorrelationId" name="CorrelationId" value="7160542199216596768"/><link href="http://webresource.c-ctrip.com/ResCRMOnline/r1/pageheader/css/pageheader.css?temp=20140218" rel="stylesheet" />
+    <input type="hidden" id="hdn_fltIntlHeaderName" value="IntlFltHeader" />
+    <input type="hidden" id="randomNumber" value="1545413680255386" />
+        <input type="hidden" id="CorrelationId" name="CorrelationId" value="6875304512139038931"/><link href="http://webresource.c-ctrip.com/ResCRMOnline/r1/pageheader/css/pageheader.css?temp=20140218" rel="stylesheet" />
 
 
 
@@ -166,109 +191,87 @@ HTTP/1.1 200
 </div>
         <ul id="base_wrapper">
         
+<li id="base_bd">
+    <script type="text/javascript">
+        function bookingMousedownValidation() { return false; }
+        function getFilterResult() { }    //低价看板
+    </script>
+	<h2 class="flt_headline">广州→首尔(韩国)（单程）</h2>
+     
 
-<li id="base_bd" class="prindex_wrapper">
-        <!--公告栏-->
+	
+<!-- 搜索模块 -->
+<!-- 单程需增加： search_way_single ；往返需增加： search_way_round ；多程仅保留：search_multiple_line； -->
+<div id="search_form" class="search_form search_multiple_line search_way_single layoutfix clearfix">
+    
+	<div class="flight_way" style="width:130px;">
+	    <select name="ctl00$MainContentPlaceHolder$QuickSearchControl$selflightType" id="ctl00_MainContentPlaceHolder_QuickSearchControl_selflightType">
+	<option selected="selected" value="S">单程</option>
+	<option value="D">往返</option>
+	<option value="M">多程(含缺口程)</option>
+</select>
+	</div>
+
+	<div class="flight_attribute">
+    <ul  id="flight_multiple">
+		<li id="ctl00_MainContentPlaceHolder_QuickSearchControl_flight1" class="first_line" style="opacity: 1; background: none repeat scroll 0% 0% transparent;">
+			<span class="line_num">第<em>1</em>程</span>
+				<label class="flight_item1">
+					<span class="span_text">出发城市<b class="base_warning">*</b></span>
+					<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtBeginAddress1" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress1" mod_address_suggest="@Beijing|北京|BJS@Shanghai|上海|SHA@Shenzhen|深圳|SZX@Guangzhou|广州|CAN@Qingdao|青岛|TAO@Chengdu|成都|CTU@Hangzhou|杭州|HGH@Wuhan|武汉|WUH@Tianjin|天津|TSN@Dalian|大连|DLC@Xiamen|厦门|XMN@Chongqing|重庆|CKG@" mod_save_id="flightintl_startcity_single" value="广州(CAN)" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_start" mod_address_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginCityCode1" mod="address|notice" mod_address_tpl="address" /><a id="aChangeCity" class="ico_change2" href="javascript:void(0);" title="互换出发到达城市"></a>
+				</label>
+				<label class="flight_item2">
+					<span class="span_text">到达城市<b class="base_warning">*</b></span>
+					<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtEndAddress1" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress1" mod_next_value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress2" mod_address_suggest="@Beijing|北京|BJS@Shanghai|上海|SHA@Shenzhen|深圳|SZX@Guangzhou|广州|CAN@Qingdao|青岛|TAO@Chengdu|成都|CTU@Hangzhou|杭州|HGH@Wuhan|武汉|WUH@Tianjin|天津|TSN@Dalian|大连|DLC@Xiamen|厦门|XMN@Chongqing|重庆|CKG@" mod_save_id="flightintl_arrivalcity_single" value="首尔(SEL)" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_dest" mod_address_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndCityCode1" mod="address|notice" mod_address_ver="2" mod_address_tpl="address" />
+
+				</label>
+				<label class="flight_item3">
+					<span class="span_text">出发日期<b class="base_warning">*</b></span>
+					<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtDDatePeriod1" type="text" value="2014-5-1" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod1" class="input_text" mod="calendar|notice" mod_address_ver="2" mod_save_id="flightintl_startdate_single" mod_notice_tip="yyyy-mm-dd" mod_calendar_focusNext="ctl00_MainContentPlaceHolder_QuickSearchControl_txtADatePeriod1~1" mod_calendar_rangestart="#" />
+				</label>
+				<label class="flight_item4">
+					<span class="span_text">返回日期<b class="base_warning">*</b></span>
+					<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtADatePeriod1" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtADatePeriod1" class="input_text" mod_calendar_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod1" mod="calendar|notice" mod_address_ver="2" mod_notice_tip="yyyy-mm-dd" mod_save_id="flightintl_backdate_single" mod_calendar_rangestart="#" />
+				</label>
+				<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtBeginCityCode1" type="hidden" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginCityCode1" value="32" />
+				<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtEndCityCode1" type="hidden" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndCityCode1" value="274" />
+		</li>
+		<li class="second_line" id="flight2" style="opacity: 1; background: none repeat scroll 0% 0% transparent;">
+			<span class="line_num">第<em>2</em>程</span>
+				<label class="flight_item1">
+					<span class="span_text">出发城市<b class="base_warning">*</b></span>
+					<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtBeginAddress2" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress2" mod_address_suggest="@Beijing|北京|BJS@Shanghai|上海|SHA@Shenzhen|深圳|SZX@Guangzhou|广州|CAN@Qingdao|青岛|TAO@Chengdu|成都|CTU@Hangzhou|杭州|HGH@Wuhan|武汉|WUH@Tianjin|天津|TSN@Dalian|大连|DLC@Xiamen|厦门|XMN@Chongqing|重庆|CKG@" autocomplete="off" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_start" mod_address_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginCityCode2" mod="address|notice" mod_address_tpl="address" />
+
+
+				</label>
+				<label class="flight_item2">
+					<span class="span_text">到达城市<b class="base_warning">*</b></span>
+					<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtEndAddress2" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress2" mod_next_value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress3" mod_address_suggest="@Beijing|北京|BJS@Shanghai|上海|SHA@Shenzhen|深圳|SZX@Guangzhou|广州|CAN@Qingdao|青岛|TAO@Chengdu|成都|CTU@Hangzhou|杭州|HGH@Wuhan|武汉|WUH@Tianjin|天津|TSN@Dalian|大连|DLC@Xiamen|厦门|XMN@Chongqing|重庆|CKG@" autocomplete="off" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_dest" mod_address_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndCityCode2" mod="address|notice" mod_address_tpl="address" />
+
+				</label>
+				<label class="flight_item3">
+					<span class="span_text">出发日期<b class="base_warning">*</b></span>
+                    <input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtDDatePeriod2" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod2" class="input_text" mod_calendar_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod1" mod_calendar_focusnext="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod3" mod="calendar|notice" mod_address_ver="2" mod_notice_tip="yyyy-mm-dd" mod_calendar_rangestart="#" />
+				</label>
+				<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtBeginCityCode2" type="hidden" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginCityCode2" />
+				<input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtEndCityCode2" type="hidden" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndCityCode2" />
+		</li>
         
-        <!--公告栏 end-->
-        <ul class="prindex_content layoutfix">
-            <li class="prindex_grid first">
-                <div class="box_search" id="box_search">
-                    <h2 class="searchbox_headline">
-                        <a href="http://flights.ctrip.com" class="link_integral">国内机票&raquo;</a><span>查询国际及港澳台地区航班</span></h2>
-                    <div class="search_content"  >
-                        <!--费用类型-->
-                        
-                        <!--航程类型-->
-                        <div class="search_type" id="search_type">
-                            航程类型
-                            <label class="base_label">
-                                <input id="ctl00_MainContentPlaceHolder_flight_way_s" type="radio" name="ctl00$MainContentPlaceHolder$drpFlightWay" value="S" />单程</label>
-                            <label class="base_label">
-                                <input id="ctl00_MainContentPlaceHolder_flight_way_d" type="radio" name="ctl00$MainContentPlaceHolder$drpFlightWay" value="D" checked="checked" />往返</label>
-                            <label class="base_label">
-                                <input id="ctl00_MainContentPlaceHolder_flight_way_o" type="radio" name="ctl00$MainContentPlaceHolder$drpFlightWay" value="M" />多程 (<span class="base_txtdiv" id="ddd_jmpinfo_m" mod="jmpInfo" mod_jmpinfo_page="jmp_title" mod_jmpinfo_position="bottomLeft-topLeft"
 
-                                        mod_jmpinfo_content="多程（含缺口）|<strong>多程：</strong>始发地到最终目的地之间，可经过多个机场中转或停留的航程。<br /><strong>缺口程：</strong>三地或四地之间的航程，缺口形式例如A-B，C-D，AD和BC可分别为同一区域的不同城市。">含缺口程</span>)</label>
-                        </div>
-                        <!--单程-->
-                        <ul class="search_item search_round" id="single_line">
-                            <li><b>*</b>出发城市<br />
-                                <input name="ctl00$MainContentPlaceHolder$txtDCity" type="text" id="ctl00_MainContentPlaceHolder_txtDCity" autocomplete="off" mod_address_source="flightintl_start" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_save_id="flightintl_startcity_single" mod_save_value="true" mod_address_reference="ctl00_MainContentPlaceHolder_txtDCityID" mod="address|notice" mod_address_tpl="address" />
-                                    <a id="aChangeCity" class="ico_change" href="javascript:void(0);" title="互换出发到达城市" tabindex="-1"></a>
-                            </li>
-                            <li><b>*</b>到达城市<br />
-                                <input name="ctl00$MainContentPlaceHolder$dest_city_1" type="text" id="ctl00_MainContentPlaceHolder_dest_city_1" autocomplete="off" mod_address_source="flightintl_dest" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_save_id="flightintl_arrivalcity_single" mod_save_value="true" mod_address_reference="ctl00_MainContentPlaceHolder_txtDestcityID" mod="address|notice" mod_address_tpl="address" />
-                            </li>
-                            <li><b>*</b>出发日期<br />
-                                <input name="ctl00$MainContentPlaceHolder$txtDDatePeriod1" type="text" id="ctl00_MainContentPlaceHolder_txtDDatePeriod1" mod="notice|calendar" mod_calendar_focusNext="ctl00_MainContentPlaceHolder_txtADatePeriod1~1" mod_save_value="true" mod_save_id="flightintl_startdate_single" mod_notice_tip="yyyy-mm-dd" autocomplete="off" mod_calendar_rangeEnd="2015-3-2" />
-                            </li>
-                            <li class="item2" id="return_li"><b>*</b>返回日期<br />
-                                <input name="ctl00$MainContentPlaceHolder$txtADatePeriod1" type="text" id="ctl00_MainContentPlaceHolder_txtADatePeriod1" mod="notice|calendar" mod_calendar_reference="ctl00_MainContentPlaceHolder_txtDDatePeriod1" mod_notice_tip="yyyy-mm-dd" mod_save_value="true" mod_save_id="flightintl_backdate_single" autocomplete="off" mod_calendar_rangeEnd="2015-3-2" />
-                            </li>
-                        </ul>
-                        <!--多程-->
-                        <div id="multiple_div" style="display: none;">
-                            <ul id="flight_multiple" class="search_item search_multiple">
-                                <li><span class="line_num">第<em>1</em>程 </span>
-                                    <label class="flight_item1">
-                                        <span class="important">*</span> 出发城市
-                                        <input name="ctl00$MainContentPlaceHolder$txtBeginAddress1" type="text" id="ctl00_MainContentPlaceHolder_txtBeginAddress1" autocomplete="off" mod_save_id="flightintl_startcity_single" mod_address_source="flightintl_start" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_save_value="true" mod_address_reference="ctl00_MainContentPlaceHolder_txtBeginCityCode1" mod="address|notice" mod_address_tpl="address" />
-                                    </label>
-                                    <label class="flight_item3">
-                                        <span class="important">*</span> 到达城市
-                                        <input name="ctl00$MainContentPlaceHolder$txtEndAddress1" type="text" id="ctl00_MainContentPlaceHolder_txtEndAddress1" mod_next_value="ctl00_MainContentPlaceHolder_txtBeginAddress2" autocomplete="off" mod_save_value="true" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_save_id="flightintl_arrivalcity_single" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_dest" mod_address_reference="ctl00_MainContentPlaceHolder_txtEndCityCode1" mod="address|notice" mod_address_tpl="address" />
-                                    </label>
-                                    <label class="flight_item4">
-                                        <span class="important">*</span> 出发日期<br />
-                                        <input name="ctl00$MainContentPlaceHolder$txtDatePeriod1" type="text" id="ctl00_MainContentPlaceHolder_txtDatePeriod1" class="input_text" mod="calendar|notice" mod_save_value="true" mod_save_id="flightintl_startdate_single" mod_address_ver="2" mod_notice_tip="yyyy-mm-dd" mod_calendar_focusNext="ctl00_MainContentPlaceHolder_txtDDatePeriod2" autocomplete="off" />
-                                    </label>
-                                    <input name="ctl00$MainContentPlaceHolder$txtBeginCityCode1" type="hidden" id="ctl00_MainContentPlaceHolder_txtBeginCityCode1" />
-                                    <input name="ctl00$MainContentPlaceHolder$txtEndCityCode1" type="hidden" id="ctl00_MainContentPlaceHolder_txtEndCityCode1" />
-                                </li>
-                                <li><span class="line_num">第<em>2</em>程 </span>
-                                    <label class="flight_item1">
-                                        <span class="important">*</span> 出发城市
-                                        <input name="ctl00$MainContentPlaceHolder$txtBeginAddress2" type="text" id="ctl00_MainContentPlaceHolder_txtBeginAddress2" autocomplete="off" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_start" mod_address_reference="ctl00_MainContentPlaceHolder_txtBeginCityCode2" mod="address|notice" mod_address_tpl="address" />
-                                    </label>
-                                    <label class="flight_item3">
-                                        <span class="important">*</span> 到达城市
-                                        <input name="ctl00$MainContentPlaceHolder$txtEndAddress2" type="text" id="ctl00_MainContentPlaceHolder_txtEndAddress2" mod_next_value="ctl00_MainContentPlaceHolder_txtBeginAddress3" autocomplete="off" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_dest" mod_address_reference="ctl00_MainContentPlaceHolder_txtEndCityCode2" mod="address|notice" mod_address_tpl="address" />
-                                    </label>
-                                    <label class="flight_item4">
-                                        <span class="important">*</span> 出发日期<br />
-                                        <input name="ctl00$MainContentPlaceHolder$txtDDatePeriod2" type="text" id="ctl00_MainContentPlaceHolder_txtDDatePeriod2" class="input_text" mod="calendar|notice" mod_calendar_focusnext="ctl00_MainContentPlaceHolder_txtDDatePeriod3" mod_address_ver="2" mod_notice_tip="yyyy-mm-dd" mod_calendar_reference="ctl00_MainContentPlaceHolder_txtDatePeriod1" autocomplete="off" />
-                                    </label>
-                                    <input name="ctl00$MainContentPlaceHolder$txtBeginCityCode2" type="hidden" id="ctl00_MainContentPlaceHolder_txtBeginCityCode2" />
-                                    <input name="ctl00$MainContentPlaceHolder$txtEndCityCode2" type="hidden" id="ctl00_MainContentPlaceHolder_txtEndCityCode2" />
-                                </li>
-                                <li><span class="line_num">第<em>3</em>程 </span>
-                                    <label class="flight_item1">
-                                        <span class="important">*</span> 出发城市
-                                        <input name="ctl00$MainContentPlaceHolder$txtBeginAddress3" type="text" id="ctl00_MainContentPlaceHolder_txtBeginAddress3" autocomplete="off" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_start" mod_address_reference="ctl00_MainContentPlaceHolder_txtBeginCityCode3" mod="address|notice" mod_address_tpl="address" />
-                                    </label>
-                                    <label class="flight_item3">
-                                        <span class="important">*</span> 到达城市
-                                        <input name="ctl00$MainContentPlaceHolder$txtEndAddress3" type="text" id="ctl00_MainContentPlaceHolder_txtEndAddress3" mod_next_value="ctl00_MainContentPlaceHolder_txtBeginAddress4" autocomplete="off" mod_address_ver="2" class="input_text" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" mod_address_source="flightintl_dest" mod_address_reference="ctl00_MainContentPlaceHolder_txtEndCityCode3" mod="address|notice" mod_address_tpl="address" />
-                                    </label>
-                                    <label class="flight_item4">
-                                        <span class="important">*</span> 出发日期<br />
-                                        <input name="ctl00$MainContentPlaceHolder$txtDDatePeriod3" type="text" id="ctl00_MainContentPlaceHolder_txtDDatePeriod3" class="input_text" mod="calendar|notice" mod_calendar_focusnext="ctl00_MainContentPlaceHolder_txtDDatePeriod4" mod_address_ver="2" mod_notice_tip="yyyy-mm-dd" mod_calendar_reference="ctl00_MainContentPlaceHolder_txtDatePeriod2" autocomplete="off" />
-                                    </label>
-                                    <a href="javascript:void(0)" class="del_line">删除</a>
-                                    <input name="ctl00$MainContentPlaceHolder$txtBeginCityCode3" type="hidden" id="ctl00_MainContentPlaceHolder_txtBeginCityCode3" />
-                                    <input name="ctl00$MainContentPlaceHolder$txtEndCityCode3" type="hidden" id="ctl00_MainContentPlaceHolder_txtEndCityCode3" />
-                                </li>
-                                
-                            </ul>
-                            <a id="add_new_line" class="add_new_line" href="javascript:void(0)">
-                                添加航程</a>
-                        </div>
-
-                        <!--乘客类型-->
-                        <ul class="search_item search_other basefix">
-                            <li>人数<br />
-                                <select name="ctl00$MainContentPlaceHolder$drpQuantity" id="ctl00_MainContentPlaceHolder_drpQuantity" style="width: 134px; font-family: &#39;Microsoft YaHei&#39;;">
+	</ul>
+    <ul>
+         <li class="add_line"><a href="javascript:void(0)" class="add_new_line" id="add_new_line">添加航程</a></li>
+        <li class="type_number_line">
+            <label class="flight_item5">
+                <span class="span_text">乘客类型</span>
+                <select name="ctl00$MainContentPlaceHolder$QuickSearchControl$drpPassengerType" id="ctl00_MainContentPlaceHolder_QuickSearchControl_drpPassengerType" onchange="airline.tips(&#39;bottom&#39;);" style="width:95px;">
+	<option selected="selected" value="ADT">成人</option>
+	<option value="CHD">儿童（2-12周岁）</option>
+</select>
+		    </label>
+			<label class="flight_item6">
+				<span class="span_text">乘客人数</span>
+				<select name="ctl00$MainContentPlaceHolder$QuickSearchControl$drpQuantity" id="ctl00_MainContentPlaceHolder_QuickSearchControl_drpQuantity" style="width: 50px;">
 	<option selected="selected" value="1">1</option>
 	<option value="2">2</option>
 	<option value="3">3</option>
@@ -279,739 +282,501 @@ HTTP/1.1 200
 	<option value="8">8</option>
 	<option value="9">9</option>
 </select>
-                                <input name="ctl00$MainContentPlaceHolder$ticket_city" type="hidden" id="ctl00_MainContentPlaceHolder_ticket_city" mod_address_suggest="@Beijing|北京|1@Shanghai|上海|2@Guangzhou|广州|32@Shenzhen|深圳|30@Chengdu|成都|28@Hangzhou|杭州|17@Xiamen|厦门|25@Dalian|大连|6@Nanjing|南京|12@Fuzhou|福州|258@Qingdao|青岛|7@Tianjin|天津|3@" autocomplete="off" mod_address_source="" class="fltindex_input" mod_address_focusnext="true" mod_notice_tip="中文/英文/拼音" style="color: gray; width: 77px;" mod_address_reference="ctl00_MainContentPlaceHolder_txtSourceCityID" />
-                                <input name="ctl00$MainContentPlaceHolder$txtSourceCityID" type="hidden" id="ctl00_MainContentPlaceHolder_txtSourceCityID" />
-                            </li>
-                            <li>舱位等级<br />
-                                <select name="ctl00$MainContentPlaceHolder$drpSubClass" id="ctl00_MainContentPlaceHolder_drpSubClass" style="width: 134px; font-family: &#39;Microsoft YaHei&#39;;">
+	        </label>
+	        <label class="flight_item6">
+				<span class="span_text">舱位等级</span>
+		        <select name="ctl00$MainContentPlaceHolder$QuickSearchControl$drpSubClass" id="ctl00_MainContentPlaceHolder_QuickSearchControl_drpSubClass" style="width: 95px;">
 	<option selected="selected" value="Y">经济舱</option>
 	<option value="S">超级经济舱</option>
 	<option value="C">公务舱</option>
 	<option value="F">头等舱</option>
 </select>
-                            </li>
-                            <li>乘客类型<br />
-                                <select name="ctl00$MainContentPlaceHolder$selUserType" id="ctl00_MainContentPlaceHolder_selUserType" style="width: 134px; font-family: &#39;Microsoft YaHei&#39;;">
-	<option selected="selected" value="ADT">成人</option>
-	<option value="CHD">儿童（2-12岁）</option>
-</select>
-                            </li>
-                            <li id="flight_choose">航空公司<br />
-                                <input type="text" class="input_text" id="txtAirline" name="txtAirline"
-                                    mod_address_reference="Airline" mod_address_source="airline" mod_notice_tip="(选填)中文/代码"
-                                    mod_address_suggest="@CA|中国国际航空|CA@MU|东方航空|MU@CZ|南方航空|CZ@FM|上海航空|FM@SQ|新加坡航空|SQ@CX|国泰航空|CX@UA|美联航|UA@HX|香港航空|HX@QR|卡塔尔航空|QR@MH|马来西亚航空|MH@BA|英国航空|BA@CI|中华航空|CI@"
-                                    mod="notice|address" mod_address_tpl="airline" autocomplete="off" />
-                            </li>
-                        </ul>
-                        <div class="base_alert1" id="age_type_tip" style="display: none">
-                            无成人陪伴的儿童请直接向航空公司预订</div>
-                        <!--搜索-->
-                        <div class="box_btn basefix" >
-                            <input type="submit" name="ctl00$MainContentPlaceHolder$btnSearchFlight" value="搜索" onclick="return validateQuery();" id="ctl00_MainContentPlaceHolder_btnSearchFlight" class="btn_search" disabled="true" />
-                            <label class="base_label" id="label_flight">
-                                <input type="checkbox" id="flight_direct" name="flight_direct" value="T" />仅查看直飞</label>
-                        </div>
-						<div class="search_flthotel_box">
-							<input class="search_flthotel" id="searchHotel" value="搜索机+酒" type="button" />
-						</div>
-                        <!--提示-->
-                        <div class="prindex_tips" id="xqdTipsDiv">
-                            <span class="ico_tips">提示：</span>更多需求请填写<a rel="nofollow" title="国际及港澳台航班需求单" target="_blank"
-                                href="CustomQuery.aspx" rel="nofollow">国际及港澳台航班需求单</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="box mail_subscribe">
-                    <h3 class="hd">
-                        订阅促销</h3>
-                    <div class="bd mail_state_normal">
-                        <p>国际机票专享特惠订阅</p>
-                        <div class="tip_check" style="display: none;">
-                            <span>请输入Email地址</span></div>
-                        <input class="mail_subscribe_txt" id="mailSubscribe" type="text" value="" mod="notice" mod_notice_tip="输入Email(如：a@b.c)" />
-                        <input class="mail_subscribe_btn" type="button" title="订阅" value="订阅" onclick=" online.index.dingyue('http://flights.ctrip.com/international/AjaxSubscribe.ashx')" />
-                    </div>
-                    <div class="bd mail_state_sucess" id="mail_state_sucess" style="display: none;">
-                        <i></i>订阅成功&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="document.getElementById('mail_state_sucess').style.display='none';return false;">返回</a>
-                    </div>
-                </div>
-                <div class="box move">
-					<h3 class="hd">精彩视频</h3>
-					<div class="bd move_list clearfix">
-						<a class="move1" href="" rel="nofollow" onclick="var newwin = window.open();newwin.location='http://v.youku.com/v_show/id_XMzY5MDE4Nzgw.html';return false;">新平台功能介绍</a>
-						<a class="move2" href="" rel="nofollow" onclick="var newwin = window.open();newwin.location='http://v.youku.com/v_show/id_XMzY4NjQ2Njg0.html';return false;">那些年，我们仨</a>
-					</div>
-				</div>
-				<div class="box latest_airline" style="display:">
-					<h3 class="hd">最新预订航线</h3>
+		    </label>
+		    <label class="online-direct-flight">
+                <span class="span_text">航空公司</span>
+                <input name="ctl00$MainContentPlaceHolder$QuickSearchControl$txtAirline" type="text" id="ctl00_MainContentPlaceHolder_QuickSearchControl_txtAirline" mod_address_suggest="@CA|中国国际航空|CA@MU|东方航空|MU@CZ|南方航空|CZ@FM|上海航空|FM@SQ|新加坡航空|SQ@CX|国泰航空|CX@UA|美联航|UA@HX|香港航空|HX@QR|卡塔尔航空|QR@MH|马来西亚航空|MH@BA|英国航空|BA@CI|中华航空|CI@" mod_address_source="airline" class="input_text" mod_notice_tip="(选填)中文/代码" mod_address_reference="ctl00_MainContentPlaceHolder_QuickSearchControl_Airline" mod="notice|address" mod_address_tpl="airline" />
+                <input name="ctl00$MainContentPlaceHolder$QuickSearchControl$Airline" type="hidden" id="ctl00_MainContentPlaceHolder_QuickSearchControl_Airline" value="All" />
+             </label>
 
-					<ul class="bd latest_list">
-				    <li><span>[1分钟前]</span><a href="http://flights.ctrip.com/international/round-nanjing-hongkong-nkg-hkg" title="南京到香港的机票" target="_blank">南京到香港</a> <a href='http://flights.ctrip.com/international/airline-hx' target='_blank'>香港航空</a> <a href='http://flights.ctrip.com/international/Schedule/hx221.html' target='_blank'>HX221</a></li><li><span>[1分钟前]</span><a href="http://flights.ctrip.com/international/round-niigata-shanghai-kij-sha" title="新泻到上海的机票" target="_blank">新泻到上海</a> <a href='http://flights.ctrip.com/international/airline-mu' target='_blank'>东方航空</a> <a href='http://flights.ctrip.com/international/Schedule/mu296.html' target='_blank'>MU296</a></li><li><span>[1分钟前]</span><a href="http://flights.ctrip.com/international/round-shanghai-hongkong-sha-hkg" title="上海到香港的机票" target="_blank">上海到香港</a> <a href='http://flights.ctrip.com/international/airline-hx' target='_blank'>香港航空</a> <a href='http://flights.ctrip.com/international/Schedule/hx235.html' target='_blank'>HX235</a></li><li><span>[1分钟前]</span><a href="http://flights.ctrip.com/international/round-beijing-kualalumpur-bjs-kul" title="北京到吉隆坡的机票" target="_blank">北京到吉隆坡</a> <a href='http://flights.ctrip.com/international/airline-ka' target='_blank'>港龙航空</a> <a href='http://flights.ctrip.com/international/Schedule/ka975.html' target='_blank'>KA975</a></li>
-					</ul>
-				</div>
-            </li>
-            <li class="prindex_grid last">
-                <div mod_adframe_src="SubPage/allyes.html" mod="adFrame" id="adpic" class="prindex_reason"
-                    mod_adframe_style="width:628px;height:220px;">
-                </div>
-                <div class="prindex_sales">
-                    <ul mod="tab" mod_tab_button="#sales_button li" mod_tab_panel="#sales_list li" class="sales_list"
-                        id="sales_button">
-                        <li id="online_gotocity" class="sales_current">特惠机票</li>
-                        <li id="online_fltarea" class="sales_nocurrent">航空公司特惠推荐</li>
-                        <li class="sales_nocurrent">联盟专区</li>
-                    </ul>
-                    <ul id="sales_list" class="sales_bd">
-                        <li style="" class="sales_list1 bsefix">
-                            <div id="city_menu" class="city_menu">
-                                <div id="city_departure" class="city_departure">
-                                    <a online_code="BJS" class="city_departure_now" href="javascript:void(0);" rel="nofollow">
-                                        北京出发</a>
-                                    <div style="display: none;" id="city_departure_more" class="city_departure_more">
-                                        <a online_code="BJS" href="javascript:void(0);">北京</a> <a online_code="SHA" href="javascript:void(0);">
-                                            上海</a> <a online_code="CAN" href="javascript:void(0);">广州</a> <a online_code="HGH"
-                                                href="javascript:void(0);">杭州</a> <a online_code="CTU" href="javascript:void(0);">成都</a>
-                                        <a online_code="SZX" href="javascript:void(0);">深圳香港</a> <a online_code="OTHER" href="javascript:void(0);">
-                                            其他城市</a>
-                                    </div>
-                                </div>
-                                <dl id="city_arrival" class="city_arrival">
-                                    <dt>目的地：</dt>
-                                    <dd>
-                                        <a online_code="1" href="javascript:void(0);" class="current" rel="nofollow">欧洲</a></dd>
-                                    <dd>
-                                        <a online_code="2" href="javascript:void(0);" rel="nofollow">美洲</a></dd>
-                                    <dd>
-                                        <a online_code="3" href="javascript:void(0);" rel="nofollow">东南亚</a></dd>
-                                    <dd>
-                                        <a online_code="4" href="javascript:void(0);" rel="nofollow">日韩及港澳台</a></dd>
-                                    <dd>
-                                        <a online_code="5" href="javascript:void(0);" rel="nofollow">其他</a></dd>
-                                </dl>
-                            </div>
-                            
-                            <div class="loading60" id="tloading"><i></i>查询中，请稍候...</div>
-                            <table cellspacing="0" cellpadding="0" border="0" width="100%" summary="往返特惠" class="tb_sales"
-                                id="online_exgratiaData" style=" display:none">
-                                
-                                <tbody></tbody>
-                                
-                            </table>
-                            <div id="online_page" class="sales_page" style="display:none;">
-                                <a onclick="online.index.page.prev()" class="prev prev_disable" href="###">上一页</a><a
-                                    onclick="online.index.page.pagingNum(this,0)" name="0" class="current" href="##">1</a><a
-                                        onclick="online.index.page.pagingNum(this,1)" name="1" class="" href="##">2</a><a
-                                            onclick="online.index.page.pagingNum(this,2)" name="2" class="" href="##">3</a><a
-                                                onclick="online.index.page.next()" class="next" href="###">下一页</a></div>
-                        </li>
-                        <li class="sales_list2 basefix" style="display:none;">
-                        
-                            <div style="" class="loading60"><i></i>查询中，请稍候...</div>
-                            
-                            <div id="sales_page" class="sales_page" style="display:none;">
-                                <a onclick="online.index.page1.prev()" class="prev prev_disable" href="###">上一页</a><a
-                                    onclick="online.index.page1.pagingNum(this,0)" name="0" class="current" href="##">1</a><a
-                                        onclick="online.index.page1.pagingNum(this,1)" name="1" class="" href="##">2</a><a
-                                            onclick="online.index.page1.pagingNum(this,2)" name="2" class="" href="##">3</a><a
-                                                onclick="online.index.page1.pagingNum(this,3)" name="3" class="" href="##">4</a><a
-                                                    onclick="online.index.page1.next()" class="next" href="###">下一页</a></div>
-                        </li>
-                        <li class="sales_list3 basefix" style="display: none;">
-                         <div class="city_menu">
-                            <ul class="union_title" mod="tab" mod_tab_button="#union_button li" mod_tab_panel="#union_content .union_content_item" id="union_button" mod_tab_check_class="u_current">
-                                <li class="u_current"><a href="###">环球套票</a></li>
-                                <li class="u_nocurrent"><a href="###">欧洲套票</a></li>
-                                <li class="u_nocurrent"><a href="###">其他六种区域性套票</a></li>
-                            </ul>
-                         </div>
-                         <div class="union_content" id="union_content">
-                            <div class="union_content_item">
-                                <p>22900元起，相比市场价优惠约20%，随心而行，全球187个国家和地区超过1000个城市任您自由飞抵，旅行时间跨度可从10天到1年，不受市场影响，全年价格固定，旅行途中可享受天合联盟为您提供的SKYTRANSFER、行李直挂等服务，天合联盟超级精英会员更可享受SKYPRIORITY的尊贵礼遇。如果您是天合联盟19家成员中任何一家航空公司会员，均可将环球旅行的里程全部累积来赢取免费机票。</p>
-                                <div class="b">推荐行程：中国大陆-广州-伦敦-巴黎-洛杉矶-广州-中国大陆</div>
-                                <div class="union_apply"><input type="button" value="我要申请" class="base_btns7" onclick="javascript:location.href='CustomQuery.aspx'"/></div>
-                            </div>
-                            <div class="union_content_item" style="display:none;">
-                                <p>1100元起，相比市场优惠价低约25%，英伦风情、巴黎时尚、维也纳的歌剧、米兰时装、瑞士的雪峰滑翔……一路尽享欧洲风情，37个欧洲国家逾170个城市任您自由飞抵，同一城市可多次停留，自由连接地面运输段，想怎么走就怎么走，任一家天合联盟成员的会员便可累积所有天合联盟公司的里程。</p>
-                                <div class="b">推荐行程：阿姆斯特丹-苏黎世-巴黎-阿姆斯特丹</div>
-                                <div class="union_apply"><input type="button" value="我要申请" class="base_btns7" onclick="javascript:location.href='CustomQuery.aspx'"/></div>
-                            </div>
-                            <div class="union_content_item" style="display:none;">
-                                <pre>1)大中华区套票（中国大陆+港澳台）  
-2)亚洲套票（日韩+中国大陆+港澳台+俄罗斯+东亚+东南亚+南亚次大陆）
-3)美国和加拿大套票（美国+加拿大）         4)俄罗斯套票（俄罗斯境内） 
-5)墨西哥套票（墨西哥境内）                6)非洲套票
-                                </pre>
-                                <div class="union_apply"><input type="button" value="我要申请" class="base_btns7" onclick="javascript:location.href='CustomQuery.aspx'" /></div>
-                            </div>
-                         </div>
-                         <div class="union_pic_box">
-                            <img src="http://pic.c-ctrip.com/fltinternational100913/union_pic.png" />
-                         </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="box raletive_list">
-                    <h3 class="hd">
-                        <a class="more" href="http://pages.ctrip.com/webhome/chs/fltInternational/newsindex.htm"
-                            rel="nofollow">更多相关信息&gt;&gt;</a> 国际/地区机票相关信息
-                    </h3>
-                    <div class="bd basefix" id="linklist2_02" mod="linklist2" mod_linklist_id="info2">
-                    </div>
-                </div>
-            </li>
-        </ul>
-
-        <div class="pic_item_box">
-            <input type="hidden" id="AdvertType" value="c" />
-            <ul class="pic_item_item">
-                
-                
-                <li id="btAllyes1" mod="allyes" mod_allyes_user=""></li>
-                <li id="btAllyes2" mod="allyes" mod_allyes_user=""></li>
-                <li id="btAllyes3" mod="allyes" mod_allyes_user=""></li>
-                <li id="btAllyes4" mod="allyes" mod_allyes_user=""></li>
-                <li id="btAllyes5" mod="allyes" mod_allyes_user=""></li>
-            </ul>
-        </div>
-        <div class="seo_footer">
-          
-            
-            
-            
-            
-            
-            
-           
-            <a href="http://flights.ctrip.com/international/round-shanghai-hongkong-sha-hkg"
-                title="上海-香港">上海到香港机票</a> <a href="http://flights.ctrip.com/international/round-beijing-hongkong-bjs-hkg"
-                    title="北京到香港机票">北京到香港机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-seoul-sha-sel"
-                        title="上海到首尔机票">上海到首尔机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-taipei-sha-tpe"
-                            title="上海到台北机票">上海到台北机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-macau-sha-mfm"
-                                title="上海到澳门机票">上海到澳门机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-tokyo-sha-tyo"
-                                    title="上海到东京机票">上海到东京机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-singapore-sha-sin"
-                                        title="上海到新加坡机票">上海到新加坡机票</a> <a href="http://flights.ctrip.com/international/round-beijing-seoul-bjs-sel"
-                                            title="北京到首尔机票">北京到首尔机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-osaka-sha-osa"
-                                                title="上海到大阪机票">上海到大阪机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-phuket-sha-hkt"
-                                                    title="上海到普吉岛机票">上海到普吉岛机票</a> <a href="http://flights.ctrip.com/international/round-hangzhou-hongkong-hgh-hkg"
-                                                        title="杭州到香港机票">杭州到香港机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-bangkok-sha-bkk"
-                                                            title="上海到曼谷机票">上海到曼谷机票</a> <a href="http://flights.ctrip.com/international/round-beijing-tokyo-bjs-tyo"
-                                                                title="北京到东京机票">北京到东京机票</a>
-            <a href="http://flights.ctrip.com/international/round-beijing-singapore-bjs-sin"
-                title="北京到新加坡机票">北京到新加坡机票</a> <a href="http://flights.ctrip.com/international/round-beijing-taipei-bjs-tpe"
-                    title="北京到台北机票">北京到台北机票</a> <a href="http://flights.ctrip.com/international/round-hongkong-shanghai-hkg-sha"
-                        title="香港到上海机票">香港到上海机票</a> <a href="http://flights.ctrip.com/international/round-beijing-bangkok-bjs-bkk"
-                            title="北京到曼谷机票">北京到曼谷机票</a> <a href="http://flights.ctrip.com/international/round-nanjing-hongkong-nkg-hkg"
-                                title="南京到香港机票">南京到香港机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-kualaLumpur-sha-kul"
-                                    title="上海到吉隆坡机票">上海到吉隆坡机票</a> <a href="http://flights.ctrip.com/international/round-hongkong-taipei-hkg-tpe"
-                                        title="香港到台北机票">香港到台北机票</a> <a href="http://flights.ctrip.com/international/round-guangzhou-bangkok-can-bkk"
-                                            title="广州到曼谷机票">广州到曼谷机票</a> <a href="http://flights.ctrip.com/international/round-xiamen-hongkong-xmn-hkg"
-                                                title="厦门到香港机票">厦门到香港机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-nagoya-sha-ngo"
-                                                    title="上海到名古屋机票">上海到名古屋机票</a> <a href="http://flights.ctrip.com/international/round-beijing-macau-bjs-mfm"
-                                                        title="北京到澳门机票">北京到澳门机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-sydney-sha-syd"
-                                                            title="上海到悉尼机票">上海到悉尼机票</a> <a href="http://flights.ctrip.com/international/round-sanya-hongkong-syx-hkg"
-                                                                title="三亚到香港机票">三亚到香港机票</a>
-            <a href="http://flights.ctrip.com/international/round-shanghai-hochiminhcity-sha-sgn"
-                title="上海到胡志明市机票">上海到胡志明市机票</a> <a href="http://flights.ctrip.com/international/round-hongkong-beijing-hkg-bjs"
-                    title="香港到北京机票">香港到北京机票</a> <a href="http://flights.ctrip.com/international/round-shanghai-london-sha-lon"
-                        title="上海到伦敦机票">上海到伦敦机票</a> <a href="http://flights.ctrip.com/international/hkg-58-incity.html"
-                title="香港机票">香港机票</a> <a href="http://flights.ctrip.com/international/bkk-359-incity.html"
-                title="曼谷机票">曼谷机票</a> <a href="http://flights.ctrip.com/international/sin-73-incity.html"
-                title="新加坡机票">新加坡机票</a> <a href="http://flights.ctrip.com/international/dps-723-incity.html"
-                title="巴厘岛机票">巴厘岛机票</a> <a href="http://flights.ctrip.com/international/lon-338-incity.html"
-                title="伦敦机票">伦敦机票</a> <a href="http://flights.ctrip.com/international/hkt-725-incity.html"
-                title="普吉岛机票">普吉岛机票</a> <a href="http://flights.ctrip.com/international/yvr-476-outcity.html"
-                title="温哥华机票">温哥华机票</a> <a href=" http://flights.ctrip.com/international/dxb-220-outcity.html"
-                title="迪拜机票">迪拜机票</a> <a href="http://flights.ctrip.com/international/mfm-59-outcity.html"
-                title="澳门机票">澳门机票</a> <a href="http://flights.ctrip.com/international/yto-461-outcity.html"
-                title="多伦多机票">多伦多机票</a> <a href="http://flights.ctrip.com/international/mel-358-outcity.html"
-                title="墨尔本机票">墨尔本机票</a> <a href="http://flights.ctrip.com/international/tyo-228-outcity.html"
-                title="东京机票">东京机票</a> <a href="http://flights.ctrip.com/international/syd-501-incity.html"
-                title="悉尼机票">悉尼机票</a> <a href="http://flights.ctrip.com/international/airline-ak"
-                title="亚洲航空">亚洲航空</a> <a href="http://flights.ctrip.com/international/airline-cx"
-                title="迪拜机票">国泰航空</a> <a href="http://flights.ctrip.com/international/airline-ex"
-                title="阿联酋航空">阿联酋航空</a> <a href="http://flights.ctrip.com/international/airline-ka"
-                title="港龙航空">港龙航空</a> <a href="http://flights.ctrip.com/international/airline-sq"
-                title="新加坡航空">新加坡航空</a> <a href="http://flights.ctrip.com/international/airline-ke"
-                title="大韩航空">大韩航空</a> <a href="http://flights.ctrip.com/international/airline-ua"
-                title="美联航">美联航</a> <a href="http://flights.ctrip.com/international/airline-qr"
-                title="卡塔尔航空">卡塔尔航空</a> <a href="http://flights.ctrip.com/international/airline-hx"
-                title="香港航空">香港航空</a> <a href="http://flights.ctrip.com/international/airline-dl"
-                title="达美航空">达美航空</a> <a href="http://flights.ctrip.com/international/airline-oz"
-                title="香港航空">韩亚航空</a> <a href="http://flights.ctrip.com/international/airline-bk"
-                title="奥凯航空">奥凯航空</a> <a href="http://flights.ctrip.com/international/airline-lh"
-                title="汉莎航空">汉莎航空</a> <a href="http://flights.ctrip.com/international/airline-mh"
-                title="马来西亚航空 ">马来西亚航空 </a>
-
-        </div>
-        <input name="ctl00$MainContentPlaceHolder$txtDCityID" type="hidden" id="ctl00_MainContentPlaceHolder_txtDCityID" />
-        <input name="ctl00$MainContentPlaceHolder$txtDestcityID" type="hidden" id="ctl00_MainContentPlaceHolder_txtDestcityID" />
-        <input name="ctl00$MainContentPlaceHolder$txtOpenJawCityID3" type="hidden" id="ctl00_MainContentPlaceHolder_txtOpenJawCityID3" />
-        <input name="ctl00$MainContentPlaceHolder$txtOpenJawCityID4" type="hidden" id="ctl00_MainContentPlaceHolder_txtOpenJawCityID4" />
-        
-        <input type="hidden" value="D" id="FlightWay" name="FlightWay" />
-        <input type="hidden" value="" id="HomeCity" name="HomeCity" />
-        <input type="hidden" value="" id="DestCity1" name="DestCity1" />
-        <input type="hidden" value="" id="DestCity2" name="DestCity2" />
-        <input type="hidden" value="" id="TicketAgency_List" name="TicketAgency_List" />
-        <input type="hidden" value="" id="DDatePeriod1" name="DDatePeriod1" />
-        <input type="hidden" value="All" id="startPeriod" name="startPeriod" />
-        <input type="hidden" value="" id="ADatePeriod1" name="ADatePeriod1" />
-        <input type="hidden" value="All" id="startPeriod2" name="startPeriod2" />
-        <input type="hidden" value="ADU" id="ChildType" name="ChildType" />
-        <input type="hidden" value="Y" id="DSeatClass" name="DSeatClass" />
-        <input type="hidden" value="1" id="Quantity" name="Quantity" />
-        
-        <input type="hidden" value="" id="RequestFlightWay" />
-        <input type="hidden" value="" id="RequestAirline" />
-        <input type="hidden" value="" id="strCorpID" name="strCorpID" />
-        <!-- 按航空公司筛选 -->
-        <input type="hidden" value="All" id="Airline" name="Airline" />
-        <!--Online国际机票频道/在页面内添加标识-->
-        <input type="hidden" value="104001" id="page_id" />
-        <!--多程出发日期-->
-        <input type="hidden" id="hdn_showflt_ddate1" value="ctl00_MainContentPlaceHolder_txtDatePeriod1" />
-        <input type="hidden" id="hdn_showflt_ddate2" value="ctl00_MainContentPlaceHolder_txtDDatePeriod2" />
-        <input type="hidden" id="hdn_showflt_ddate3" value="ctl00_MainContentPlaceHolder_txtDDatePeriod3" />
-        <input type="hidden" id="hdn_showflt_ddate4" value="ctl00_MainContentPlaceHolder_txtDDatePeriod4" />
-        <input type="hidden" id="hdn_showflt_ddate5" value="ctl00_MainContentPlaceHolder_txtDDatePeriod5" />
-        <input type="hidden" id="hdn_showflt_ddate6" value="ctl00_MainContentPlaceHolder_txtDDatePeriod6" />
-        <!--出发城市-->
-        <input type="hidden" id="hdn_showflt_dcity1" value="ctl00_MainContentPlaceHolder_txtBeginAddress1" />
-        <input type="hidden" id="hdn_showflt_dcity2" value="ctl00_MainContentPlaceHolder_txtBeginAddress2" />
-        <input type="hidden" id="hdn_showflt_dcity3" value="ctl00_MainContentPlaceHolder_txtBeginAddress3" />
-        <input type="hidden" id="hdn_showflt_dcity4" value="ctl00_MainContentPlaceHolder_txtBeginAddress4" />
-        <input type="hidden" id="hdn_showflt_dcity5" value="ctl00_MainContentPlaceHolder_txtBeginAddress5" />
-        <input type="hidden" id="hdn_showflt_dcity6" value="ctl00_MainContentPlaceHolder_txtBeginAddress6" />
-        <!--到达城市-->
-        <input type="hidden" id="hdn_showflt_acity1" value="ctl00_MainContentPlaceHolder_txtEndAddress1" />
-        <input type="hidden" id="hdn_showflt_acity2" value="ctl00_MainContentPlaceHolder_txtEndAddress2" />
-        <input type="hidden" id="hdn_showflt_acity3" value="ctl00_MainContentPlaceHolder_txtEndAddress3" />
-        <input type="hidden" id="hdn_showflt_acity4" value="ctl00_MainContentPlaceHolder_txtEndAddress4" />
-        <input type="hidden" id="hdn_showflt_acity5" value="ctl00_MainContentPlaceHolder_txtEndAddress5" />
-        <input type="hidden" id="hdn_showflt_acity6" value="ctl00_MainContentPlaceHolder_txtEndAddress6" />
-        <input type="hidden" id="hdn_enableCitySelectAjaxCall" value="1" />
-        <!-- new model st -->
-        <!--特惠机票 预订选择框-->
-        <div style="width: 790px; display: none;" class="base_pop prindex_pop" id="selectdate">
-            <div class="pop_hd">
-                <a onclick="maskShow($('#selectdate'),false)" class="delete" href="###">&nbsp;</a><h3>
-                    查询特价机票</h3>
-            </div>
-            <div class="pop_bd">
-                <div class="price_total">
-                    特价<span id="xm_flightway">单程</span>：<span class="base_price"><dfn>￥</dfn><strong
-                        id="calendar_base_price">4830</strong></span>（不含税）<br />
-                    请点击日历框，依次选择去程和返程日期，即可实时查询航班动态。跨月预订请上翻或下翻日历。</div>
-                <div class="base_alert13">
-                    该价格为<span id="calendar_number">X</span>人及以上乘客同时出行的价格，低于此出行人数无法享受到该特价机票。</div>
-                <div class="flight_date">
-                    <div class="date_title01">
-                        <a id="datePrev" class="disable" href="javascript:void(0);"></a><span><b id="idCalendarYear">
-                            2012</b>年&nbsp;<b id="idCalendarMonth">2</b>月</span></div>
-                    <div class="date_title02">
-                        <a id="dateNext" href="javascript:void(0);"></a><span><b id="idCalendarYear1">2012</b>年&nbsp;<b
-                            id="idCalendarMonth1">2</b>月</span></div>
-                    <table style="display: " class="flight_date_day" id="bigCal">
-                        <thead>
-                            <tr>
-                                <th class="date_sun">
-                                    日</th>
-                                <th>
-                                    一</th>
-                                <th>
-                                    二</th>
-                                <th>
-                                    三</th>
-                                <th>
-                                    四</th>
-                                <th>
-                                    五</th>
-                                <th class="date_sat">
-                                    六</th>
-                            </tr>
-                        </thead>
-                        <tbody id="idCalendar">
-                            <tr>
-                                <td>
-                                    &nbsp;</td>
-                                <td class="flight_dateoff">
-                                    1</td>
-                                <td class="flight_dateoff">
-                                    2</td>
-                                <td class="flight_dateoff">
-                                    3</td>
-                                <td class="flight_dateoff">
-                                    4</td>
-                                <td class="flight_dateoff">
-                                    5</td>
-                                <td class="flight_dateoff">
-                                    6</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateoff">
-                                    7</td>
-                                <td class="flight_dateoff">
-                                    8</td>
-                                <td class="flight_dateoff">
-                                    9</td>
-                                <td class="flight_dateoff">
-                                    10</td>
-                                <td class="flight_dateoff">
-                                    11</td>
-                                <td class="flight_dateoff">
-                                    12</td>
-                                <td class="flight_dateoff">
-                                    13</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateoff">
-                                    14</td>
-                                <td class="flight_dateoff">
-                                    15</td>
-                                <td class="flight_dateoff">
-                                    16</td>
-                                <td class="flight_dateoff">
-                                    17</td>
-                                <td class="flight_dateoff">
-                                    18</td>
-                                <td class="flight_dateoff">
-                                    19</td>
-                                <td class="flight_dateoff">
-                                    20</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateoff">
-                                    21</td>
-                                <td class="flight_dateon date_loading">
-                                    22</td>
-                                <td class="flight_dateon">
-                                    23</td>
-                                <td class="flight_dateon date_start">
-                                    <strong>去程</strong>24</td>
-                                <td class="flight_dateon date_interval">
-                                    25</td>
-                                <td class="flight_dateon date_interval">
-                                    26</td>
-                                <td class="flight_dateon date_interval">
-                                    27</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateon date_interval">
-                                    28</td>
-                                <td class="flight_dateon date_stop">
-                                    <strong>返程</strong><span class="flight_soldout">售完</span>29</td>
-                                <td class="flight_dateon">
-                                    30</td>
-                                <td>
-                                    &nbsp;</td>
-                                <td>
-                                    &nbsp;</td>
-                                <td>
-                                    &nbsp;</td>
-                                <td>
-                                    &nbsp;</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table style="display: " class="flight_date_day">
-                        <thead>
-                            <tr>
-                                <th class="date_sun">
-                                    日</th>
-                                <th>
-                                    一</th>
-                                <th>
-                                    二</th>
-                                <th>
-                                    三</th>
-                                <th>
-                                    四</th>
-                                <th>
-                                    五</th>
-                                <th class="date_sat">
-                                    六</th>
-                            </tr>
-                        </thead>
-                        <tbody id="idCalendar1">
-                            <tr>
-                                <td>
-                                    &nbsp;</td>
-                                <td class="flight_dateoff">
-                                    1</td>
-                                <td class="flight_dateoff">
-                                    2</td>
-                                <td class="flight_dateoff">
-                                    3</td>
-                                <td class="flight_dateoff">
-                                    4</td>
-                                <td class="flight_dateoff">
-                                    5</td>
-                                <td class="flight_dateoff">
-                                    6</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateoff">
-                                    7</td>
-                                <td class="flight_dateoff">
-                                    8</td>
-                                <td class="flight_dateoff">
-                                    9</td>
-                                <td class="flight_dateoff">
-                                    10</td>
-                                <td class="flight_dateoff">
-                                    11</td>
-                                <td class="flight_dateoff">
-                                    12</td>
-                                <td class="flight_dateoff">
-                                    13</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateoff">
-                                    14</td>
-                                <td class="flight_dateoff">
-                                    15</td>
-                                <td class="flight_dateoff">
-                                    16</td>
-                                <td class="flight_dateoff">
-                                    17</td>
-                                <td class="flight_dateoff">
-                                    18</td>
-                                <td class="flight_dateoff">
-                                    19</td>
-                                <td class="flight_dateoff">
-                                    20</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateoff">
-                                    21</td>
-                                <td class="flight_dateon date_loading">
-                                    22</td>
-                                <td class="flight_dateon">
-                                    23</td>
-                                <td class="flight_dateon date_start">
-                                    <strong>去程</strong>24</td>
-                                <td class="flight_dateon date_interval">
-                                    25</td>
-                                <td class="flight_dateon date_interval">
-                                    26</td>
-                                <td class="flight_dateon date_interval">
-                                    27</td>
-                            </tr>
-                            <tr>
-                                <td class="flight_dateon date_interval">
-                                    28</td>
-                                <td class="flight_dateon date_stop">
-                                    <strong>返程</strong><span class="flight_tosell">可售</span>29</td>
-                                <td class="flight_dateon">
-                                    30</td>
-                                <td>
-                                    &nbsp;</td>
-                                <td>
-                                    &nbsp;</td>
-                                <td>
-                                    &nbsp;</td>
-                                <td>
-                                    &nbsp;</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="btn_box">
-                    <input id="online_selectDate" type="button" value="请选择日期" class="date_btns1" />
-                    <input type="button" value="请选择日期" style="display: none" class="date_btns1_disable" />
-                    <input id="online_search" type="button" style="display: none" value="查询航班" class="date_btns1" />
-                    <input type="button" value="查询航班" style="display: none" class="date_btns1_disable" />
-                    <input id="online_sellout" type="button" style="display: none" value="已售完，查看其他日期"
-                        class="date_btns2" />
-                    <input type="button" value="已售完，查看其他日期" style="display: none" class="date_btns2_disable" />
-                </div>
-                <dl class="prindex_pop_txt">
-                    <dt>订票说明：</dt>
-                    <dd>
-                        以上均为<span id="prindex_pop_txt">北京飞阿姆斯特丹港龙航空公司航班。</span><br />
-                        名额有限，能否预订以航空公司实际销售舱位为准。
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <!--OPEN票 说明 -->
-        <div id="openinfo" class="base_jmp1" style="width: 300px; display: none;">
-            <div class="jmp_sider">
-                &nbsp;</div>
-            <div class="jmp_hd">
-                <h3>
-                    OPEN票</h3>
-            </div>
-            <div class="jmp_bd">
-                OPEN票是指返程允许不定日期和时间的机票
-            </div>
-        </div>
-        <!--特惠机票 中转城市显示 -->
-        <div id="transit" class="base_jmp1" style="width: 300px; display: none;">
-            <div id="transit1">
-                <div class="jmp_sider">
-                    &nbsp;</div>
-                <div class="jmp_hd">
-                    <h3 id="para1">
-                    </h3>
-                </div>
-                <div class="jmp_bd">
-                    <div>
-                        <span class="pubFlights_xx airline" id="para2"></span>
-                    </div>
-                    <div class="prindex_turn">
-                        转<span>&nbsp;</span></div>
-                    <div>
-                        <span class="pubFlights_xx airline" id="para3"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- new model end -->
-        <div>
-            <input type="hidden" id="hdn_search_dcity" value="" />
-            <input type="hidden" id="hdn_search_acity" value="" />
-            <input type="hidden" id="hdn_search_dcityid" value="" />
-            <input type="hidden" id="hdn_search_acityid" value="" />
-            <input type="hidden" id="hdn_search_depart" value="" />
-            <input type="hidden" id="hdn_search_arrive" value="" />
-            <input type="hidden" id="hdn_search_flighttype" value="" />
-            <input type="hidden" id="ExpenseType" name="ExpenseType" value="PUB" />
-            <input type="hidden" id="IsFavFull" name="IsFavFull" value="" />
-        </div>
-        
-<div id="maskshowdiv" class="base_pop" style="width: 478px; padding: 0pt 15px; display: none;">
-    <div style="padding: 30px 0pt; text-align: center;">
-        <div style="display: inline-block; *display: inline; *zoom: 1; width: 60px; height: 60px;
-            margin-right: 20px; vertical-align: middle;">
-            <object height="60px" width="60px">
-                <param name="wmode" value="opaque">
-                <param name="movie" value="http://pic.c-ctrip.com/fltinternational100913/flashloading.swf">
-                <embed wmode="opaque" src="http://pic.c-ctrip.com/fltinternational100913/flashloading.swf"
-                    type="application/x-shockwave-flash" height="60px" width="60px">
-            </object>
-        </div>
-        <div style="display: inline-block; *display: inline; *zoom: 1; width: 240px; text-align: left;
-            vertical-align: middle;">
-            <strong style="font-size: 16px;">正在为您查询</strong>
-            <p id="alterContent">
-                
-            </p>
-            <p id="DTimeContent">
-                
-            </p>
-            <p id="ATimeContent">
-                
-            </p>
-            <p id="tictekQuantity">
-            </p>
-        </div>
+	     </li>
+    </ul>
     </div>
-    
-     <div style="display: block; width: 478px; height: 178px; margin: 0pt auto; overflow:hidden"  mod="allyes">
-        
-       <div class="pic_banner_t pic_ad" id="SearchLoadingAllyesId"></div>
+	<div class="search_tools">
+	    <input type="submit" name="ctl00$MainContentPlaceHolder$QuickSearchControl$btnSearch" value="重新搜索" onclick="return window.validateQuery();" id="ctl00_MainContentPlaceHolder_QuickSearchControl_btnSearch" class="btn_search" style="width: 80px;" />
+		<span id="search_show" class="search_show" style="display:none;"><a href="###" class="show_fold">高级搜索</a></span><!-- 点击后变为“简单搜索”，class 名变为 show_unfold -->
+	</div>
+	<div class="direct_flight online-direct-flight">
+        <label class="base_label">
+        <input name="ctl00$MainContentPlaceHolder$QuickSearchControl$flight_direct" type="checkbox" id="ctl00_MainContentPlaceHolder_QuickSearchControl_flight_direct" value="T" />
+        仅查看直飞
+        </label>
     </div>
-    <p style="line-height: 34px; text-align: center; font-size: 14px; color: rgb(153, 153, 153); background-color: rgb(236, 236, 236);">点击图片查看详情，您的机票搜索不会被终止</p> 
 </div>
-        <!-- display:none part -->
-        <div style="display:none;">
-            <div id="jmp_text" style="width: 340px;" class="base_jmp jmp_text base_jmp_t">
-                <div id="Div1" class="jmp_bd">${txt0}</div>
-            </div>
+
+<div id="tip_pgtype" class="tip_error" style="position:absolute; z-index:100; display:none;">
+	<div class="jmp_sider" style="margin-left: 10px;">&nbsp;</div>
+	请您确认儿童有成人陪伴，无成人陪伴的儿童只能直接向航空公司预订。
+</div>
+<input type="hidden" id="hdn_showflt_fway" value="ctl00_MainContentPlaceHolder_QuickSearchControl_selflightType" />
+<input type="hidden" id="hdn_showflt_ptype" value="ctl00$MainContentPlaceHolder$QuickSearchControl$drpPassengerType" />
+<input type="hidden" id="hdn_segmentcount" value="" />
+<!--出发日期-->
+<input type="hidden" id="hdn_showflt_adate1" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtADatePeriod1" />
+<input type="hidden" id="hdn_showflt_ddate1" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod1" />
+<input type="hidden" id="hdn_showflt_ddate2" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod2" />
+<input type="hidden" id="hdn_showflt_ddate3" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod3" />
+<input type="hidden" id="hdn_showflt_ddate4" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod4" />
+<input type="hidden" id="hdn_showflt_ddate5" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod5" />
+<input type="hidden" id="hdn_showflt_ddate6" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtDDatePeriod6" />
+<!--出发城市-->
+<input type="hidden" id="hdn_showflt_dcity1" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress1" />
+<input type="hidden" id="hdn_showflt_dcity2" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress2" />
+<input type="hidden" id="hdn_showflt_dcity3" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress3" />
+<input type="hidden" id="hdn_showflt_dcity4" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress4" />
+<input type="hidden" id="hdn_showflt_dcity5" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress5" />
+<input type="hidden" id="hdn_showflt_dcity6" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtBeginAddress6" />
+<!--到达城市-->
+<input type="hidden" id="hdn_showflt_acity1" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress1" />
+<input type="hidden" id="hdn_showflt_acity2" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress2" />
+<input type="hidden" id="hdn_showflt_acity3" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress3" />
+<input type="hidden" id="hdn_showflt_acity4" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress4" />
+<input type="hidden" id="hdn_showflt_acity5" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress5" />
+<input type="hidden" id="hdn_showflt_acity6" value="ctl00_MainContentPlaceHolder_QuickSearchControl_txtEndAddress6" />
+
+<!--SearchResultAjax调用的Ajax参数-->
+<input type="hidden" id="searchparameterforajax" name="searchparameterforajax" value="" />
+<input type="hidden" id="hdn_enableCitySelectAjaxCall" value="1" />
+
+<div id="maskshowdiv" class="base_pop" style="width: 478px; padding: 0pt 15px;display:none;">
+	<div style="padding: 30px 0pt; text-align: center;">
+        <div style="display: inline-block;*display:inline;*zoom:1; width: 60px; height: 60px; margin-right: 20px; vertical-align: middle;">
+            <object height="60px" width="60px">
+			    <param name="wmode" value="opaque">
+			    <param name="movie" value="http://pic.c-ctrip.com/fltinternational100913/flashloading.swf">
+			    <embed wmode="opaque" src="http://pic.c-ctrip.com/fltinternational100913/flashloading.swf" type="application/x-shockwave-flash" height="60px" width="60px">
+		    </object>
         </div>
-    </li>
-
-
-    <script type="text/javascript">
-    var hdn_fltIntlSiteName = document.getElementById('hdn_fltIntlSiteName');
-    var fltIntlSiteName= hdn_fltIntlSiteName ? hdn_fltIntlSiteName.value : "flights.ctrip.com";
-
-    //start add by mxiao
-    var online = {};
-    online.msg = {
-        ERROR_FLIGHT: [
-		'请选择第{number}程的出发城市', //0
-		'请选择第{number}程的到达城市', //1
-		'您选择的第{number}程的到达城市和出发城市相同，请重新选择', //2
-		'请选择第{number}程的出发日期', //3
-		'日期格式有误，请检查', //4
-		'对不起，第{number}程的出发日期不能在今天之前', //5
-		'对不起，只能查询一年内航班', //6
-		'对不起，第{number}程日期不能早于第{second}程日期', //7
-		'航程中必须有一程为国际航程，请检查您的出发到达城市', //8
-		'请选择出发城市', //9
-		'请选择出发日期', //10
-		'请选择目的城市', //11
-		'您选择的目的城市和出发城市相同，请重新选择', //12
-		'对不起，返回日期不能早于出发日期', //13
-		'当前日期不能小于今天', //14
-		'请选择3天以后的日期',//15
-		'行程需大于2天',//16
-		'行程不能超过28天'//17
-	],
-        TIPS_MESSAGER: '系统过于繁忙,请您耐心等待片刻之后再查询,谢谢!',
-        cityCode: {
-            SHA: '上海',
-            BJS: '北京',
-            CAN: '广州',
-            SZX: '深圳香港',
-            HGH: '杭州',
-            CTU: '成都',
-            OTHER: '其他城市'
-        },
-        ERROR_DINGYUE: ['请正确输入email地址', '订阅失败！'],
-        ERROR_CALENDAR: ['可售', '售完', '单程', '往返', '去程', '返程', '飞', '公司航班', '多家航空公司的航班组合'],
-        PAGE: ['上一页', '下一页'],
-        SUBMIT: '查询航班',
-        NOTICE: [
-		'中文/英文/拼音',
-		'yyyy-mm-dd',
-		'(选填)中文/代码',
-		'输入Email(如:a@b.c)'
-	],
-        numberList: ['一', '二', '三', '四', '五', '六', '七'],
-        tipText: ['输入中文|代码搜索或↑↓选择.', "\"${val}\" 国家名，相关城市", '从 ', " 出发的  多程（含缺口程）  航班", " 到 ", " 的 ", " 航班", " 往返 ", " 单程 ", "出发日期:", "订票数量:", "返回日期:", "出发"]
-    };
-
-    function loaderCallback(jsList,url) {
-        return $LAB.script(jsList['cQuery']).wait()
-            .padScript(jsList['mod'])
-            .script(jsList['info'])
-            .script(jsList['public']).wait()
-            .script(url('index.js'));
-    }
-    //start
+        <div style="display: inline-block;*display:inline;*zoom:1; width: 240px; text-align: left; vertical-align: middle;">
+            <strong style="font-size:16px">正在为您查询</strong>
+	        <p id="alterContent"></p>
+	        <p id="DTimeContent"></p>
+	        <p id="ATimeContent"></p>
+	        <p id="tictekQuantity"></p>
+	    </div>
+	</div>
+	        
+            <div style="display: block; width: 478px; height: 178px; margin: 0pt auto; overflow:hidden"  mod="allyes">
+             <div class="pic_banner_t pic_ad" id="QuickSearchAllyesId"></div>
+            </div>
+            <p style="line-height: 34px; text-align: center; font-size: 14px; color: rgb(153, 153, 153); background-color: rgb(236, 236, 236);">点击图片查看详情，您的机票搜索不会被终止</p>
+</div>
+<script type="text/javascript">
     try {
-        var resourceAdUrl = 'http://webresource.c-ctrip.com/ResFltIntlOnline/R8/Booking/online/ad'
-        var g_adsconfig = resourceAdUrl + "SearchFlights.js";
+        var resourceAdUrl = 'http://webresource.c-ctrip.com/ResFltIntlOnline/R8/Booking/online/ad';
+        var g_adsconfig = resourceAdUrl + "QuickSearch.js";
         (function () {
             var ads = document.createElement("script");
             ads.type = "text/javascript";
             ads.async = true;
-            var list = "[{\"adIDs\":\"195\",\"domID\":\"btAllyes1\"},{\"adIDs\":\"196\",\"domID\":\"btAllyes2\"},{\"adIDs\":\"197\",\"domID\":\"btAllyes3\"},{\"adIDs\":\"198\",\"domID\":\"btAllyes4\"},{\"adIDs\":\"199\",\"domID\":\"SearchLoadingAllyesId\"}]";
-            var corplist = "[{\"adIDs\":\"225\",\"domID\":\"btAllyes1\"},{\"adIDs\":\"226\",\"domID\":\"btAllyes2\"},{\"adIDs\":\"227\",\"domID\":\"btAllyes3\"},{\"adIDs\":\"228\",\"domID\":\"btAllyes4\"},{\"adIDs\":\"199\",\"domID\":\"SearchLoadingAllyesId\"}]";
-            var src = "http://crm.ws.ctrip.com/Customer-Market-Proxy/AdCallProxy.aspx?re=ads&adlist=";
-            var AdvertType = document.getElementById("AdvertType").value;
-            if (AdvertType == "c") {
-                src += list;
-            }
-            else {
-                g_adsconfig = resourceAdUrl + "SearchFlightsCorp.js";
-                src += corplist;
-            }
-            ads.src = src
+            ads.src = "http://crm.ws.ctrip.com/Customer-Market-Proxy/AdCallProxy.aspx?re=ads&adlist=[{\"adIDs\":\"199\",\"domID\":\"QuickSearchAllyesId\"}]";
             var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ads, s);
         })();
     }
     catch (e) {
-        //online.log(e);
+
     }
-    //end
-    //end add by mxiao
+</script>
+    <div id="base_main">	   
+		<div class="base_b">
+		    
+            
+<div id="lowerPricePanel">
+<table class="multiple_panel" id="airlinePanel">
+	<thead>
+		<tr id="tr_0">
+			<th width="70" style="cursor:default;"><b class="tri_l" id="airlinePrev"></b></th>
+			<th width="66" class="selected hlight">所有航班<br />最低价</th>
+			<th width="66" class="online_kb_null"><div></div></th>
+			<th width="66" class="online_kb_null"><div></div></th>
+			<th width="66" class="online_kb_null"><div></div></th>
+			<th width="66" class="online_kb_null"><div></div></th>
+			<th width="66" class="online_kb_null"><div></div></th>
+			<th width="66" class="online_kb_null"><div></div></th>
+			<th class="gright" style="cursor:default;"><b class="tri_r" id="airlineNext"></b></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="tr_1">
+			<td>直飞</td>
+			<td class="price_no hlight selected"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no" style=""><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="gright price_no"></td>
+		</tr>
+		<tr id="tr_2">
+			<td>1程中转</td>
+			<td class="price_no hlight selected"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no" style=""><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="gright price_no"></td>
+		</tr>
+		<tr id="tr_3">
+			<td class="gbottom">≥2程中转</td>
+			<td class="price_no hlight selected"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no" style=""><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="price_no"><div>&mdash;</div></td>
+			<td class="gright price_no"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
 
+<div class="flt_title">
+    出发日期：<span>2014年5月1日</span>（<span id="spanWaitForMore"><span class="show_loading">&nbsp;</span>请稍等，正在为您查询更多低价</span>）
+</div>
+<div id="ctl00_MainContentPlaceHolder_FlightsResultListControl_ShowFlights">
+    <ul class="sort">
+       <li class="label"> 
+        <a id="lbtnDepartureTime" mod="SortButton" mod_sortbutton="mod_configs.DepartureTime" orderby="asc" href="javascript:sortMain($('#lbtnDepartureTime')[0],'DepartTime',null);">起飞</a>
+        <a id="lbtnArrivalTime" mod="SortButton" mod_sortbutton="mod_configs.ArrivalTime" orderby="asc" href="javascript:sortMain($('#lbtnArrivalTime')[0],'ArrivalTime',null);" >到达</a>
+        <a id="lbtnPrice" mod="SortButton" mod_sortbutton="mod_configs.Price" orderby="desc" href="javascript:sortMain($('#lbtnPrice')[0],'TotalPrice',null);">含税价</a>
+	    </li> 
+        
+	    <li class="sort_passenger"> 
+	        <select name="ctl00$MainContentPlaceHolder$FlightsResultListControl$dropPassagetype" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainContentPlaceHolder$FlightsResultListControl$dropPassagetype\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_MainContentPlaceHolder_FlightsResultListControl_dropPassagetype" mod="Select" mod_select="mod_configs.PassengerType">
+	<option selected="selected" value="NOR">乘客身份:普通&#160;&#160;&#160;&#160;</option>
+	<option value="STU">乘客身份:留学生&#160;&#160;</option>
+	<option value="EMI">乘客身份:移民&#160;&#160;&#160;&#160;</option>
+	<option value="LAB">乘客身份:劳务人员</option>
+	<option value="NEW">乘客身份:新移民&#160;&#160;</option>
+	<option value="SEA">乘客身份:海员&#160;&#160;&#160;&#160;</option>
+	<option value="SNR">乘客身份:老年人&#160;&#160;</option>
+	<option value="YOU">乘客身份:青年&#160;&#160;&#160;&#160;</option>
+
+</select>
+	    </li> 
+        <li class="sort_airport">
+		<div class="widget_select type_right " id="filterStartAirport">
+			<span class="widget_left"></span>
+			<div style="" class="widget_text"><span>起飞机场:<em>全部</em></span><b></b></div>
+			<span class="widget_right"></span>
+			<ul style="display: none;"></ul>
+		</div>
+		</li>
+        	
+		<li class="sort_airport">
+		<div class="widget_select type_right " id="filterDestAirport">
+			<span class="widget_left"></span>
+			<div style="" class="widget_text"><span>到达机场:<em>全部</em></span><b></b></div>
+			<span class="widget_right"></span>
+			<ul style="display: none;"></ul>
+		</div>
+		</li>	    
+    </ul>
+    <table class="multiple_thead" width="100%">
+		<thead>
+			<tr>
+				<th width="85">&nbsp;</th>
+				<th width="67">
+		            <a id="lbtnDepartureTime2sub" orderby="asc" href="javascript:;" onclick="sortMain(this,'DepartTime',null);">起飞时间</a><br />
+                    起飞机场
+				</th>
+                <th width="110" style="text-align:center;">
+                 中转次数<br />
+				    <a id="lbtnTravelTimesub" orderby="asc" href="javascript:;" onclick="sortMain(this,'FlightTime',null);">行程总时长</a>
+				</th>
+
+				<th width="130">
+				    <a id="lbtnArrivalTime2sub" orderby="asc" href="javascript:;" onclick="sortMain(this,'ArrivalTime',null);">到达时间</a><br />
+                    到达机场
+				</th>
+				<th width="136">
+				    <a id="lbtnPrice2sub" orderby="asc" href="javascript:;" onclick="sortMain(this,'Price',null);">机票价格</a>
+				<br />燃油/参考税</th>
+			</tr>
+		</thead>
+	</table>
+    <div id="FavFlight">
+    </div>
+	<div id="resultContainer">
+    </div>
+    
+    <div class="base_crumb" id="dataBottom">
+		<a href="http://flights.ctrip.com/international/" >国际机票</a> | 
+		<span>广州机票</span> | <span>广州到首尔机票</span>
+	</div>
+    <table>
+        <tr>
+            <td style="width: 350px;">
+	        </td>
+	        <td style="width: 180px;">
+	            <a href="javascript:scroll(0,0)">返回顶部</a>
+	        </td>
+            <td>
+                <table class="searchresult_fltlist" id="resultlist" width="100%" style="display:none;"> 
+	                <tbody style="display:none">
+	                    <tr> 
+				            <td colspan="6"></td> 
+			            </tr>
+	                </tbody>
+                </table>
+            </td>
+            <td>
+                <div id="tmp"></div>
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                <div class="page_neighbor" >
+                    <div id="ctl00_MainContentPlaceHolder_FlightsResultListControl_newday" style="width:222px;">
+                        <a id="ctl00_MainContentPlaceHolder_FlightsResultListControl_lbtnNextDate" title="后一天" class="page_btnext" href="javascript:__doPostBack(&#39;ctl00$MainContentPlaceHolder$FlightsResultListControl$lbtnNextDate&#39;,&#39;&#39;)">后一天(5/2)</a>
+                        <a id="ctl00_MainContentPlaceHolder_FlightsResultListControl_lbtnPrevDate" title="前一天" class="page_btnpre" href="javascript:__doPostBack(&#39;ctl00$MainContentPlaceHolder$FlightsResultListControl$lbtnPrevDate&#39;,&#39;&#39;)">(4/30)前一天</a>
+                    </div>
+                </div> 
+            </td>
+        </tr>
+    </table>
+   
+</div>
+<div class="disclaimer">
+				<h3>航班信息免责声明:</h3>
+				<p>携程旅行网提供的各类航班相关的信息，包括但不限于舱位价格、餐食、起降准点率等，来源于中国航信、全国各大机场、航空公司及相关部门公布数据。由于这些信息可能随时变化，以及网络传输问题，携程提供的此类信息可能并非最新或存在误差，因此<b>仅供旅客作为一般参考</b>，任何公司或个人不能将此作为携程做出任何承诺或做出任何保证的依据。</p>
+			</div>
+ <div id="ctl00_MainContentPlaceHolder_FlightsResultListControl_recommendBox" class="recommend_box">
+		<h3>广州飞机票出发</h3><div class="recommend_list clearfix"><a href="http://flights.ctrip.com/international/round-guangzhou-warsaw-can-waw" target="_blank">广州到华沙机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-kayseri-can-asr" target="_blank">广州到开塞利机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-ujungpandang-can-upg" target="_blank">广州到乌戎潘当机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-beirut-can-bey" target="_blank">广州到贝鲁特机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-solocity-can-soc" target="_blank">广州到梭罗机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-sendai-can-sdj" target="_blank">广州到仙台机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-montreal-can-ymq" target="_blank">广州到蒙特利尔机票</a> | <a href="http://flights.ctrip.com/international/round-guangzhou-mombasa-can-mba" target="_blank">广州到蒙巴萨机票</a> | </div>
+		<h3>首尔飞机票到达</h3><div class="recommend_list clearfix"><a href="http://flights.ctrip.com/international/round-yantai-seoul-ynt-sel" target="_blank">烟台到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-yanan-seoul-eny-sel" target="_blank">延安到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-luoyang-seoul-lya-sel" target="_blank">洛阳到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-qingdao-seoul-tao-sel" target="_blank">青岛到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-guiyang-seoul-kwe-sel" target="_blank">贵阳到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-zhanjiang-seoul-zha-sel" target="_blank">湛江到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-nanchang-seoul-khn-sel" target="_blank">南昌到首尔机票</a> | <a href="http://flights.ctrip.com/international/round-weifang-seoul-wef-sel" target="_blank">潍坊到首尔机票</a> | </div>
+	</div>
+ <div id="flight_stops" style="display: none;">
+     <div style="width: 150px;" class="base_jmp jmp_text base_jmp_t">
+         <b class="tri_t" style="left: 4px;"></b>
+         <div class="jmp_bd">
+             <ul class="jmpstops" >
+                 <li><img alt="loading" src="http://pic.c-ctrip.com/fltinternational100913/loading_date.gif" /></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+<div id="hidPic" style="width: 720px; position: absolute; left: 271px; top: 660px; display: none; z-index: 20;" class="base_pop picture_wrap">
+	<div class="pop_hd"><a class="delete" href="javascript:;" onclick="maskShow($('#hidPic'),false)">&nbsp;</a><h3>飞机相册</h3></div>
+	<div class="pop_bd layoutfix">
+		<div class="picture_main" style="">
+			<div class="picture_all_big"><img style="display: block;" title="" src="" id="picture_all_big"/></div>
+			<div class="picture_all_menu">
+				<h4><span id="airName"></span></h4>
+				<div id="slide_content"><p>A380的机场配备了为科客机研发的最先进的机上娱乐系统，光纤配电网络使电影、视频有电视节目的选择更加灵活完备。</p><p>A380的机场配备了为科客机研发的最先进的机上娱乐系统，光纤配电网络使电影、视频有电视节目的选择更加灵活完备。</p><p>A380的机场配备了为科客机研发的最先进的机上娱乐系统，光纤配电网络使电影、视频有电视节目的选择更加灵活完备。</p></div>
+			</div>
+			<div class="picture_all_item">
+				<a id="slide_prev" class="prev" href="javascript:;"></a>
+				<div class="picture_all_list">
+					<ul id="online_slide" style="width: 1275px; left: 0px;"></ul>
+				</div>
+				<a id="slide_next" class="next" href="javascript:;"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<script language="javascript" type="text/javascript">
+var FlightList={FlightWay:"S",SortType:"Price",OrderBy:"asc",DCityCode:"CAN",ACityCode:"SEL",GoDate:"2014-5-1 0:00:00",BackDate:"",RdNo:"2103213618"};
+</script>
+<input name="selectedDate" id="selectedDate"  type="hidden" value="" />
+<input id="NSTime" name="NSTime" type="hidden" value="2014/03/02 17:19:29" />
+<input id="CurrentPage" name="CurrentPage" type="hidden" value="1" />
+<input id="MoreFlightTxt" name="MoreFlightTxt" type="hidden" value="" />
+<input type="hidden" id="hidtax" name="tax" />
+<input id="OwnerAiline" name="OwnerAiline" type="hidden" value=""/>
+
+<input type="hidden" id="sPassType" name="sPassType" value="NOR" />
+<input id="RouteSearchToken" name="RouteSearchToken" type="hidden" value="-1" />
+<input type="hidden" id="IsDispalyedAsTotalPrice" name="IsDispalyedAsTotalPrice" value="0" />
+
+            
+		</div> 
+		<div class="base_b font14">
+            
+        </div>
+	</div>
+    <div class="base_side"> 
+		
+<div class="side_space" style="display:none;">
+	<a href="###"  class="timediff" onclick="javascript:window.open('SubPage/TimeZone.aspx',  'newwindow','height=320px, width=424px, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no,top=100,left=100');">时差换算小工具</a>
+</div>
+<div class="base_alert4">
+	<span class="ico_alert">&nbsp;</span>
+	所有航班起抵时间均为当地时间（24小时制）
+</div>
+		<div class="base_side_bg">
+		    
+<div class="side_space">
+    <h3>工具箱</h3>
+    <ul class="txt_list">
+    
+       <li><a id="ctl00_MainContentPlaceHolder_MoreQueryControl_lnkQuery" href="CustomQuery.aspx?dcityid=32&amp;acityid=274&amp;cpcityid=2&amp;ddate=2014-5-1&amp;ddate2=&amp;type=S&amp;ptype=ADT&amp;pnum=1&amp;class=Y" target="_blank">国际及港澳台航班需求单</a></li>
+	    
+        <li><a onclick="javascript:window.open('SubPage/TimeZone.aspx',  'newwindow','height=320px, width=424px, toolbar=no, menubar=no, scrollbars=yes, resizable=no, location=no, status=no,top=100,left=100');" href="javascript:void(0)">时差换算</a></li>
+        <li><a href="../Domestic/MyToolBox/BookSeatDemo.aspx?param=1" target="_blank">网上选座须知</a></li>
+        <li><a href="../Domestic/MyToolBox/BookSeatDemo.aspx?param=2" target="_blank">国际办理乘机</a></li>
+	</ul>
+</div>
+
+		    
+<div class="side_space">
+	<h3>航班时刻表</h3> 
+	<ul class="txt_list"> 
+		<li id="ctl00_MainContentPlaceHolder_FlightScheduleControl_schedule1"><a id="ctl00_MainContentPlaceHolder_FlightScheduleControl_lnkSchedule1" href="Schedule/can-sel.html" target="_blank">广州 至 首尔</a></li> 
+		
+		 
+		 
+		 
+		 
+	</ul> 
+</div> 
+		    
+<div class="side_space">
+	<h3>相关信息</h3>
+	<ul class="txt_list">
+		<li><a href="http://pages.ctrip.com/flight/xuzhi_intl.htm" target="_blank" rel="nofollow">国际/地区机票网上预订须知</a></li>
+		
+		
+		
+		
+		
+		
+	</ul>
+</div>
+
+        </div>
+	</div>
+    <div style="clear:both;"></div>
+	<input type="submit" name="ctl00$MainContentPlaceHolder$btnBookMoreFlight" value="" id="ctl00_MainContentPlaceHolder_btnBookMoreFlight" style="height:0px;width:0px;visibility:hidden;" />
+    
+    <input type="hidden" name="FlightWay" id="FlightWay" value="S" />
+    <input type="hidden" name="hdn_IsDirect" id="hdn_IsDirect" value="" />
+    <input type="hidden" name="hdn_SelectedAilrline" id="hdn_SelectedAilrline" value="All" />
+    
+    <input type="hidden" name="CurrentDomain" id="CurrentDomain" value="" />
+    <input type="hidden" name="CurrentFirstDomain" id="CurrentFirstDomain" value="" />
+    <input type="hidden" id="ExpenseType" name="ExpenseType" value="" />
+    <input name="ctl00$MainContentPlaceHolder$NotPostBack" type="hidden" id="ctl00_MainContentPlaceHolder_NotPostBack" value="T" />
+    <input  type="hidden" id="ab_testing_tracker" value="140127_fli_zfyx:"/>
+
+    <!--查询无结果，统一流水号-->
+    <input type="hidden" id="queryLogTransNo" name="queryLogTransNo" value="4114030217000006798"/>
+    
+    <!--Online国际机票频道/在页面内添加标识-->
+	<input type="hidden" value="104002" id="page_id"/>
+    <input type="hidden" id="hdn_showflt_openType" value="/international/SearchFlightsTheAll.aspx" />
+    <!--头部航班查询-->
+    <input type="hidden" id="airlinecode" name="airlinecode" value=""/>
+    <input type="hidden" id="flighttype" name="flighttype" value=""/>
+    <input type="hidden" id="flighttypetransit" name="flighttypetransit" value=""/>
+    <input type="hidden" id="searchList" name="searchList" value="first"/>
+    <input type="hidden" id="searchListForAbacusOnly" name="searchListForAbacusOnly" value="" />
+    <input type="hidden" name="hidApplicationPath" id="hidApplicationPath" value="/international" />
+    <input type="hidden" name="hidIsLPRefreshedLast" id="hidIsLPRefreshedLast" value="F" />
+    <input name="ctl00$MainContentPlaceHolder$IsLogin" type="hidden" id="ctl00_MainContentPlaceHolder_IsLogin" value="false" />
+            <iframe id="__SSO_iframe_0" frameborder="0" scrolling="no" width="394px" height="582px" style="display:none;"></iframe>
+        <iframe id="__SSO_iframe_1" frameborder="0" scrolling="no" width="700px" height="582px" style="display:none;"></iframe>
+
+    <script type="text/javascript">
+        var pageGlobal = {"Ubt":{"Language":"CHINESE","UID":"","page_id":"104002","From":"广州-CAN--32","To":"首尔-SEL--274","FromTime":"2014-5-1","ToTime":"","FlightType":"单程","PassengerType":"成人","Quantity":"1","SubClass":"经济舱","Airline":"","Key":"fltintl.searchresult"},"Search":{"Language":"CHINESE","From":"广州(CAN)-32","To":"首尔(SEL)-274","FromTime":"2014-5-1","ToTime":""}};
+        var obj_td_SortStatus = document.getElementById('hdn_showflt_timeDepSortStatus');
+        var obj_td_ArrowStatus= document.getElementById('hdn_showflt_timeDepArrowStatus');          
+        var obj_ta_SortStatus = document.getElementById('hdn_showflt_timeArrSortStatus');
+        var obj_ta_ArrowStatus= document.getElementById('hdn_showflt_timeArrArrowStatus'); 
+        var obj_p_SortStatus = document.getElementById('hdn_showflt_priceSortStatus');
+        var obj_p_ArrowStatus= document.getElementById('hdn_showflt_priceArrowStatus'); 
+        var mod_configs = {
+	        DepartureTime:{ options:{id:'ctl00_MainContentPlaceHolder_FlightListControl_lbtnDepartureTime',
+	                                invalid: (obj_td_SortStatus?obj_td_SortStatus.value:"true") ,
+	                                type:'',
+	                                status:(obj_td_ArrowStatus?obj_td_ArrowStatus.value:"up") 
+	                                },
+	                        listeners:{'click':function(){}}
+	                        },
+	        Airline:{options:{  id:'selAirline',text:'乘客身份:'},
+	                 listeners:{'change':function(value,text){}}			
+	                },
+	        ArrivalPeriod:{options:{id:'',text:''},
+	                        listeners:{'change':function(value,text){}}
+	                        },
+	        ArrivalPeriod2:{options:{id:'',text:''},
+	                        listeners:{'change':function(value,text){}}
+	                        },
+	        ArrivalTime:{options:{id:'ctl00_MainContentPlaceHolder_FlightListControl_lbtnArrivalTime',
+	                            invalid:(obj_ta_SortStatus?obj_ta_SortStatus.value:"true") ,
+	                            type:'',
+	                            status:(obj_ta_ArrowStatus?obj_ta_ArrowStatus.value:"up") 
+	                            },
+	                     listeners:{'click':function(){
+	        }}},
+	        Price:{options:{id:'ctl00_MainContentPlaceHolder_FlightListControl_lbtnPrice',
+	                        invalid:(obj_p_SortStatus?obj_p_SortStatus.value:"true") ,
+	                        type:'',
+	                        status:(obj_p_ArrowStatus?obj_p_ArrowStatus.value:"up") 
+	                        },
+	               listeners:{'click':function(){
+	        }}},
+	        PassengerType:{backValue: 'NOR',options:{id:'ctl00_MainContentPlaceHolder_FlightListControl_dropPassagetype',text:'乘客身份:'},listeners:{'change':function(value,text){
+	        }}},
+	        SubClass:{options:{id:'ctl00_MainContentPlaceHolder_FlightListControl_drpSubClass',text:'舱位等级:'},listeners:{'change':function(value,text){
+	        }}},
+	        FlightType:{options:{id:'',text:'是否中转:'},listeners:{'change':function(value,text){
+	        }}}
+        }
+	    var online = {
+	        msg: {
+	            ERROR_FLIGHT: [
+                    '请选择第{number}程的出发城市', //0
+                    '请选择第{number}程的到达城市', //1
+                    '您选择的第{number}程的到达城市和出发城市相同，请重新选择', //2
+                    '请选择第{number}程的出发日期', //3
+                    '日期格式有误，请检查', //4
+                    '对不起，第{number}程的出发日期不能在今天之前', //5
+                    '对不起，只能查询一年内航班', //6
+                    '对不起，第{number}程日期不能早于第{second}程日期', //7
+                    '航程中必须有一程为国际航程，请检查您的出发到达城市', //8
+                    '请选择出发城市', //9
+                    '请选择出发日期', //10
+                    '请选择目的城市', //11
+                    '您选择的目的城市和出发城市相同，请重新选择', //12
+                    '对不起，返回日期不能早于出发日期'//13
+                ],
+	            TIPS_MESSAGER: '系统过于繁忙,请您耐心等待片刻之后再查询,谢谢!',
+	            numberList: ['一', '二', '三', '四', '五', '六', '七'],
+	            tipText: ['输入中文|代码搜索或↑↓选择.', '收起明细', '查看明细', '航班详情', '所有价格', '删除', '选择', '重新搜索', '收起', '查看'],
+	            MORE_MSG: ['已选第{currentNum}程', '已选', '修改', '未知'],
+	            DATETIME_TIPS: ['（1）20:30—24:00的时间段内，不能提交起飞时间早于第2天11:00的订单</br>（2）如当前时间早于8:00，也不能提交起飞时间早于当天11:00的订单</br>您可以：致电机票预订部800-820-6666/1010-6666（境内免长话费）'],
+	            YUDING_BTN: ['预 订', '查询返程'],
+	            LOADING: '数据加载中...',
+	            MASK: ['出发的', '多程(含缺口程)', ' 航班', '的', ' 往返 ', ' 单程 ', ' 航班 ', '从', '到', '出发日期', '订票数量', '返回日期'],
+	            PRICETYPE: '请选择费用类型',
+	            IMAGEMASK: ['航班', '图片'],
+	            OTHER: ['国家名，相关城市']
+	        }
+	    };
+	    function loaderCallback(jsList,url) {
+	        return $LAB.script(jsList['cQuery']).wait()
+                .padScript(jsList['mod'])
+                .script(jsList['craftType'])
+                .script(jsList['public']).wait()
+                .script(url('result.js'));
+	    }
     </script>
-
+</li>
 
         </ul>
         <script src="http://webresource.c-ctrip.com/ResCRMOnline/r1/js/float/headFloat.min.js?ws_testp20140121.js"></script><div id="base_ft">
@@ -1052,7 +817,7 @@ if(!F.contains(target)){F.reset()}})}else{F.setTime();F.initEvent()}})();
         function __SSO_booking(a,t){
             var el=$("#__SSO_iframe_"+t);
             if(el[0]){
-                el[0].src="LoginCheck.aspx?a="+a+"&t="+t+"&b=204A3161376DAEEF6A64D0A331F37D1968FBD187F19DBB8D&sem=0B313BFAFFA67630DA8F7AB1AD446FC3";
+                el[0].src="LoginCheck.aspx?a="+a+"&t="+t+"&b=204A3161376DAEEF6A64D0A331F37D1989B01473FA959193&sem=0B313BFAFFA676303F24A1BB7C0A332E";
             }
             return false;
         }
@@ -1063,7 +828,7 @@ if(!F.contains(target)){F.reset()}})}else{F.setTime();F.initEvent()}})();
                 if(s){
                     if(el[0]){
                         el.unmask();
-                        el[0].src="LoginAgent.aspx?a="+a+"&t="+t+"&b=204A3161376DAEEF6A64D0A331F37D1968FBD187F19DBB8D&o=0DBFA2D0CEDCA82D&sem=0B313BFAFFA67630DA8F7AB1AD446FC3";
+                        el[0].src="LoginAgent.aspx?a="+a+"&t="+t+"&b=204A3161376DAEEF6A64D0A331F37D1989B01473FA959193&o=8497560DCD7197F5&sem=0B313BFAFFA676303F24A1BB7C0A332E";
                     }
                 }else{
                     el.unmask();
@@ -1075,6 +840,19 @@ if(!F.contains(target)){F.reset()}})}else{F.setTime();F.initEvent()}})();
         }
         </script>
 </form>
+<div>
+<div style="display:none" id="jmp_table"><table class="data_form"><tr><th style="width: 26px;">计划机型</th><th>计划机型名称</th><th style="width: 26px;">类型</th><th style="width: 65px;">最少座位数</th><th style="width: 65px;">最多座位数</th></tr><tr><td id="array1">${txt0.txt0}</td><td id="array2">${txt0.txt1}</td><td id="array3">${txt0.txt2}</td><td id="array4">${txt0.txt3}</td><td id="array5">${txt0.txt4}</td></tr></table></div>
+<div style="display:none" id="jmp_title1">
+  <div class="jmp_hd">
+  <h3>退改签</h3>
+  </div>
+  <div class="jmp_bd">${data}</div>
+</div>
+<div style="display:none" id="jmp_title"><div class="jmp_hd"><h3>${txt0}</h3></div><div class="jmp_bd" >${txt1}</div></div>
+<div style="display:none" id="insurance_title"><div class="jmp_hd"><h3>${txt0}</h3></div><div class="jmp_bd">${txt1}</div></div>
+<div id="jmp_text" style="display:none" class="base_jmp jmp_text base_jmp_t"><div id="Div1" class="jmp_bd">${txt0}</div></div>
+<div id="jmp_text1" style="display:none" class="base_jmp jmp_text base_jmp_t"><div id="Div2" class="jmp_bd">${data}</div></div>
+</div>
 
 <script src="http://webresource.c-ctrip.com/code/cquery/LABjs/LAB.js" charset="utf-8"
         type="text/javascript"></script>
@@ -1085,7 +863,7 @@ if(!F.contains(target)){F.reset()}})}else{F.setTime();F.initEvent()}})();
                     array: {}
                 }
             }
-        }; 
+        };
         window.__uidc_init = new Date * 1;
         var releaseNo = '?releaseno=PRO_20140225180000' + (new Date()).getDay(),
             resourceURL = 'http://webresource.c-ctrip.com/ResFltIntlOnline/R8/Booking/online/home/',
@@ -1113,7 +891,9 @@ if(!F.contains(target)){F.reset()}})}else{F.setTime();F.initEvent()}})();
         _gaq.push(['_addOrganic', 'sogou', 'query']);
         _gaq.push(['_addOrganic', 'youdao', 'q']);
         _gaq.push(['_trackPageview']);
-</script>
+    </script>
+
+
 
 <!--20131213. add. float js, css-->
 <script type="text/javascript">

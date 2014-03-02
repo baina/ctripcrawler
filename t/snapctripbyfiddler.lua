@@ -37,6 +37,11 @@ function formencode(form)
  	end
  	return table.concat(result, "&");
 end
+
+local urlencodedemo = '{"multipleRound":"S","flightintl_startcity_single":"¹ãÖÝ(CAN)|32|GUANGZHOU£¬CHINA","flightintl_arrivalcity_single":"Ê×¶û(SEL)|274|SEOUL£¬SOUTH KOREA","flightintl_startdate_single":"2014-05-01","moreflightMin":3}'
+print("--------------")
+print(urlencode(urlencodedemo))
+print("--------------")
 local __VIEWSTATE = '/wEPDwUKMTc1MDI0OTEzMA9kFgJmD2QWAgIBDxYCHgZhY3Rpb24FFC4vU2VhcmNoRmxpZ2h0cy5hc3B4FgJmD2QWCGYPFgIeB1Zpc2libGVoFgICBQ8WAh8BaGQCBg8PZBYCHhVtb2RfY2FsZW5kYXJfcmFuZ2VFbmQFCDIwMTUtMy0yZAIHDw9kFgIfAgUIMjAxNS0zLTJkAisPD2QWAh4IZGlzYWJsZWQFBHRydWVkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYFBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfcwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X3MFKWN0bDAwJE1haW5Db250ZW50UGxhY2VIb2xkZXIkZmxpZ2h0X3dheV9kBSljdGwwMCRNYWluQ29udGVudFBsYWNlSG9sZGVyJGZsaWdodF93YXlfbwUpY3RsMDAkTWFpbkNvbnRlbnRQbGFjZUhvbGRlciRmbGlnaHRfd2F5X28='
 local CorrelationId = '5501158513947432219'
 local formdata = {};
@@ -131,7 +136,7 @@ local body, code, headers, status = http.request {
 		["Proxy-Connection"] = "keep-alive",
 		["Content-Type"] = "application/x-www-form-urlencoded",
 		["Cookie"] = ck,
-		["Content-Length"] = string.len(request),
+		["Content-Length"] = string.len(form_data),
 		["DNT"] = 1,
 		["Pragma"] = "no-cache",
 		-- ["Content-Length"] = string.len(form_data),
@@ -139,7 +144,7 @@ local body, code, headers, status = http.request {
 	},
 	-- body = formdata,
 	-- source = ltn12.source.string(form_data);
-	source = ltn12.source.string(request),
+	source = ltn12.source.string(form_data),
 	sink = ltn12.sink.table(respbody)
 }
 local resxml = "";

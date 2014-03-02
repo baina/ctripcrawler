@@ -142,12 +142,12 @@ print("--------------")
 --{"multipleRound":"S","flightintl_startcity_single":"上海(SHA)|2","flightintl_arrivalcity_single":"悉尼(澳大利亚)(SYD)|501|SYDNEY，AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
 --{"multipleRound":"S","flightintl_startcity_single":"东京(TYO)|228|TOKYO，JAPAN","flightintl_arrivalcity_single":"悉尼(澳大利亚)(SYD)|501|SYDNEY，AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
 local timestamp = os.time();
+local today = os.date("%Y%m%d%H%M%S", timestamp);
 local waitStatus = timestamp * 1000 + math.random(111,999)
 
-local flightintl_searchBoxVals_gb2312 = urlencode('{"multipleRound":"S","flightintl_startcity_single":"广州(CAN)|32|GUANGZHOU，CHINA","flightintl_arrivalcity_single":"首尔(SEL)|274|SEOUL，SOUTH KOREA","flightintl_startdate_single":"2014-05-01"}');
-local ck = ([=[waitStatus=%s; ASP.NET_SessionId=%s; AX-20480-flights_domestic=%s; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.914592533.%s.%s.%s.%s; __utmb=1.2.10.%s; __utmc=1; __utmz=1.%s.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.%s.s0d8ck.1.%s.%s.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=2014030214356201; _bfi=p1=104002&p2=104002&v1=3&v2=2; zdatactrip=zdatactrip=dff7094c0bed35a3; AX-20480-flights_international=%s; flightintl_searchBoxVals_gb2312=%s; __lpi=p=104002&p2=104001
-]=]):format(waitStatus, sid, "DHAC" .. string.sub(axf, 5, -1), timestamp - 1100372, timestamp - 100372, timestamp - 372, math.random(1,9), timestamp - 100370, timestamp - 100370, waitStatus - 1100102343, waitStatus - 100102343, waitStatus - 102343, axf, flightintl_searchBoxVals_gb2312)
-
+local flightintl_searchBoxVals_gb2312 = '{"multipleRound":"S","flightintl_startcity_single":"广州(CAN)|32|GUANGZHOU，CHINA","flightintl_arrivalcity_single":"首尔(SEL)|274|SEOUL，SOUTH KOREA","flightintl_startdate_single":"2014-05-01"}';
+local ck = ([=[waitStatus=%s; ASP.NET_SessionId=%s; AX-20480-flights_domestic=%s; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.914592533.%s.%s.%s.%s; __utmb=1.2.10.%s; __utmc=1; __utmz=1.%s.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.%s.s0d8ck.1.%s.%s.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=%s; _bfi=p1=104002&p2=104002&v1=3&v2=2; zdatactrip=zdatactrip=dff7094c0bed35a3; AX-20480-flights_international=%s; flightintl_searchBoxVals_gb2312=%s; __lpi=p=104002&p2=104001]=]):format(waitStatus, sid, "DHAC" .. string.sub(axf, 5, -1), timestamp - 1100372, timestamp - 100372, timestamp - 372, math.random(1,9), timestamp - 100370, timestamp - 100370, waitStatus - 1100102343, waitStatus - 100102343, waitStatus - 102343, today .. math.random(01,99), axf, urlencode(flightintl_searchBoxVals_gb2312))
+-- local ck = 'waitStatus=1393740395194; _bfa=1.1390629488954.z2g51s.1.1393657215921.1393739144135.7.29; i_v=o=0&i=xenway&p=25&l=sh02svr2506.4xuvxfcp8&s=7; __utma=1.914592533.1390629491.1393657216.1393739144.8; __utmz=1.1393051876.4.2.utmcsr=bing|utmccn=(organic)|utmcmd=organic|utmctr=%E6%B5%B7%E5%8F%A3%E9%85%92%E5%BA%97; _abtest_=89af67b9-a172-4b09-95ab-83c546991dd1; __zpa=9.2.1393051877.1393051946.1.387149; zdatactrip=zdatactrip=dff7094c0bed35a3; flightintl_searchBoxVals_gb2312=%7B%22multipleRound%22%3A%22S%22%2C%22flightintl_startcity_single%22%3A%22%5Cu5e7f%5Cu5dde(CAN)%7C32%7CGUANGZHOU%5Cuff0cCHINA%22%2C%22flightintl_arrivalcity_single%22%3A%22%5Cu9996%5Cu5c14(SEL)%7C274%7CSEOUL%5Cuff0cSOUTH%20KOREA%22%2C%22flightintl_startdate_single%22%3A%222014-05-01%22%2C%22moreflightMin%22%3A3%7D; Session=smartlinkcode=U130727&smartlinklanguage=zh&SmartLinkKeyWord=&SmartLinkQuary=&SmartLinkHost=; __utmb=1.8.10.1393739144; _bfs=1.4; i_s=i=3dwasa4; __utmc=1; _bfi=p1%3D104001%26p2%3D0%26v1%3D29%26v2%3D0; LoginPagePassed=; i_b=i=hs9wzxlh; pv_id=v=2014030203425751; __lpi=p=104001&p2=104001; ASP.NET_SessionId=v211k1re0urc2ifvggdssdbb; AX-20480-flights_international=DNACAIAKFAAA'
 -- __utma=1.914592533.1390629491.1393130316.1393657216.7
 print(ck)
 print("--------------")
@@ -240,15 +240,15 @@ local body, code, headers, status = http.request {
 		["Proxy-Connection"] = "keep-alive",
 		["Content-Type"] = "application/x-www-form-urlencoded",
 		["Cookie"] = ck,
-		["Content-Length"] = string.len(request),
+		["Content-Length"] = string.len(form_data),
 		["DNT"] = 1,
 		["Pragma"] = "no-cache",
 		-- ["Content-Length"] = string.len(form_data),
 		["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36"
 	},
 	-- body = formdata,
-	-- source = ltn12.source.string(form_data);
-	source = ltn12.source.string(request),
+	source = ltn12.source.string(form_data);
+	-- source = ltn12.source.string(request),
 	sink = ltn12.sink.table(respbody)
 }
 local resxml = "";
