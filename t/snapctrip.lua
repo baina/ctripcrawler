@@ -96,7 +96,8 @@ function fatchkey (exUrl, exProxy)
 	end
 end
 -- static
-local tsproxy = "http://172.16.30.234:8088"
+local tsproxy = "http://172.16.30.218:8088"
+-- local tsproxy = "http://112.124.211.29:18085"
 -- local tsproxy = "http://10.123.77.144:808"
 local no01 = "http://flights.ctrip.com/international/";
 local CorrelationId = "";
