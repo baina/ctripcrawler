@@ -1,1 +1,15 @@
+http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=1414031316000011318&QueryType=2&cityPairAirline=JetStar%2c%2c0%2c%2c%23Spring%2c%2c0%2c%2c%23Charter%2c%2c0%2c%2c%23&withDirectAirline=F&RdNo=2103213618&sPassType=NOR&ind=662,679,678,641
+
+http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=1414031316000011318&QueryType=2&cityPairAirline=JetStar,,0,,#Spring,,0,,#Charter,,0,,#&withDirectAirline=F&RdNo=2103213618&sPassType=NOR&ind=662,679,678,641
+
+
+
+
 http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=1414031316000011318&QueryType=1&cityPairAirline=first&withDirectAirline=T&RdNo=2103213618&sPassType=NOR&ind=662,679,678,641
+
+
+
+
+http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=1414031316000011318&QueryType=3&cityPairAirline=TSK%2cAF%2fAH%2fCA%2fKL%2fLH%2fLX%2fLY%2fSA%2fSU%2fSV%2fTK%2c0%2c%2c%23TravelFusion%2c%2c0%2c%2c%23&withDirectAirline=F&RdNo=2103213618&sPassType=NOR&ind=662,679,678,641
+
+http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=1414031316000011318&QueryType=3&cityPairAirline=TSK,AF/AH/CA/KL/LH/LX/LY/SA/SU/SV/TK,0,,#TravelFusion,,0,,#&withDirectAirline=F&RdNo=2103213618&sPassType=NOR&ind=662,679,678,641

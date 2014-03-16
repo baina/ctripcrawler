@@ -96,9 +96,9 @@ function fatchkey (exUrl, exProxy)
 	end
 end
 -- static
-local tsproxy = "http://172.16.30.218:8088"
--- local tsproxy = "http://112.124.211.29:18085"
--- local tsproxy = "http://10.123.77.144:808"
+-- local tsproxy = "http://172.16.30.218:8088"
+local tsproxy = "http://112.124.211.29:18089"
+-- local tsproxy = "http://10.123.77.144:8088"
 local no01 = "http://flights.ctrip.com/international/";
 local CorrelationId = "";
 local __VIEWSTATE = "";
@@ -133,25 +133,26 @@ while true do
 		end
 	end
 end
-print(CorrelationId);
-print("--------------")
-print(__VIEWSTATE);
-print("--------------")
-print(sid, axf);
-print("--------------")
+-- print(CorrelationId);
+-- print("--------------")
+-- print(__VIEWSTATE);
+-- print("--------------")
+-- print(sid, axf);
+-- print("--------------")
 --flightintl_searchBoxVals_gb2312
---{"multipleRound":"S","flightintl_startcity_single":"…œ∫£(SHA)|2","flightintl_arrivalcity_single":"œ§ƒ·(∞ƒ¥Û¿˚—«)(SYD)|501|SYDNEY£¨AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
---{"multipleRound":"S","flightintl_startcity_single":"∂´æ©(TYO)|228|TOKYO£¨JAPAN","flightintl_arrivalcity_single":"œ§ƒ·(∞ƒ¥Û¿˚—«)(SYD)|501|SYDNEY£¨AUSTRALIA","flightintl_startdate_single":"2014-03-21"}
+--{"multipleRound":"S","flightintl_startcity_single":"‰∏äÊµ∑(SHA)|2","flightintl_arrivalcity_single":"ÊÇâÂ∞º(Êæ≥Â§ßÂà©‰∫ö)(SYD)|501|SYDNEYÔºåAUSTRALIA","flightintl_startdate_single":"2014-03-21"}
+--{"multipleRound":"S","flightintl_startcity_single":"‰∏ú‰∫¨(TYO)|228|TOKYOÔºåJAPAN","flightintl_arrivalcity_single":"ÊÇâÂ∞º(Êæ≥Â§ßÂà©‰∫ö)(SYD)|501|SYDNEYÔºåAUSTRALIA","flightintl_startdate_single":"2014-03-21"}
 local timestamp = os.time();
 local today = os.date("%Y%m%d%H%M%S", timestamp);
 local waitStatus = timestamp * 1000 + math.random(111,999)
 
-local flightintl_searchBoxVals_gb2312 = '{"multipleRound":"S","flightintl_startcity_single":"π„÷›(CAN)|32|GUANGZHOU£¨CHINA","flightintl_arrivalcity_single":" ◊∂˚(SEL)|274|SEOUL£¨SOUTH KOREA","flightintl_startdate_single":"2014-05-01"}';
+local flightintl_searchBoxVals_gb2312 = '{"multipleRound":"S","flightintl_startcity_single":"ÂπøÂ∑û(CAN)|32|GUANGZHOUÔºåCHINA","flightintl_arrivalcity_single":"È¶ñÂ∞î(SEL)|274|SEOULÔºåSOUTH KOREA","flightintl_startdate_single":"2014-05-01"}';
 local ck = ([=[waitStatus=%s; ASP.NET_SessionId=%s; AX-20480-flights_domestic=%s; _abtest_=df0cdedd-db43-404a-8bc5-533ea77ff5eb; userSearchClassGrade=Y; __utma=1.914592533.%s.%s.%s.%s; __utmb=1.2.10.%s; __utmc=1; __utmz=1.%s.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _bfa=1.%s.s0d8ck.1.%s.%s.2.3; _bfs=1.1; i_v=o=0&i=yluegr&p=3&l=sh02svr2503.4xugw6fe4&s=2; i_s=i=3duueav; i_b=i=hs8bqwjb; pv_id=v=%s; _bfi=p1=104002&p2=104002&v1=3&v2=2; zdatactrip=zdatactrip=dff7094c0bed35a3; AX-20480-flights_international=%s; flightintl_searchBoxVals_gb2312=%s; __lpi=p=104002&p2=104001]=]):format(waitStatus, sid, "DHAC" .. string.sub(axf, 5, -1), timestamp - 1100372, timestamp - 100372, timestamp - 372, math.random(1,9), timestamp - 100370, timestamp - 100370, waitStatus - 1100102343, waitStatus - 100102343, waitStatus - 102343, today .. math.random(01,99), axf, urlencode(flightintl_searchBoxVals_gb2312))
 -- local ck = 'waitStatus=1393740395194; _bfa=1.1390629488954.z2g51s.1.1393657215921.1393739144135.7.29; i_v=o=0&i=xenway&p=25&l=sh02svr2506.4xuvxfcp8&s=7; __utma=1.914592533.1390629491.1393657216.1393739144.8; __utmz=1.1393051876.4.2.utmcsr=bing|utmccn=(organic)|utmcmd=organic|utmctr=%E6%B5%B7%E5%8F%A3%E9%85%92%E5%BA%97; _abtest_=89af67b9-a172-4b09-95ab-83c546991dd1; __zpa=9.2.1393051877.1393051946.1.387149; zdatactrip=zdatactrip=dff7094c0bed35a3; flightintl_searchBoxVals_gb2312=%7B%22multipleRound%22%3A%22S%22%2C%22flightintl_startcity_single%22%3A%22%5Cu5e7f%5Cu5dde(CAN)%7C32%7CGUANGZHOU%5Cuff0cCHINA%22%2C%22flightintl_arrivalcity_single%22%3A%22%5Cu9996%5Cu5c14(SEL)%7C274%7CSEOUL%5Cuff0cSOUTH%20KOREA%22%2C%22flightintl_startdate_single%22%3A%222014-05-01%22%2C%22moreflightMin%22%3A3%7D; Session=smartlinkcode=U130727&smartlinklanguage=zh&SmartLinkKeyWord=&SmartLinkQuary=&SmartLinkHost=; __utmb=1.8.10.1393739144; _bfs=1.4; i_s=i=3dwasa4; __utmc=1; _bfi=p1%3D104001%26p2%3D0%26v1%3D29%26v2%3D0; LoginPagePassed=; i_b=i=hs9wzxlh; pv_id=v=2014030203425751; __lpi=p=104001&p2=104001; ASP.NET_SessionId=v211k1re0urc2ifvggdssdbb; AX-20480-flights_international=DNACAIAKFAAA'
 -- __utma=1.914592533.1390629491.1393130316.1393657216.7
-print(ck)
-print("--------------")
+
+-- print(ck)
+-- print("--------------")
 
 local formdata = {};
 
@@ -160,12 +161,12 @@ table.insert(formdata, "__VIEWSTATE=" .. __VIEWSTATE);
 table.insert(formdata, "CorrelationId=" .. CorrelationId);
 
 table.insert(formdata, "ctl00$MainContentPlaceHolder$drpFlightWay=S");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCity=π„÷›(CAN)");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$dest_city_1= ◊∂˚(SEL)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCity=ÂπøÂ∑û(CAN)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$dest_city_1=È¶ñÂ∞î(SEL)");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDDatePeriod1=2014-05-01");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtADatePeriod1=");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginAddress1=π„÷›(CAN)");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndAddress1= ◊∂˚(SEL)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginAddress1=ÂπøÂ∑û(CAN)");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndAddress1=È¶ñÂ∞î(SEL)");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDatePeriod1=2014-05-01");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtBeginCityCode1=32");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtEndCityCode1=274");
@@ -185,7 +186,7 @@ table.insert(formdata, "ctl00$MainContentPlaceHolder$txtSourceCityID=");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$drpSubClass=Y");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$selUserType=ADT");
 table.insert(formdata, "txtAirline=");
-table.insert(formdata, "ctl00$MainContentPlaceHolder$btnSearchFlight=À—À˜");
+table.insert(formdata, "ctl00$MainContentPlaceHolder$btnSearchFlight=ÊêúÁ¥¢");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDCityID=32");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtDestcityID=274");
 table.insert(formdata, "ctl00$MainContentPlaceHolder$txtOpenJawCityID3=");
@@ -215,8 +216,8 @@ local baseurl = "http://flights.ctrip.com/";
 -- http://flights.ctrip.com/international/SearchFlights.aspx
 local intluri = "international/SearchFlights.aspx";
 -- local intluri = "international/FlightResult.aspx";
-print(baseurl .. intluri)
-print(request)
+-- print(baseurl .. intluri)
+-- print(request)
 -- init response table
 local respbody = {};
 -- local hc = http:new()
@@ -265,7 +266,169 @@ deflate.gunzip {
   output = function(byte) output[#output+1] = string.char(byte) end
 }
 resxml = table.concat(output)
+-- print(code)
+-- print(status)
+-- print("--------------")
+function qir(resxml)
+	local queryLogTransNo = "";
+	local ind = "";
+	local RdNo = "";
+	-- queryLogTransNo
+	for q in string.gmatch(resxml, '<input type="hidden" id="queryLogTransNo" name="queryLogTransNo" value="(%d+)"/>') do
+		queryLogTransNo = q;
+	end
+	-- ind
+	for i in string.gmatch(resxml, '<input type="hidden" name="ind" id="ind" value="(%A+)" />') do
+		ind = i;
+	end
+	-- RdNo
+	for r in string.gmatch(resxml, 'RdNo:"(%d+)"') do
+		RdNo = r;
+	end
+	return queryLogTransNo, ind, RdNo
+end
+local q, i, r = qir(resxml)
+-- print(q)
+-- print(i)
+-- print(r)
+--http://flights.ctrip.com/international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=1014031614000012900&QueryType=1&cityPairAirline=first&withDirectAirline=T&RdNo=2103213618&sPassType=NOR&ind=710,709,734,722
+intluri = ([=[international/GetSubstepSearchResults.aspx?IsJSON=T&queryLogTransNo=%s&QueryType=1&cityPairAirline=first&withDirectAirline=T&RdNo=%s&sPassType=NOR&ind=%s]=]):format(q,r,i);
+-- init response table
+local respbody = {};
+-- local hc = http:new()
+local body, code, headers, status = http.request {
+-- local ok, code, headers, status, body = http.request {
+	-- url = "http://gwn.bestfly.cn/login",
+	url = baseurl .. intluri,
+	-- proxy = "http://172.16.30.223:8088",
+	proxy = tsproxy,
+	timeout = 3000,
+	method = "GET", -- POST or GET
+	-- add post content-type and cookie
+	headers = {
+		["Host"] = "flights.ctrip.com",
+		-- ["Host"] = "gwn.bestfly.cn",
+		["Accept-Language"] = "en-US,en;q=0.8,zh-CN;q=0.6,zh-TW;q=0.4",
+		["Referer"] = "http://flights.ctrip.com/international/SearchFlights.aspx",
+		["Accept-Encoding"] = "gzip, deflate, sdch",
+		["If-Modified-Since"] = "Thu, 01 Jan 1970 00:00:00 GMT",
+		["Accept"] = "*/*",
+		["Cache-Control"] = "max-age=0",
+		-- ["Origin"] = "http://flights.ctrip.com",
+		["Proxy-Connection"] = "keep-alive",
+		-- ["Content-Type"] = "application/x-www-form-urlencoded",
+		["Cookie"] = ck,
+		-- ["Content-Length"] = string.len(form_data),
+		["DNT"] = 1,
+		-- ["Pragma"] = "no-cache",
+		-- ["Content-Length"] = string.len(form_data),
+		["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36"
+	},
+	-- body = formdata,
+	-- source = ltn12.source.string(form_data);
+	-- source = ltn12.source.string(request),
+	sink = ltn12.sink.table(respbody)
+}
+local resjson = "";
+local reslen = table.getn(respbody)
+-- print(reslen)
+for i = 1, reslen do
+	-- print(respbody[i])
+	resjson = resjson .. respbody[i]
+end
+local output = {}
+deflate.gunzip {
+  input = resjson,
+  output = function(byte) output[#output+1] = string.char(byte) end
+}
+resjson = table.concat(output)
+-- print(resjson)
+--[[
+OilFee
+OwnerAirline
+Price
+Tax
+TotalPrice
+TicketDeclaration
+--]]
+resjson = JSON.decode(resjson).FlightList
+for i = 1, table.getn(resjson) do
+	print(resjson[i].OilFee, resjson[i].Tax, resjson[i].Price, resjson[i].TotalPrice)
+	print(resjson[i].OwnerAirline)
+	for k, v in pairs(resjson[i].TicketDeclaration) do
+		print(k)
+	end
+	local segments = resjson[i].FlightDetail
+	local seglen = table.getn(segments);
+	local tmpfid = "";
+	for l = 1, seglen do
+		local dept = "";
+		local arit = "";
+		for x, y in string.gmatch(segments[l].DepartDate, "(%d+):(%d+)") do
+			dept = x .. y
+		end
+		for x, y in string.gmatch(segments[l].ArrivelDate, "(%d+):(%d+)") do
+			arit = x .. y
+		end
+		tmpfid = tmpfid .. "-" .. segments[l].DPort .. dept .. "/" .. segments[l].APort .. arit
+		-- print(segments[l].DPort .. dept .. "/" .. segments[l].APort .. arit)
+	end
+	print(string.sub(tmpfid, 2, -1))
+end
+-- print("--------------")
+-- print(os.clock())
+-- print(JSON.encode(resjson))
+-- upyun api
+--[[
+function upyun(data, tsproxy, tkey, org, dst)
+	local cl = string.len(data)
+	local filet = os.time();
+	-- api post file.
+	local respup = {};
+	local timestamp = os.date("%a, %d %b %Y %X GMT", os.time() - 8*60*60);
+	local requri = "/biyifei/intl/ctrip/" .. tkey .. "/" .. org .. "/" .. dst .. "/" .. filet .. ".json";
+	-- local obj = "/intl/itour/" .. tkey .. "BJS/LON/" .. filet .. ".json";
+	-- local requri = "/besftly/dom/ctrip/" .. tkey .. "/" .. org .. dst .. "/" .. filet .. ".json";
+	-- local Content= "MBO" .. "\n" .. "Method=PUT" .. "\n" .. "Bucket=bestfly" .. "\n" .. "Object=" .. obj .. "\n"
+	-- local Signature = urlencode(base64.encode(crypto.hmac.digest('sha1', Content, sk, true)));
+	local sign = md5.sumhexa("PUT&" .. requri .. "&" .. timestamp .. "&" .. cl .. "&" .. md5.sumhexa("b6x7p6b6x7p6"));
+	local body, code, headers, status = http.request {
+	-- local ok, code, headers, status, body = http.request {
+		url = "http://v0.api.upyun.com" .. requri,
+		-- url = "http://v0.api.upyun.com",
+		-- url = "http://localhost:3000/citycns",
+		-- url = "http://rhomobi.com:18081/rholog" .. requri,
+		-- url = "http://bcs.duapp.com/bestfly" .. obj .. "?sign=MBO:" .. ak .. ":" .. Signature,
+		proxy = tsproxy,
+		--- proxy = "http://127.0.0.1:8888",
+		timeout = 3000,
+		method = "PUT", -- POST or GET
+		-- add post content-type and cookie
+		-- headers = { ["Content-Type"] = "application/x-www-form-urlencoded", ["Content-Length"] = string.len(form_data) },
+		headers = {
+			["Host"] = "v0.api.upyun.com",
+			-- ["Host"] = "rhomobi.com",
+			["Date"] = timestamp,
+			["Connection"] = "keep-alive",
+			["Authorization"] = "UpYun buyhome:" .. sign, 
+			["Content-Length"] = cl,
+			["Mkdir"] = "true",
+			-- ["Content-Type"] = "application/json",
+			["Content-Type"] = "text/plain"
+			-- ["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36"
+		},
+		-- headers = { ["Content-Length"] = cl, ["Content-Type"] = "text/plain" },
+		-- body = formdata,
+		-- source = ltn12.source.string(form_data);
+		source = ltn12.source.string(data),
+		sink = ltn12.sink.table(respup)
+	}
+	if code == 200 then
+		return 200
+	else
+		return 400
+	end
+end
+local code = upyun(JSON.encode(resjson), tsproxy, 20140501, "can", "sel")
 print(code)
-print(status)
-print("--------------")
-print(resxml)
+--]]
