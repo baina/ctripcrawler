@@ -25,18 +25,23 @@ end
 -- Sets the timeout (in ms) protection for subsequent operations, including the connect method.
 red:set_timeout(1000) -- 1 sec
 -- nosql connect
-local ok, err = red:connect("10.160.48.211", 6388)
+local ok, err = red:connect("10.161.149.225", 6389)
 if not ok then
 	ngx.say("failed to connect redis: ", err)
 	return
 end
+local r, e = red:auth("142ffb5bfa1-cn-jijilu-dg-a01")
+if not r then
+    ngx.say("failed to authenticate: ", e)
+    return
+end
 -- end of nosql init.
 -- init the DICT.
 -- local byfs = ngx.shared.biyifei;
-local port = ngx.shared.airport;
+-- local port = ngx.shared.airport;
 -- local porg = port:get(string.upper(ngx.var.org));
 -- local pdst = port:get(string.upper(ngx.var.dst));
-local city = ngx.shared.citycod;
+-- local city = ngx.shared.citycod;
 -- local torg = city:get(string.upper(ngx.var.org));
 -- local tdst = city:get(string.upper(ngx.var.dst));
 if ngx.var.request_method == "GET" then
