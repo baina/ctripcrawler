@@ -165,9 +165,9 @@ while true do
 				print("failed to set tv originality DATA: ", tk, md5.sumhexa(tk))
 				return
 			else
-				local res, err = slavec:rpush("dip:list:" .. dt, md5.sumhexa(tk))
+				local res, err = slavec:rpush("dip:list", md5.sumhexa(tk))
 				if not res then
-					print("failed to rpush tk into dip:list: ", err)
+					print("failed to rpush tk into dip:list", err)
 					return
 				end
 			end
@@ -181,7 +181,7 @@ while true do
 			op = op + 1;
 		end
 		-- if i > 10 or j > 10 then
-		if op > 9999 then
+		if op > 1999 then
 			break;
 		end
 	end
