@@ -55,7 +55,7 @@ if ngx.var.request_method == "GET" then
 	local check = false;
 	local resnum = 0;
 	for n = 1, ngx.var.num do
-		local res, err = red:blpop("dip:list:" .. ngx.var.que, 0)
+		local res, err = red:blpop("dip:list", 0)
 		if not res then
 			task[n] = JSON.null
 			break;
@@ -70,13 +70,11 @@ if ngx.var.request_method == "GET" then
 				check = true;
 				resnum = resnum + 1;
 				-- ngx.say(tkey)
-				--[[
 				res, err = memc:delete(tkey)
 				if not res then
 					ngx.say("failed to delete originality data of dip: ", tkey, err)
 					return
 				end
-				--]]
 			end
 		end
 	end
