@@ -93,7 +93,7 @@ while true do
 	  output = function(byte) output[#output+1] = string.char(byte) end
 	}
 	data = table.concat(output)
-	print(data)
+	-- print(data)
 	local resjson = JSON.decode(data)
 	local timestamp = resjson.version
 	if timestamp == nil or timestamp == JSON.null then
@@ -136,33 +136,52 @@ while true do
 			end
 			-- break;
 		end
-		local res, err = slavec:rpush("dip:list:" .. dt, md5.sumhexa(tk))
-		-- op = op + 1;
+		local sortkey = base64.encode(tk);
+		local tscres = slavec:zscore("dip:vals:" .. dt, sortkey)
+		if tonumber(tscres) ~= nil then
+			if tonumber(timestamp) > tonumber(tscres) then
+				local res, err = slavec:zadd("dip:vals:" .. dt, tonumber(timestamp), sortkey)
+				if not res then
+					print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
+					return
+				end
+				local ok = memc:replace(md5.sumhexa(tk), tv)
+				if not ok then
+					print("failed to set tv originality DATA: ", tk, md5.sumhexa(tk))
+					return
+				end
+			else
+				print("nothing to do..for: " .. tk);
+				-- return--don't cancel
+			end
+		else
+			local res, err = slavec:zadd("dip:vals:" .. dt, tonumber(timestamp), sortkey)
+			if not res then
+				print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
+				return
+			end
+			local ok = memc:set(md5.sumhexa(tk), tv)
+			if not ok then
+				print("failed to set tv originality DATA: ", tk, md5.sumhexa(tk))
+				return
+			else
+				local res, err = slavec:rpush("dip:list:" .. dt, md5.sumhexa(tk))
+				if not res then
+					print("failed to rpush tk into dip:list: ", err)
+					return
+				end
+			end
+		end
+		-- Caculate the total of the all list items
+		local res, err = slavec:rpush("dip:alls:" .. dt, md5.sumhexa(tk))
 		if not res then
-			print("failed to rpush tk into dip:list: ", err)
-			break;
-		end
-		--[[
-		local res, err = client:sadd("dip:sets:" .. dt, tk)
-		op = op + 1;
-		if res == nil then
-			break;
-		end
-		--]]
-		local res, err = slavec:zadd("dip:vals:" .. dt, tonumber(timestamp), tk)
-		-- op = op + 1;
-		if not res then
-			print("failed to zadd tk into dip:vals: ", err)
-			break;
-		end
-		local ok = memc:set(md5.sumhexa(tk), tv)
-		op = op + 1;
-		if not ok then
-			print("failed to set tv originality DATA: ", tk)
-			break;
+			print("failed to rpush tk into dip:alls: ", err)
+			return
+		else
+			op = op + 1;
 		end
 		-- if i > 10 or j > 10 then
-		if op > 10000 then
+		if op > 9999 then
 			break;
 		end
 	end
