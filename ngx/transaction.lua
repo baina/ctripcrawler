@@ -142,11 +142,13 @@ while true do
 			print("failed to rpush tk into dip:list: ", err)
 			break;
 		end
+		--[[
 		local res, err = client:sadd("dip:sets:" .. dt, tk)
 		op = op + 1;
 		if res == nil then
 			break;
 		end
+		--]]
 		local res, err = slavec:zadd("dip:vals:" .. dt, tonumber(timestamp), tk)
 		-- op = op + 1;
 		if not res then
