@@ -28,7 +28,7 @@ end
 -- Sets the timeout (in ms) protection for subsequent operations, including the connect method.
 red:set_timeout(1000) -- 1 sec
 -- nosql connect
-local ok, err = red:connect("10.161.149.225", 6389)
+local ok, err = red:connect("127.0.0.1", 6389)
 if not ok then
 	ngx.say("failed to connect redis: ", err)
 	return
@@ -63,23 +63,13 @@ if ngx.var.request_method == "GET" then
 	else
 		ngx.print(error002)
 	end
-	--[[
-	-- blpop one.
-	local res, err = red:blpop("Queues", 0)
-	if not res then
-		ngx.print(error002)
-	else
-		ngx.print(res[2])
-	end
-	--]]
 else
 	ngx.exit(ngx.HTTP_FORBIDDEN);
 end
---[[	-- put it into the connection pool of size 512,
-	-- with 0 idle timeout
-	local ok, err = red:set_keepalive(0, 512)
-	if not ok then
-		ngx.say("failed to set keepalive redis: ", err)
-		return
-	end
---]]
+-- put it into the connection pool of size 512,
+-- with 0 idle timeout
+local ok, err = red:set_keepalive(0, 512)
+if not ok then
+	ngx.say("failed to set keepalive redis: ", err)
+	return
+end
