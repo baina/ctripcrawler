@@ -1,4 +1,4 @@
--- Copyright (C) 2012 Zhang "agentzh" Yichun (章亦春)
+-- has tested to tsy DIP 20140331
 
 module("resty.redis", package.seeall)
 
