@@ -15,7 +15,7 @@ package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local deflate = require 'compress.deflatelua'
 local redis = require 'redis'
 local master = {
-    host = '192.168.137.191',
+    host = '127.0.0.1',
     port = 6389,
 }
 local slave = {
@@ -26,6 +26,11 @@ local client = redis.connect(master)
 local slavec = redis.connect(slave)
 -- local authok, autherr = slavec:auth("142ffb5bfa1-cn-jijilu-dg-a01")
 -- print(authok, autherr)--true,nil
+local authok = client:auth("142ffb5bfa1-cn-jijilu-dg-a01")
+if not authok then
+	print("Redis for Master auth failure: ", authok)
+	return
+end
 local authok = slavec:auth("142ffb5bfa1-cn-jijilu-dg-a01")
 if not authok then
 	print("Redis for slave auth failure: ", authok)
@@ -80,6 +85,9 @@ while true do
 	local tk = "";
 	local tv = "";
 	data = client:lpop("que:dip")
+	if type(data) ~= "string" then
+		break;
+	end
 	tv = data;
 	-- print(data)
 	local dt = string.sub(data, 3, 5)
@@ -139,8 +147,8 @@ while true do
 		local sortkey = base64.encode(tk);
 		local tscres = slavec:zscore("dip:vals:" .. dt, sortkey)
 		if tonumber(tscres) ~= nil then
-			if tonumber(timestamp) > tonumber(tscres) then
-				local res, err = slavec:zadd("dip:vals:" .. dt, tonumber(timestamp), sortkey)
+			if timestamp > tscres then
+				local res, err = slavec:zadd("dip:vals:" .. dt, timestamp, sortkey)
 				if not res then
 					print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
 					return
@@ -155,7 +163,7 @@ while true do
 				-- return--don't cancel
 			end
 		else
-			local res, err = slavec:zadd("dip:vals:" .. dt, tonumber(timestamp), sortkey)
+			local res, err = slavec:zadd("dip:vals:" .. dt, timestamp, sortkey)
 			if not res then
 				print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
 				return
@@ -181,7 +189,7 @@ while true do
 			op = op + 1;
 		end
 		-- if i > 10 or j > 10 then
-		if op > 1999 then
+		if op > 19999 then
 			break;
 		end
 	end
