@@ -92,8 +92,10 @@ else
 end
 -- put it into the connection pool of size 512,
 -- with 0 idle timeout
+--[[
 local ok, err = red:set_keepalive(0, 512)
 if not ok then
 	ngx.say("failed to set keepalive redis: ", err)
 	return
 end
+-]]

@@ -5,9 +5,13 @@
 -- begin of the idea : http://rhomobi.com/topics/
 -- queues service of crawler for bestfly service
 -- load library
-local JSON = require("cjson");
+local JSON = require 'cjson'
+local base64 = require 'base64'
+package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local redis = require "resty.redis"
 local http = require "resty.http"
+local memcached = require "resty.memcached"
+local deflate = require "compress.deflatelua"
 -- originality
 local error001 = JSON.encode({ ["resultCode"] = 1, ["description"] = "No response because you has inputted airports"});
 local error002 = JSON.encode({ ["resultCode"] = 2, ["description"] = "Get Prices from extension is no response"});
@@ -25,7 +29,7 @@ end
 -- Sets the timeout (in ms) protection for subsequent operations, including the connect method.
 red:set_timeout(1000) -- 1 sec
 -- nosql connect
-local ok, err = red:connect("127.0.0.1", 6389)
+local ok, err = red:connect("127.0.0.1", 6399)
 if not ok then
 	ngx.say("failed to connect redis: ", err)
 	return
@@ -35,15 +39,18 @@ if not r then
     ngx.say("failed to authenticate: ", e)
     return
 end
+local memc, err = memcached:new()
+if not memc then
+    ngx.say("failed to instantiate memc: ", err)
+    return
+end
+memc:set_timeout(1000) -- 1 sec
+local ok, err = memc:connect("127.0.0.1", 1978)
+if not ok then
+    ngx.say("failed to connect: ", err)
+    return
+end
 -- end of nosql init.
--- init the DICT.
--- local byfs = ngx.shared.biyifei;
--- local port = ngx.shared.airport;
--- local porg = port:get(string.upper(ngx.var.org));
--- local pdst = port:get(string.upper(ngx.var.dst));
--- local city = ngx.shared.citycod;
--- local torg = city:get(string.upper(ngx.var.org));
--- local tdst = city:get(string.upper(ngx.var.dst));
 if ngx.var.request_method == "GET" then
 	ngx.exit(ngx.HTTP_FORBIDDEN);
 else
@@ -62,28 +69,89 @@ else
 		if idx ~= nil then
 			-- string.sub(qn, idx+1, -1)
 			local rightstr = string.sub(qn, idx+1, -1)
+			local dt = string.sub(qn, idx+3, -1)
 			local leftstr = string.sub(qn, 1, idx-1)
 			if string.len(rightstr) ~= 5 then
+				--queues name must be czflt or czpsg
 				ngx.exit(ngx.HTTP_BAD_REQUEST);
 			else
 				if leftstr ~= "dip" then
+					--queues name leftstr must be "dip:"
 					ngx.exit(ngx.HTTP_BAD_REQUEST);
 				else
-					qn = "que:dip"
-					if tonumber(otype) == 0 then
-						local res, err = red:rpush(qn, rightstr .. "/0/" .. qbody);
-						if not res then
-							ngx.exit(ngx.HTTP_BAD_REQUEST);
+					--init ckiNodeKey
+					local tk = "";
+					-- base64 & gzip
+					local data = base64.decode(qbody);
+					-- local data = ngx.decode_base64(qbody);
+					local output = {}
+					deflate.gunzip {
+					  input = data,
+					  output = function(byte) output[#output+1] = string.char(byte) end
+					}
+					data = table.concat(output)
+					local resjson = JSON.decode(data)
+					local timestamp = resjson.version
+					if dt ~= "flt" then
+						--psg data type
+						local lens = table.getn(resjson.ckiPsgSegInfoList)
+						if lens ~= 1 then
+							for k = 1, lens do
+								tk = tk .. resjson.ckiPsgSegInfoList[k].ckiNodeKey
+							end
 						else
-							ngx.exit(ngx.HTTP_OK);
+							tk = resjson.ckiPsgSegInfoList[1].ckiNodeKey
 						end
+					else
+						--flt data type
+						tk = resjson.ckiNodeKey
 					end
-					if tonumber(otype) == 1 then		
-						local res, err = red:lpush(qn, rightstr .. "/1/" .. qbody);
-						if not res then
-							ngx.exit(ngx.HTTP_BAD_REQUEST);
+					-- local sortkey = base64.encode(tk);
+					local sortkey = ngx.md5(tk) .. string.sub(ngx.encode_base64(tk), 1, 6);
+					local tscres, err = red:zscore("dip:vals:" .. dt, sortkey)
+					if tonumber(tscres) ~= nil then
+						if timestamp > tscres then
+							local res, err = red:zadd("dip:vals:" .. dt, timestamp, sortkey)
+							if not res then
+								ngx.print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
+								return
+							end
+							local ok = memc:replace(ngx.md5(tk), qbody)
+							if not ok then
+								ngx.print("failed to replace qbody originality DATA: ", tk, ngx.md5(tk))
+								return
+							else
+								local tmp, trr = red:lrem("dip:list", 0, ngx.md5(tk))
+								local res, err = red:rpush("dip:list", ngx.md5(tk))
+								if not res or not tmp then
+									ngx.print("failed to rpush tk into dip:list", err)
+									return
+								else
+									ngx.print("sucess to replace: " .. tk);
+								end
+							end
 						else
-							ngx.exit(ngx.HTTP_OK);
+							ngx.print("nothing to do..for: " .. tk);
+							-- return--don't cancel
+						end
+					else
+						local res, err = red:zadd("dip:vals:" .. dt, timestamp, sortkey)
+						if not res then
+							ngx.print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
+							return
+						end
+						local ok = memc:set(ngx.md5(tk), qbody)
+						if not ok then
+							ngx.print("failed to set qbody originality DATA: ", tk, ngx.md5(tk))
+							return
+						else
+							local res, err = red:rpush("dip:list", ngx.md5(tk))
+							if not res then
+								ngx.print("failed to rpush tk into dip:list", err)
+								return
+							else
+								ngx.print("sucess to add: " .. tk);
+							end
 						end
 					end
 				end
