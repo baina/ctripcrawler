@@ -3,7 +3,6 @@
 -- TODO: copy the LICENSE file
 -------------------------------------------------------------------------------
 -- begin of the idea : http://rhomobi.com/topics/
--- price of extension for elong website : http://flight.elong.com/beijing-shanghai/cn_day19.html
 -- load library
 local JSON = require("cjson");
 local redis = require "resty.redis"
@@ -44,7 +43,7 @@ if not ok then
 	ngx.say("failed to connect redis: ", err)
 	return
 end
-local r, e = red:auth("142ffb5bfa1-cn-jijilu-dg-a01")
+local r, e = red:auth("142ffb5bfa1-cn-jijilu-dg-a02")
 if not r then
     ngx.say("failed to authenticate: ", e)
     return
@@ -55,12 +54,13 @@ if ngx.var.request_method == "GET" then
 	local check = false;
 	local resnum = 0;
 	for n = 1, ngx.var.num do
-		local res, err = red:blpop("dip:list", 0)
-		if not res then
+		local res, err = red:lpop("dip:orcl")
+		if type(res) ~= "string" then
 			task[n] = JSON.null
 			break;
 		else
-			local tkey = res[2];
+			-- local tkey = res[2];
+			local tkey = res;
 			res, err = memc:get(tkey)
 			if not res then
 				ngx.say("failed to get originality data of dip: ", tkey, err)
@@ -92,10 +92,8 @@ else
 end
 -- put it into the connection pool of size 512,
 -- with 0 idle timeout
---[[
 local ok, err = red:set_keepalive(0, 512)
 if not ok then
 	ngx.say("failed to set keepalive redis: ", err)
 	return
 end
--]]
