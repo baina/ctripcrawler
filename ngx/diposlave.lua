@@ -68,7 +68,7 @@ if ngx.var.request_method == "GET" then
 				ngx.say("failed to get originality data of dip: ", tkey, err)
 				return
 			else
-				if string.find(res, "cz%%%/[0,1]/") ~= nil then
+				if string.find(res, "cz%a%a%a\/[0,1]\/") ~= nil then
 					task[n] = res
 				else
 					-- base64 & gzip
