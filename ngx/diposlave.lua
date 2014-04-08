@@ -43,7 +43,7 @@ if not ok then
 	ngx.say("failed to connect redis: ", err)
 	return
 end
-local r, e = red:auth("142ffb5bfa1-cn-jijilu-dg-a02")
+local r, e = red:auth("142ffb5bfa1-cn-jijilu-dg-a01")
 if not r then
     ngx.say("failed to authenticate: ", e)
     return
@@ -54,7 +54,7 @@ if ngx.var.request_method == "GET" then
 	local check = false;
 	local resnum = 0;
 	for n = 1, ngx.var.num do
-		local res, err = red:lpop("dip:orcl")
+		local res, err = red:lpop("dip:list")
 		if type(res) ~= "string" then
 			task[n] = JSON.null
 			break;

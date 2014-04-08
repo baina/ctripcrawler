@@ -79,6 +79,8 @@ else
 					--queues name leftstr must be "dip:"
 					ngx.exit(ngx.HTTP_BAD_REQUEST);
 				else
+					--memc data
+					local tqdata = rightstr .. "/" .. otype .. "/" .. qbody
 					--init ckiNodeKey
 					local tk = "";
 					-- base64 & gzip
@@ -116,7 +118,7 @@ else
 								ngx.print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
 								return
 							end
-							local ok = memc:replace(ngx.md5(tk), qbody)
+							local ok = memc:replace(ngx.md5(tk), tqdata)
 							if not ok then
 								ngx.print("failed to replace qbody originality DATA: ", tk, ngx.md5(tk))
 								return
@@ -140,7 +142,7 @@ else
 							ngx.print("failed to zadd tk into dip:vals: " .. dt, tk, sortkey)
 							return
 						end
-						local ok = memc:set(ngx.md5(tk), qbody)
+						local ok = memc:set(ngx.md5(tk), tqdata)
 						if not ok then
 							ngx.print("failed to set qbody originality DATA: ", tk, ngx.md5(tk))
 							return
