@@ -4,11 +4,13 @@
 -------------------------------------------------------------------------------
 -- begin of the idea : http://rhomobi.com/topics/
 -- load library
-local JSON = require("cjson");
+local JSON = require 'cjson'
+local base64 = require 'base64'
+package.path = "/usr/local/webserver/lua/lib/?.lua;";
 local redis = require "resty.redis"
 local http = require "resty.http"
--- local ltn12 = require "ltn12"
 local memcached = require "resty.memcached"
+local deflate = require "compress.deflatelua"
 local memc, err = memcached:new()
 if not memc then
     ngx.say("failed to instantiate memc: ", err)
@@ -66,7 +68,24 @@ if ngx.var.request_method == "GET" then
 				ngx.say("failed to get originality data of dip: ", tkey, err)
 				return
 			else
-				task[n] = res
+				if string.find(res, "cz%%%/[0,1]/") ~= nil then
+					task[n] = res
+				else
+					-- base64 & gzip
+					local data = base64.decode(res);
+					-- local data = ngx.decode_base64(qbody);
+					local output = {}
+					deflate.gunzip {
+					  input = data,
+					  output = function(byte) output[#output+1] = string.char(byte) end
+					}
+					data = table.concat(output)
+					if string.find(data, "ckiPsgSegInfoList") ~= nil then
+						task[n] = "czpsg/0/" .. res
+					else
+						task[n] = "czflt/0/" .. res
+					end
+				end
 				check = true;
 				resnum = resnum + 1;
 				-- ngx.say(tkey)
